@@ -1,0 +1,17 @@
+{
+  "package_id": "br.com.winker",
+  "title": "Winker",
+  "developer": "Winker",
+  "play_url": "https://play.google.com/store/apps/details?id=br.com.winker&hl=pt_BR",
+  "screenshot_count_available": 8,
+  "files": [
+    "02-app-01.png",
+    "02-app-02.png",
+    "02-app-03.png",
+    "02-app-04.png",
+    "02-app-05.png",
+    "02-app-06.png"
+  ],
+  "icon": "https://play-lh.googleusercontent.com/Dki1dEQDi3ulpixPWhcCrDn2KcuqMMrtyputGHJ5wcE6NkRjrSOdjRBJKU-kz5m_llMEb5WGuTzINPuRrNKV6g",
+  "source": "google-play-scraper"
+}

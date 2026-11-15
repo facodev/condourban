@@ -1,0 +1,33 @@
+<div class="page-container">
+  <header class="page-header">
+    <div>
+      <h2>Segurança, RBAC e Logs de Auditoria</h2>
+      <p class="subtitle">Trilha de auditoria das ações críticas realizadas por administradores e operadores.</p>
+    </div>
+  </header>
+
+  <div class="table-card">
+    <table class="simple-table">
+      <thead>
+        <tr>
+          <th>Usuário</th>
+          <th>Ação</th>
+          <th>Entidade Afetada</th>
+          <th>IP Origem</th>
+          <th>Data / Hora</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (log of logs(); track log.id) {
+          <tr>
+            <td><strong>{{ log.usuarioNome }}</strong></td>
+            <td><span class="action-tag">{{ log.acao }}</span></td>
+            <td>{{ log.entidade }}</td>
+            <td><code>{{ log.ipOrigem }}</code></td>
+            <td>{{ log.timestamp }}</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</div>

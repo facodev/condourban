@@ -1,0 +1,33 @@
+<div class="page-container">
+  <header class="page-header">
+    <div>
+      <h2>Log em Tempo Real de Passagens</h2>
+      <p class="subtitle">Histórico auditável e em tempo real dos acessos registrados pelo hardware.</p>
+    </div>
+  </header>
+
+  <div class="events-feed">
+    @for (ev of eventos(); track ev.id) {
+      <div class="event-item" [class.denied]="!ev.autorizado">
+        <div class="status-indicator">
+          <span class="icon">{{ ev.autorizado ? '✓' : '✕' }}</span>
+        </div>
+        <div class="event-details">
+          <div class="top-row">
+            <span class="person">{{ ev.pessoaNome || 'Acesso Não Identificado' }}</span>
+            <div class="status-wrap">
+              <app-status-badge [status]="ev.autorizado ? 'aprovado' : 'rejeitado'" [label]="ev.autorizado ? 'Liberado' : 'Negado'"></app-status-badge>
+              <span class="time">{{ ev.timestamp }}</span>
+            </div>
+          </div>
+          <p class="device">
+            📍 {{ ev.dispositivoNome }} — Sentido: <strong>{{ ev.sentido | uppercase }}</strong>
+          </p>
+          @if (!ev.autorizado && ev.motivo) {
+            <span class="reason">Motivo: {{ ev.motivo }}</span>
+          }
+        </div>
+      </div>
+    }
+  </div>
+</div>

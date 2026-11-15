@@ -1,0 +1,22 @@
+:host {
+  display: block;
+}
+
+.page-container { padding: 1.5rem; }
+.page-header { margin-bottom: 1.5rem; }
+.subtitle { color: #64748b; font-size: 0.875rem; margin-top: 0.25rem; }
+.mural-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.25rem; }
+.mural-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 1.25rem; }
+.badge-type {
+  display: inline-block;
+  background: #eff6ff;
+  color: #2563eb;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  margin-bottom: 0.5rem;
+}
+.mural-card h3 { margin: 0 0 0.5rem; font-size: 1.0625rem; color: #0f172a; }
+.desc { font-size: 0.875rem; color: #475569; margin: 0 0 1rem; line-height: 1.5; }
+.footer { display: flex; justify-content: space-between; font-size: 0.75rem; color: #94a3b8; border-top: 1px solid #f1f5f9; padding-top: 0.75rem; }

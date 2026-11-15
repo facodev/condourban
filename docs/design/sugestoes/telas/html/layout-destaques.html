@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Layout 2 — Destaques</title>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root, [data-palette="a"] {
+      --brand: #0F6B5C; --brand-strong: #0A4F44; --brand-soft: #D8EFEA;
+      --surface: #F4F6F5; --card: #fff; --ink: #1A1F1E; --muted: #5C6763; --border: #D5DCD9;
+    }
+    [data-palette="b"] {
+      --brand: #E85D04; --brand-strong: #C44D00; --brand-soft: #FFE8D6;
+      --surface: #F4F6F5; --card: #fff; --ink: #1A1F1E; --muted: #5C6763; --border: #D5DCD9;
+    }
+    [data-palette="c"] {
+      --brand: #1B4F72; --brand-strong: #0E3350; --brand-soft: #D6E4F0;
+      --surface: #F5F7FA; --card: #fff; --ink: #1A2332; --muted: #5A6570; --border: #CDD5DE;
+    }
+    [data-palette="d"] {
+      --brand: #4A5D23; --brand-strong: #354418; --brand-soft: #E8EDD9;
+      --surface: #F7F8F4; --card: #fff; --ink: #1C1F14; --muted: #5C6350; --border: #D5D9C8;
+    }
+    [data-palette="e"] {
+      --brand: #5B3A6E; --brand-strong: #3D254C; --brand-soft: #EDE4F2;
+      --surface: #F7F5F9; --card: #fff; --ink: #1F1824; --muted: #6B5F75; --border: #D9D0E0;
+    }
+    [data-palette="f"] {
+      --brand: #1565C0; --brand-strong: #0D47A1; --brand-soft: #E3F0FF;
+      --surface: #F3F7FC; --card: #fff; --ink: #0D1B2A; --muted: #5A6A7A; --border: #C5D4E8;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: "Source Sans 3", system-ui, sans-serif; background: #dde3e0; color: var(--ink); padding: 1.25rem; }
+    a.back { color: var(--brand); font-weight: 600; text-decoration: none; }
+    h1 { font-size: 1.35rem; margin: .6rem 0 .4rem; }
+    .toolbar { display: flex; gap: .5rem; margin-bottom: 1.25rem; align-items: center; }
+    select { padding: .4rem .6rem; border-radius: 8px; border: 1px solid var(--border); }
+    .phone {
+      width: min(360px, 100%); margin: 0 auto; background: var(--surface);
+      border-radius: 28px; border: 3px solid #222; overflow: hidden; min-height: 680px;
+      display: flex; flex-direction: column; box-shadow: 0 12px 40px rgb(0 0 0 / 18%);
+    }
+    .hdr { text-align: center; padding: 1.1rem 1rem .5rem; background: var(--card); }
+    .logo {
+      width: 52px; height: 52px; margin: 0 auto .5rem; border-radius: 50%;
+      background: var(--brand-soft); color: var(--brand-strong); display: grid; place-items: center; font-weight: 700; font-size: .65rem;
+      border: 2px solid var(--brand);
+    }
+    .condo {
+      display: inline-flex; gap: .4rem; align-items: center; border: 1px solid var(--border);
+      border-radius: 999px; padding: .4rem .85rem; color: var(--brand); font-weight: 600; font-size: .9rem;
+    }
+    .sec { padding: 1rem 1rem 0; font-size: .8rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: .04em; }
+    .hot {
+      display: flex; justify-content: center; gap: 2rem; padding: 1rem;
+    }
+    .hot .c {
+      width: 88px; text-align: center; font-size: .75rem; font-weight: 600; color: var(--ink);
+    }
+    .hot .circle {
+      width: 72px; height: 72px; margin: 0 auto .4rem; border-radius: 50%;
+      background: var(--card); border: 2px solid var(--brand); display: grid; place-items: center;
+      box-shadow: 0 2px 8px rgb(0 0 0 / 8%);
+    }
+    .hot svg { width: 28px; height: 28px; stroke: var(--brand); fill: none; stroke-width: 2; }
+    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: .7rem; padding: .75rem 1rem 1rem; }
+    .tile {
+      background: var(--card); border-radius: 14px; border: 1px solid var(--border);
+      padding: 1rem .4rem; text-align: center;
+    }
+    .tile svg { width: 26px; height: 26px; stroke: var(--brand); fill: none; stroke-width: 2; }
+    .tile span { display: block; margin-top: .4rem; font-size: .75rem; font-weight: 600; }
+    .nav {
+      margin-top: auto; display: flex; justify-content: space-around; padding: .65rem;
+      background: var(--card); border-top: 1px solid var(--border);
+    }
+    .nav span { padding: .35rem .75rem; border-radius: 999px; font-size: .85rem; color: var(--muted); }
+    .nav span.on { background: var(--brand-soft); color: var(--brand); font-weight: 600; }
+  </style>
+</head>
+<body data-palette="a">
+  <a class="back" href="index.html">← Hub</a>
+  <h1>Layout 2 — Destaques + grade</h1>
+  <div class="toolbar">
+    <label>Paleta</label>
+    <select onchange="document.body.dataset.palette=this.value">
+      <option value="a">A Verde</option>
+      <option value="b">B Laranja</option>
+      <option value="c">C Ardósia</option>
+      <option value="d">D Oliva</option>
+      <option value="e">E Roxo</option>
+      <option value="f">F Azul</option>
+    </select>
+  </div>
+  <div class="phone">
+    <header class="hdr">
+      <div class="logo">APP</div>
+      <div class="condo">Condomínio</div>
+    </header>
+    <div class="sec">Destaques</div>
+    <div class="hot">
+      <div class="c">
+        <div class="circle"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><path d="M8 14h.01M12 14h.01M16 14h.01"/></svg></div>
+        Reservas
+      </div>
+      <div class="c">
+        <div class="circle"><svg viewBox="0 0 24 24"><path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/><path d="M13 5v2M13 17v2M13 11v2"/></svg></div>
+        Convites
+      </div>
+    </div>
+    <div class="sec">Recursos</div>
+    <div class="grid">
+      <div class="tile"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 7L2 7"/></svg><span>Correspondências</span></div>
+      <div class="tile"><svg viewBox="0 0 24 24"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg><span>Ocorrências</span></div>
+      <div class="tile"><svg viewBox="0 0 24 24"><path d="m3 11 18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg><span>Comunicados</span></div>
+      <div class="tile"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>Documentos</span></div>
+    </div>
+    <nav class="nav"><span class="on">Home</span><span>Avisos</span><span>Perfil</span></nav>
+  </div>
+</body>
+</html>

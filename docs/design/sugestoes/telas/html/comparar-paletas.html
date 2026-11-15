@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Comparar paletas</title>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: "Source Sans 3", system-ui, sans-serif; background: #eef1f0; color: #1A1F1E; padding: 1.5rem; }
+    a.back { color: #0F6B5C; font-weight: 600; text-decoration: none; }
+    h1 { margin: .75rem 0 1.5rem; font-size: 1.6rem; }
+    .palettes { display: grid; gap: 1.5rem; }
+    @media (min-width: 900px) { .palettes { grid-template-columns: 1fr 1fr; } }
+    .p {
+      background: #fff; border-radius: 16px; overflow: hidden;
+      border: 1px solid #D5DCD9; box-shadow: 0 1px 3px rgb(0 0 0 / 6%);
+    }
+    .p-head { padding: 1rem 1.15rem; color: #fff; }
+    .p-head h2 { margin: 0; font-size: 1.15rem; }
+    .p-head p { margin: .35rem 0 0; opacity: .9; font-size: .88rem; }
+    .swatches { display: grid; grid-template-columns: repeat(4, 1fr); gap: .5rem; padding: 1rem; }
+    .sw { border-radius: 10px; min-height: 64px; padding: .5rem; font-size: .7rem; display: flex; align-items: flex-end; }
+    .sw.dark { color: #fff; }
+    .sw.light { color: #1A1F1E; border: 1px solid #D5DCD9; }
+    .demo { padding: 0 1rem 1.15rem; display: flex; gap: .5rem; flex-wrap: wrap; align-items: center; }
+    .btn { border: 0; border-radius: 10px; padding: .55rem 1rem; font-weight: 600; font-size: .9rem; color: #fff; cursor: default; }
+    .btn-ghost { background: transparent; border: 1.5px solid; }
+    .tile {
+      width: 72px; height: 72px; border-radius: 12px; display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: .25rem; font-size: .65rem; background: #fff;
+      border: 1px solid #D5DCD9;
+    }
+    .tile i { width: 22px; height: 22px; border-radius: 6px; }
+  </style>
+</head>
+<body>
+  <a class="back" href="index.html">← Hub</a>
+  <h1>Comparar paletas</h1>
+  <div class="palettes">
+
+    <article class="p">
+      <div class="p-head" style="background:#0F6B5C">
+        <h2>A — Verde-azulado</h2>
+        <p>Provisão atual · confiança condominial</p>
+      </div>
+      <div class="swatches">
+        <div class="sw dark" style="background:#0F6B5C">brand</div>
+        <div class="sw dark" style="background:#0A4F44">strong</div>
+        <div class="sw light" style="background:#D8EFEA">soft</div>
+        <div class="sw dark" style="background:#E8A317">accent</div>
+        <div class="sw light" style="background:#F4F6F5">surface</div>
+        <div class="sw dark" style="background:#1A1F1E">ink</div>
+        <div class="sw dark" style="background:#1E2A28">drawer</div>
+        <div class="sw dark" style="background:#C62828">danger</div>
+      </div>
+      <div class="demo">
+        <button class="btn" style="background:#0F6B5C">CTA</button>
+        <button class="btn btn-ghost" style="color:#0F6B5C;border-color:#0F6B5C">Secundário</button>
+        <div class="tile"><i style="background:#0F6B5C"></i>Reservas</div>
+      </div>
+    </article>
+
+    <article class="p">
+      <div class="p-head" style="background:#E85D04">
+        <h2>B — Laranja referência</h2>
+        <p>Próximo ao concorrente · energia</p>
+      </div>
+      <div class="swatches">
+        <div class="sw dark" style="background:#E85D04">brand</div>
+        <div class="sw dark" style="background:#C44D00">strong</div>
+        <div class="sw light" style="background:#FFE8D6">soft</div>
+        <div class="sw dark" style="background:#0F6B5C">accent</div>
+        <div class="sw light" style="background:#F4F6F5">surface</div>
+        <div class="sw dark" style="background:#1A1F1E">ink</div>
+        <div class="sw dark" style="background:#2B211C">drawer</div>
+        <div class="sw dark" style="background:#C62828">danger</div>
+      </div>
+      <div class="demo">
+        <button class="btn" style="background:#E85D04">CTA</button>
+        <button class="btn btn-ghost" style="color:#E85D04;border-color:#E85D04">Secundário</button>
+        <div class="tile"><i style="background:#E85D04"></i>Reservas</div>
+      </div>
+    </article>
+
+    <article class="p">
+      <div class="p-head" style="background:#1B4F72">
+        <h2>C — Azul ardósia + coral</h2>
+        <p>Institucional · B2B administradora</p>
+      </div>
+      <div class="swatches">
+        <div class="sw dark" style="background:#1B4F72">brand</div>
+        <div class="sw dark" style="background:#0E3350">strong</div>
+        <div class="sw light" style="background:#D6E4F0">soft</div>
+        <div class="sw dark" style="background:#E07A5F">accent</div>
+        <div class="sw light" style="background:#F5F7FA">surface</div>
+        <div class="sw dark" style="background:#1A2332">ink</div>
+        <div class="sw dark" style="background:#152536">drawer</div>
+        <div class="sw dark" style="background:#C62828">danger</div>
+      </div>
+      <div class="demo">
+        <button class="btn" style="background:#1B4F72">CTA</button>
+        <button class="btn btn-ghost" style="color:#1B4F72;border-color:#1B4F72">Secundário</button>
+        <div class="tile"><i style="background:#1B4F72"></i>Reservas</div>
+      </div>
+    </article>
+
+    <article class="p">
+      <div class="p-head" style="background:#4A5D23">
+        <h2>D — Oliva + terracota</h2>
+        <p>Residencial · personalidade</p>
+      </div>
+      <div class="swatches">
+        <div class="sw dark" style="background:#4A5D23">brand</div>
+        <div class="sw dark" style="background:#354418">strong</div>
+        <div class="sw light" style="background:#E8EDD9">soft</div>
+        <div class="sw dark" style="background:#C45C26">accent</div>
+        <div class="sw light" style="background:#F7F8F4">surface</div>
+        <div class="sw dark" style="background:#1C1F14">ink</div>
+        <div class="sw dark" style="background:#2A3020">drawer</div>
+        <div class="sw dark" style="background:#C62828">danger</div>
+      </div>
+      <div class="demo">
+        <button class="btn" style="background:#4A5D23">CTA</button>
+        <button class="btn btn-ghost" style="color:#4A5D23;border-color:#4A5D23">Secundário</button>
+        <div class="tile"><i style="background:#4A5D23"></i>Reservas</div>
+      </div>
+    </article>
+
+    <article class="p">
+      <div class="p-head" style="background:#5B3A6E">
+        <h2>E — Roxo ameixa</h2>
+        <p>Diferenciação · premium / community</p>
+      </div>
+      <div class="swatches">
+        <div class="sw dark" style="background:#5B3A6E">brand</div>
+        <div class="sw dark" style="background:#3D254C">strong</div>
+        <div class="sw light" style="background:#EDE4F2">soft</div>
+        <div class="sw dark" style="background:#D4A017">accent</div>
+        <div class="sw light" style="background:#F7F5F9">surface</div>
+        <div class="sw dark" style="background:#1F1824">ink</div>
+        <div class="sw dark" style="background:#2A1F33">drawer</div>
+        <div class="sw dark" style="background:#C62828">danger</div>
+      </div>
+      <div class="demo">
+        <button class="btn" style="background:#5B3A6E">CTA</button>
+        <button class="btn btn-ghost" style="color:#5B3A6E;border-color:#5B3A6E">Secundário</button>
+        <div class="tile"><i style="background:#5B3A6E"></i>Reservas</div>
+      </div>
+    </article>
+
+    <article class="p">
+      <div class="p-head" style="background:#1565C0">
+        <h2>F — Azul cobalto</h2>
+        <p>Mais azul · clareza mobile</p>
+      </div>
+      <div class="swatches">
+        <div class="sw dark" style="background:#1565C0">brand</div>
+        <div class="sw dark" style="background:#0D47A1">strong</div>
+        <div class="sw light" style="background:#E3F0FF">soft</div>
+        <div class="sw dark" style="background:#FF8F00">accent</div>
+        <div class="sw light" style="background:#F3F7FC">surface</div>
+        <div class="sw dark" style="background:#0D1B2A">ink</div>
+        <div class="sw dark" style="background:#102A43">drawer</div>
+        <div class="sw dark" style="background:#C62828">danger</div>
+      </div>
+      <div class="demo">
+        <button class="btn" style="background:#1565C0">CTA</button>
+        <button class="btn btn-ghost" style="color:#1565C0;border-color:#1565C0">Secundário</button>
+        <div class="tile"><i style="background:#1565C0"></i>Reservas</div>
+      </div>
+    </article>
+
+  </div>
+</body>
+</html>

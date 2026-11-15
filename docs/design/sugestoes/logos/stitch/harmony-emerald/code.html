@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Logo Stitch — harmony-emerald</title>
+  <style>
+    html, body {
+      margin: 0; min-height: 100%;
+      background: #eef2f0;
+      font-family: system-ui, sans-serif;
+    }
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      padding: 1.5rem;
+    }
+    .frame {
+      width: min(168px, 42vw);
+      height: min(168px, 42vw);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .frame svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+      border-radius: 22%;
+      box-shadow: 0 10px 28px rgba(15, 35, 30, 0.12);
+    }
+    .cap {
+      color: #5C6763;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+  <div class="frame">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
+  <defs>
+    <linearGradient id="emeraldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0F5144"/>
+      <stop offset="100%" stop-color="#073B31"/>
+    </linearGradient>
+    <linearGradient id="goldMintGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#34D399"/>
+      <stop offset="100%" stop-color="#10B981"/>
+    </linearGradient>
+    <filter id="drop" x="-10%" y="-10%" width="120%" height="120%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="14" stdDeviation="20" flood-color="#041F1A" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+
+  <!-- Container -->
+  <rect width="512" height="512" rx="128" fill="url(#emeraldGrad)"/>
+
+  <!-- Ambient Glow -->
+  <circle cx="256" cy="200" r="140" fill="#34D399" fill-opacity="0.08"/>
+
+  <!-- Elegant Architectural Monogram Emblem -->
+  <g filter="url(#drop)">
+    <!-- Main Stylized Roof / Sanctuary Gable -->
+    <path d="M128 236L241.6 138.069C250.046 130.79 261.954 130.79 270.4 138.069L384 236C391.82 242.74 390.89 255.22 381.8 260.62L364 271.2C358.33 274.57 351.05 273.86 346.12 269.45L263.2 195.42C259.08 191.74 252.92 191.74 248.8 195.42L165.88 269.45C160.95 273.86 153.67 274.57 148 271.2L130.2 260.62C121.11 255.22 120.18 242.74 128 236Z" fill="white"/>
+
+    <!-- Interlocking Residential Living Blocks -->
+    <!-- Left Block (Community) -->
+    <rect x="174" y="260" width="68" height="114" rx="20" fill="white" fill-opacity="0.95"/>
+    <!-- Right Block (Smart Home) with taller profile -->
+    <rect x="270" y="232" width="68" height="142" rx="20" fill="white"/>
+
+    <!-- Heart of Community: Radiant Living Seed / Portal -->
+    <circle cx="256" cy="306" r="28" fill="url(#goldMintGrad)"/>
+    <path d="M256 294C249.373 294 244 299.373 244 306C244 316 256 324 256 324C256 324 268 316 268 306C268 299.373 262.627 294 256 294Z" fill="white"/>
+  </g>
+
+  <!-- Clean Base Horizon Line -->
+  <rect x="156" y="394" width="200" height="8" rx="4" fill="url(#goldMintGrad)" fill-opacity="0.8"/>
+</svg>
+  </div>
+  <p class="cap">harmony-emerald · preview 168px</p>
+</body>
+</html>

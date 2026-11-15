@@ -1,0 +1,27 @@
+:host {
+  display: block;
+}
+
+th.sortable {
+  cursor: pointer;
+  transition: background-color var(--transition-fast);
+
+  &:hover {
+    background-color: #334155;
+  }
+}
+
+.th-content {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.sort-icon {
+  font-size: 0.75rem;
+  color: #93c5fd;
+}
+
+tr.clickable {
+  cursor: pointer;
+}

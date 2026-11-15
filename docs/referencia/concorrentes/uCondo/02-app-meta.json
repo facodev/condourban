@@ -1,0 +1,17 @@
+{
+  "package_id": "br.com.ucondo.android",
+  "title": "uCondo - App para Condomínio",
+  "developer": "uCondo",
+  "play_url": "https://play.google.com/store/apps/details?id=br.com.ucondo.android&hl=pt_BR",
+  "screenshot_count_available": 18,
+  "files": [
+    "02-app-01.jpg",
+    "02-app-02.jpg",
+    "02-app-03.jpg",
+    "02-app-04.jpg",
+    "02-app-05.jpg",
+    "02-app-06.jpg"
+  ],
+  "icon": "https://play-lh.googleusercontent.com/j8Z8miPtI-U8x5XiMOp3I9UJCqY9nhiYBFX6KMwwF6xO31urHIqgsLYK5qDpsRxOZUVT6JTU_ZOmMbiOCE12eA",
+  "source": "google-play-scraper"
+}

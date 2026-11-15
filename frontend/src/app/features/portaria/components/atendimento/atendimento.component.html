@@ -1,0 +1,36 @@
+<div class="page-container">
+  <header class="page-header">
+    <div>
+      <h2>Fila de Atendimento da Portaria</h2>
+      <p class="subtitle">Controle de entrada de visitantes, prestadores de serviços, hóspedes e entregas.</p>
+    </div>
+  </header>
+
+  <div class="atendimento-list">
+    @for (item of atendimentos(); track item.id) {
+      <div class="atendimento-card">
+        <div class="badge-type">{{ item.tipo | uppercase }}</div>
+        <div class="content">
+          <div class="top">
+            <h3>{{ item.visitanteNome }}</h3>
+            <app-status-badge [status]="item.status"></app-status-badge>
+          </div>
+          <p class="doc">Doc: {{ item.documento }} | Destino: <strong>{{ item.unidadeDestino }}</strong></p>
+          @if (item.entradaEm) {
+            <span class="time">Entrada: {{ item.entradaEm }}</span>
+          }
+        </div>
+
+        <div class="actions">
+          @if (item.status === 'aguardando') {
+            <button class="btn btn-primary" (click)="autorizar(item.id)">Autorizar Entrada</button>
+          } @else if (item.status === 'autorizado') {
+            <button class="btn btn-success" (click)="registrarEntrada(item.id)">Confirmar Passagem</button>
+          } @else if (item.status === 'entrou') {
+            <button class="btn btn-secondary" (click)="registrarSaida(item.id)">Registrar Saída</button>
+          }
+        </div>
+      </div>
+    }
+  </div>
+</div>

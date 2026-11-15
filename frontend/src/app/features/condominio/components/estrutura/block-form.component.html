@@ -1,0 +1,79 @@
+<div class="form-container">
+  <div class="breadcrumb">
+    <a routerLink="/condominio">Condomínio & Estrutura</a>
+    <span class="sep">/</span>
+    <span class="current">Novo Bloco</span>
+  </div>
+
+  <div class="form-panel">
+    <div class="panel-header">
+      <div class="header-glyph">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M19 21V5a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v16"></path>
+          <rect x="9" y="7" width="2" height="2"></rect>
+          <rect x="13" y="7" width="2" height="2"></rect>
+          <rect x="9" y="11" width="2" height="2"></rect>
+          <rect x="13" y="11" width="2" height="2"></rect>
+        </svg>
+      </div>
+      <div>
+        <h1 class="panel-title">Cadastrar Novo Bloco ou Torre</h1>
+        <p class="panel-desc">Defina a estrutura física para agrupar e organizar os apartamentos e salas autônomas.</p>
+      </div>
+    </div>
+
+    <form (ngSubmit)="save()" class="form-body">
+      <div class="field-group">
+        <label for="nome" class="field-label">
+          Nome ou Identificador da Edificação <span class="required">*</span>
+        </label>
+        <input
+          id="nome"
+          type="text"
+          [(ngModel)]="nome"
+          name="nome"
+          required
+          placeholder="Ex: Bloco A, Torre Sul, Edifício Begônia"
+          class="input-control"
+          autofocus
+        />
+        <span class="field-hint">Utilizado nas guias de portaria, rateio de despesas e correspondências.</span>
+      </div>
+
+      <div class="field-group">
+        <label for="descricao" class="field-label">Descrição Operacional (opcional)</label>
+        <textarea
+          id="descricao"
+          [(ngModel)]="descricao"
+          name="descricao"
+          rows="3"
+          placeholder="Ex: Prédio de 12 andares com 4 apartamentos por andar e elevador de serviço."
+          class="textarea-control"
+        ></textarea>
+      </div>
+
+      @if (errorMessage()) {
+        <div class="error-banner">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" y1="8" x2="12" y2="12"></line>
+            <line x1="12" y1="16" x2="12.01" y2="16"></line>
+          </svg>
+          <span>{{ errorMessage() }}</span>
+        </div>
+      }
+
+      <div class="panel-actions">
+        <app-button type="submit" [disabled]="isLoading() || !nome.trim()" variant="primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>
+            <polyline points="17 21 17 13 7 13 7 21"></polyline>
+            <polyline points="7 3 7 8 15 8"></polyline>
+          </svg>
+          <span>{{ isLoading() ? 'Criando Bloco…' : 'Salvar Bloco' }}</span>
+        </app-button>
+        <app-button type="button" variant="outline" (click)="cancel()">Cancelar</app-button>
+      </div>
+    </form>
+  </div>
+</div>

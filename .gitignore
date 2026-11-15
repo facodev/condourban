@@ -1,0 +1,102 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+.npm/
+.yarn/
+.yarn/cache
+.pnp.*
+
+# Python
+.venv/
+venv/
+env/
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.eggs/
+dist/
+build/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+.tox/
+*.egg
+*.db
+services/api/dev.db
+.tmp-ng/
+
+# Environment & secrets (never commit real secrets)
+.env
+.env.local
+.env.*.local
+!.env.example
+*.pem
+*.key
+secrets/
+credentials.json
+
+# IDEs / OS
+.idea/
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+Desktop.ini
+.antigravity
+
+# Logs & temp
+*.log
+logs/
+tmp/
+temp/
+.cache/
+
+# Angular / frontend builds
+.angular/
+frontend/.angular/
+frontend/dist/
+apps/**/dist/
+apps/**/.angular/
+apps/**/out-tsc/
+apps/**/coverage/
+*.tsbuildinfo
+
+# Next leftover (if any)
+.next/
+out/
+
+# Docker / local volumes
+docker-data/
+pgdata/
+redis-data/
+
+# Uploads locais de desenvolvimento
+uploads/
+media/
+staticfiles/
+
+# Backups com dados pessoais (nunca versionar)
+**/_backup_antes_redacao/
+**/*-com-dados/
+
+# OpenAPI generated (regenerar no CI) ? descomente se preferir n?o versionar
+# packages/openapi-types/
+
+# Celery / beat
+celerybeat-schedule
+celerybeat.pid
+
+# Terraform / infra state (se vier a existir)
+*.tfstate
+*.tfstate.*
+.terraform/
+
+# Cloudflare tunnel runtime symlink/file
+tunnel
+

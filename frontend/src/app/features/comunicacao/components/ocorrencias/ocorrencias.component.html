@@ -1,0 +1,24 @@
+<div class="page-container">
+  <header class="page-header">
+    <div>
+      <h2>Livro e Registro de Ocorrências</h2>
+      <p class="subtitle">Canal unificado para abertura e acompanhamento de chamados e notificações da portaria.</p>
+    </div>
+  </header>
+
+  <div class="ocorrencias-list">
+    @for (item of ocorrencias(); track item.id) {
+      <div class="card ocorrencia-card">
+        <div class="header">
+          <div>
+            <span class="cat-tag">{{ item.categoria }}</span>
+            <h3>{{ item.titulo }}</h3>
+            <span class="autor">Aberto por {{ item.autorNome }} ({{ item.unidade }}) em {{ item.criadoEm }}</span>
+          </div>
+          <app-status-badge [status]="item.status"></app-status-badge>
+        </div>
+        <p class="desc">{{ item.descricao }}</p>
+      </div>
+    }
+  </div>
+</div>

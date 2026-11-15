@@ -1,0 +1,34 @@
+<div class="auth-card">
+  <h2>Recuperar Senha</h2>
+  <p class="subtitle">Informe seu e-mail para receber as instruções de redefinição.</p>
+
+  @if (emailSent()) {
+    <div class="success-message">
+      <p>E-mail enviado com sucesso! Verifique sua caixa de entrada e spam.</p>
+      <a routerLink="/auth/login" class="btn btn-primary">Voltar ao Login</a>
+    </div>
+  } @else {
+    <form (ngSubmit)="enviarInstrucoes()" class="auth-form">
+      <div class="form-group">
+        <label for="email">E-mail cadastrado</label>
+        <input
+          id="email"
+          type="email"
+          [(ngModel)]="email"
+          name="email"
+          required
+          placeholder="seu.email@exemplo.com"
+          class="form-control"
+        />
+      </div>
+
+      <button type="submit" class="btn btn-primary" [disabled]="loading() || !email">
+        {{ loading() ? 'Enviando…' : 'Enviar Instruções' }}
+      </button>
+
+      <div class="footer-links">
+        <a routerLink="/auth/login">Lembrou a senha? Fazer login</a>
+      </div>
+    </form>
+  }
+</div>

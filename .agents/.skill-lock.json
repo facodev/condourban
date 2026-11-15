@@ -1,0 +1,376 @@
+{
+  "version": 2,
+  "skills": {
+    "tlc-spec-lean": {
+      "name": "tlc-spec-lean",
+      "source": "local",
+      "contentHash": "807aad338cc9e306f68fe9335bc5251a5e749e0bc3676998801e48bf2ff79a80",
+      "installedAt": "2026-10-17T17:57:03.603Z",
+      "updatedAt": "2026-10-17T17:57:03.715Z",
+      "agents": [
+        "claude-code",
+        "codex",
+        "gemini",
+        "antigravity",
+        "kilocode"
+      ],
+      "method": "copy",
+      "global": false
+    },
+    "component-common-domain-detection": {
+      "name": "component-common-domain-detection",
+      "source": "local",
+      "contentHash": "58c72d63eaf387cf11ae36b223ff80478ba861f53265e42a3c4fbcb3bc739208",
+      "installedAt": "2026-10-17T21:55:41.207Z",
+      "updatedAt": "2026-10-17T21:55:42.577Z",
+      "agents": [
+        "cursor",
+        "claude-code",
+        "github-copilot",
+        "codex",
+        "gemini",
+        "antigravity",
+        "kilocode",
+        "opencode"
+      ],
+      "method": "copy",
+      "global": false
+    },
+    "component-flattening-analysis": {
+      "name": "component-flattening-analysis",
+      "source": "local",
+      "contentHash": "085696b944897a2d8c96efb6e0a3faab00f910a62a49a45c3293c32458962411",
+      "installedAt": "2026-10-17T21:55:41.217Z",
+      "updatedAt": "2026-10-17T21:55:42.586Z",
+      "agents": [
+        "cursor",
+        "claude-code",
+        "github-copilot",
+        "codex",
+        "gemini",
+        "antigravity",
+        "kilocode",
+        "opencode"
+      ],
+      "method": "copy",
+      "global": false
+    },
+    "component-identification-sizing": {
+      "name": "component-identification-sizing",
+      "source": "local",
+      "contentHash": "8ec5eb90e86cc84a346f15f50c86960d8f4ba6876f6fe27d687a1ba43a2448a0",
+      "installedAt": "2026-10-17T21:55:41.226Z",
+      "updatedAt": "2026-10-17T21:55:42.594Z",
+      "agents": [
+        "cursor",
+        "claude-code",
+        "github-copilot",
+        "codex",
+        "gemini",
+        "antigravity",
+        "kilocode",
+        "opencode"
+      ],
+      "method": "copy",
+      "global": false
+    },
+    "coupling-analysis": {
+      "name": "coupling-analysis",
+      "source": "local",
+      "contentHash": "a33a142a73ac2e6b8db300acb3d13dba5077e225cbfad7599b0ac431290ab5c7",
+      "installedAt": "2026-10-17T21:55:41.241Z",
+      "updatedAt": "2026-10-17T21:55:42.601Z",
+      "agents": [
+        "cursor",
+        "claude-code",
+        "github-copilot",
+        "codex",
+        "gemini",
+        "antigravity",
+        "kilocode",
+        "opencode"
+      ],
+      "method": "copy",
+      "global": false
+    },
+    "decomposition-planning-roadmap": {
+      "name": "decomposition-planning-roadmap",
+      "source": "local",
+      "contentHash": "8de88d993b2556a6b38c26fd79c863f06bf7746faf87c0c9fd1b9a198a49e1ac",
+      "installedAt": "2026-10-17T21:55:41.250Z",
+      "updatedAt": "2026-10-17T21:55:42.610Z",
+      "agents": [
+        "cursor",
+        "claude-code",
+        "github-copilot",
+        "codex",
+        "gemini",
+        "antigravity",
+        "kilocode",
+        "opencode"
+      ],
+      "method": "copy",
+      "global": false
+    },
+    "domain-analysis": {
+      "name": "domain-analysis",
+      "source": "local",
+      "contentHash": "5914beeaf1aa1fe57cd95cf0afb60ee1cccc58eedaddd123a43cad32d6a70077",
+      "installedAt": "2026-10-17T21:55:41.260Z",
+      "updatedAt": "2026-10-17T21:55:42.620Z",
+      "agents": [
+        "cursor",
+        "claude-code",
+        "github-copilot",
+        "codex",
+        "gemini",
+        "antigravity",
+        "kilocode",
+        "opencode"
+      ],
+      "method": "copy",
+      "global": false
+    },
+    "domain-identification-grouping": {
+      "name": "domain-identification-grouping",
+      "source": "local",
+      "contentHash": "ac3c94d9910a75aa6a61f7866507d16a3c646ff17e86b79667d1a19c6fa6c659",
+      "installedAt": "2026-10-17T21:55:41.269Z",
+      "updatedAt": "2026-10-17T21:55:42.628Z",
+      "agents": [
+        "cursor",
+        "claude-code",
+        "github-copilot",
+        "codex",
+        "gemini",
+        "antigravity",
+        "kilocode",
+        "opencode"
+      ],
+      "method": "copy",
+      "global": false
+    },
+    "evolutionary-modular-architecture": {
+      "name": "evolutionary-modular-architecture",
+      "source": "local",
+      "contentHash": "67eab096727beddf61ab8df40629d63cbb5fa828bb1e1f12ab494af444ce9015",
+      "installedAt": "2026-10-17T21:55:41.299Z",
+      "updatedAt": "2026-10-17T21:55:42.656Z",
+      "agents": [
+        "cursor",
+        "claude-code",
+        "github-copilot",
+        "codex",
+        "gemini",
+        "antigravity",
+        "kilocode",
+        "opencode"
+      ],
+      "method": "copy",
+      "global": false
+    },
+    "frontend-blueprint": {
+      "name": "frontend-blueprint",
+      "source": "local",
+      "contentHash": "c79c5acbf69e88e1b0c848e64afb671f33091e32b6dcb1b2e6f9c78213a10ec3",
+      "installedAt": "2026-10-17T21:55:41.310Z",
+      "updatedAt": "2026-10-17T21:55:42.666Z",
+      "agents": [
+        "cursor",
+        "claude-code",
+        "github-copilot",
+        "codex",
+        "gemini",
+        "antigravity",
+        "kilocode",
+        "opencode"
+      ],
+      "method": "copy",
+      "global": false
+    },
+    "gh-address-comments": {
+      "name": "gh-address-comments",
+      "source": "local",
+      "contentHash": "a1808fb136b7118a7bdac65415e9a40a7982953f8b3339c97087fc0807865d88",
+      "installedAt": "2026-10-17T21:55:41.319Z",
+      "updatedAt": "2026-10-17T21:55:42.676Z",
+      "agents": [
+        "cursor",
+        "claude-code",
+        "github-copilot",
+        "codex",
+        "gemini",
+        "antigravity",
+        "kilocode",
+        "opencode"
+      ],
+      "method": "copy",
+      "global": false
+    },
+    "harness-eval": {
+      "name": "harness-eval",
+      "source": "local",
+      "contentHash": "675761f3fdb123f26103811ffe52e384adff5ffdf7c603578dfaa4eb2e54b2a2",
+      "installedAt": "2026-10-17T21:55:41.339Z",
+      "updatedAt": "2026-10-17T21:55:42.695Z",
+      "agents": [
+        "cursor",
+        "claude-code",
+        "github-copilot",
+        "codex",
+        "gemini",
+        "antigravity",
+        "kilocode",
+        "opencode"
+      ],
+      "method": "copy",
+      "global": false
+    },
+    "modular-decomposition": {
+      "name": "modular-decomposition",
+      "source": "local",
+      "contentHash": "b536c1851c862516e5fc111502311343b952073a992ea07c9f8f9b42fbbc2a44",
+      "installedAt": "2026-10-17T21:55:41.365Z",
+      "updatedAt": "2026-10-17T21:55:42.714Z",
+      "agents": [
+        "cursor",
+        "claude-code",
+        "github-copilot",
+        "codex",
+        "gemini",
+        "antigravity",
+        "kilocode",
+        "opencode"
+      ],
+      "method": "copy",
+      "global": false
+    },
+    "modular-design-principles": {
+      "name": "modular-design-principles",
+      "source": "local",
+      "contentHash": "d53fdca7ae18205376956c39a3a1729edfae843f63e5f2a6c5dd2c64ccd8a576",
+      "installedAt": "2026-10-17T21:55:41.374Z",
+      "updatedAt": "2026-10-17T21:55:42.732Z",
+      "agents": [
+        "cursor",
+        "claude-code",
+        "github-copilot",
+        "codex",
+        "gemini",
+        "antigravity",
+        "kilocode",
+        "opencode"
+      ],
+      "method": "copy",
+      "global": false
+    },
+    "tactical-ddd": {
+      "name": "tactical-ddd",
+      "source": "local",
+      "contentHash": "c3dfaf45e8cb784f18d9c460c7f005c4ee9dbb430f21ee8af6913bbfea66a75b",
+      "installedAt": "2026-10-17T21:55:41.383Z",
+      "updatedAt": "2026-10-17T21:55:42.742Z",
+      "agents": [
+        "cursor",
+        "claude-code",
+        "github-copilot",
+        "codex",
+        "gemini",
+        "antigravity",
+        "kilocode",
+        "opencode"
+      ],
+      "method": "copy",
+      "global": false
+    },
+    "tlc-prd": {
+      "name": "tlc-prd",
+      "source": "local",
+      "contentHash": "ce417e8df0cff1870fbfdd157959e6efbdc6b1b547c57ac3850134e8f70bba80",
+      "installedAt": "2026-10-17T21:55:41.392Z",
+      "updatedAt": "2026-10-17T21:55:42.751Z",
+      "agents": [
+        "cursor",
+        "claude-code",
+        "github-copilot",
+        "codex",
+        "gemini",
+        "antigravity",
+        "kilocode",
+        "opencode"
+      ],
+      "method": "copy",
+      "global": false
+    },
+    "create-adr": {
+      "name": "create-adr",
+      "source": "local",
+      "contentHash": "47ec663c849e8c1620c6f33a7be0055acdcf838c27ab7c16f44260244b80195a",
+      "installedAt": "2026-10-17T22:04:27.589Z",
+      "updatedAt": "2026-10-17T22:04:27.607Z",
+      "agents": [
+        "cursor",
+        "claude-code",
+        "windsurf"
+      ],
+      "method": "copy",
+      "global": false
+    },
+    "technical-design-doc-creator": {
+      "name": "technical-design-doc-creator",
+      "source": "local",
+      "contentHash": "d05974df076f695f96b4e4c263ad19f2aaffe8ee6248c1b07a634dd9ed0ea51e",
+      "installedAt": "2026-10-17T22:46:33.430Z",
+      "updatedAt": "2026-10-17T22:46:33.449Z",
+      "agents": [
+        "cursor",
+        "claude-code",
+        "windsurf"
+      ],
+      "method": "copy",
+      "global": false
+    },
+    "skill-architect": {
+      "name": "skill-architect",
+      "source": "local",
+      "contentHash": "349b256153447631c3ed356996c3a62fec52493d07ba75e37b12c458f9fbf6bb",
+      "installedAt": "2026-10-17T22:47:05.971Z",
+      "updatedAt": "2026-10-17T22:47:05.999Z",
+      "agents": [
+        "cursor",
+        "claude-code",
+        "windsurf"
+      ],
+      "method": "copy",
+      "global": false
+    },
+    "frontend-design": {
+      "name": "frontend-design",
+      "source": "local",
+      "contentHash": "b20162c8d6bcdd9137c4afceaeb4f9dce2c1ba3ccb57a96a3228b8cb33104ec4",
+      "installedAt": "2026-10-17T22:47:31.818Z",
+      "updatedAt": "2026-10-17T22:47:31.850Z",
+      "agents": [
+        "cursor",
+        "claude-code",
+        "windsurf"
+      ],
+      "method": "copy",
+      "global": false
+    },
+    "web-design-guidelines": {
+      "name": "web-design-guidelines",
+      "source": "local",
+      "contentHash": "213a23fff251b12ddfec648bda148bf10704ef6617e162eb9329cc83963dd138",
+      "installedAt": "2026-10-17T22:47:49.985Z",
+      "updatedAt": "2026-10-17T22:47:50.006Z",
+      "agents": [
+        "cursor",
+        "claude-code",
+        "windsurf"
+      ],
+      "method": "copy",
+      "global": false
+    }
+  }
+}

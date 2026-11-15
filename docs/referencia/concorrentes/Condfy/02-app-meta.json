@@ -1,0 +1,17 @@
+{
+  "package_id": "br.com.condfy",
+  "title": "Condfy",
+  "developer": "Convicty Software",
+  "play_url": "https://play.google.com/store/apps/details?id=br.com.condfy&hl=pt_BR",
+  "screenshot_count_available": 7,
+  "files": [
+    "02-app-01.png",
+    "02-app-02.png",
+    "02-app-03.png",
+    "02-app-04.png",
+    "02-app-05.png",
+    "02-app-06.png"
+  ],
+  "icon": "https://play-lh.googleusercontent.com/RPpGW-XmRbqLveLtZsmIysqqBDIFrZ7OoXPI5sRn8kBXg_HB1LEM0wXPuxBKa-d8tBEBI5IXDLrA9maD7wWG",
+  "source": "google-play-scraper"
+}

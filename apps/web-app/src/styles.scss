@@ -1,0 +1,24 @@
+@import '../../../packages/ui-brand/tokens.css';
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  font-family: var(--font-ui);
+  color: var(--color-ink);
+  background: var(--color-surface);
+}
+
+a {
+  color: var(--color-brand);
+}
+
+.cu-page {
+  padding: 1.25rem 1.5rem 2rem;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.cu-muted {
+  color: var(--color-ink-muted);
+}

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Comparativo logos transparentes — CondoUrban</title>
+<style>
+body{font-family:system-ui,sans-serif;margin:0;padding:1.5rem;background:#f4f6f5;color:#1a1f1e}
+h1{font-size:1.35rem;margin:0 0 .35rem}
+.lead{color:#5c6763;margin:0 0 1.25rem}
+.grid{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+.card{background:#fff;border:1px solid #d5dcd9;border-radius:14px;padding:1rem}
+.card.best{border-color:#0f6b5c;box-shadow:0 0 0 2px #d8efea}
+.card img{width:100%;height:auto;border-radius:10px;background:
+ linear-gradient(45deg,#eee 25%,transparent 25%),linear-gradient(-45deg,#eee 25%,transparent 25%),linear-gradient(45deg,transparent 75%,#eee 75%),linear-gradient(-45deg,transparent 75%,#eee 75%);
+ background-size:20px 20px;background-position:0 0,0 10px,10px -10px,-10px 0}
+.card h2{font-size:1rem;margin:.75rem 0 .35rem}
+.card p{margin:0;font-size:.9rem;color:#5c6763;line-height:1.4}
+.tag{display:inline-block;margin-top:.5rem;font-size:.7rem;font-weight:700;color:#0f6b5c;background:#d8efea;padding:.15rem .5rem;border-radius:999px}
+</style></head><body>
+<h1>Comparativo — fundo transparente</h1>
+<p class="lead">Qual usar sem distorcer: ícone no header/app; lockup só com espaço vertical.</p>
+<div class="grid">
+  <div class="card best">
+    <img src="B_icone_branco_transparent.png" alt="Ícone transparente"/>
+    <h2>B — Só ícone (fundo branco)</h2>
+    <p>Melhor para header, favicon e app icon. Quase quadrado, escala limpa, “1” legível em claro e escuro.</p>
+    <span class="tag">recomendado · mark</span>
+  </div>
+  <div class="card">
+    <img src="A_lockup_branco_transparent.png" alt="Lockup transparente"/>
+    <h2>A — Lockup completo</h2>
+    <p>Melhor para hero, splash e materiais. Em header estreito fica pequeno ou estica — evitar.</p>
+    <span class="tag">recomendado · hero/rodapé</span>
+  </div>
+  <div class="card">
+    <img src="C_icone_preto_transparent.png" alt="Ícone do fundo preto"/>
+    <h2>C — Ícone no preto (JPG)</h2>
+    <p>Evitar como fonte: JPG + fundo preto gera halo/artefato na transparência e proporção menos estável.</p>
+    <span class="tag">não usar</span>
+  </div>
+</div>
+</body></html>

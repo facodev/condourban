@@ -1,0 +1,35 @@
+<div class="page-container">
+  <header class="page-header">
+    <div>
+      <h2>Assembleias e Votação Digital</h2>
+      <p class="subtitle">Convocação oficial, editais, votação eletrônica ao vivo e atas registradas.</p>
+    </div>
+  </header>
+
+  <div class="assembleias-list">
+    @for (item of assembleias(); track item.id) {
+      <div class="assembleia-card">
+        <div class="header">
+          <div>
+            <span class="type-tag">{{ item.tipo | uppercase }}</span>
+            <h3>{{ item.titulo }}</h3>
+            <span class="date">📅 {{ item.dataInicio }}</span>
+          </div>
+          <app-status-badge [status]="item.status"></app-status-badge>
+        </div>
+
+        <div class="pautas">
+          <h4>Pautas em Deliberação:</h4>
+          <ul>
+            @for (pauta of item.pautas; track pauta.id) {
+              <li>
+                <span>{{ pauta.titulo }}</span>
+                <span class="votes">👍 {{ pauta.votosFavoraveis }} | 👎 {{ pauta.votosContrarios }}</span>
+              </li>
+            }
+          </ul>
+        </div>
+      </div>
+    }
+  </div>
+</div>

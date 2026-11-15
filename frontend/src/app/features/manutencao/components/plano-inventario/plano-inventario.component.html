@@ -1,0 +1,37 @@
+<div class="page-container">
+  <header class="page-header">
+    <div>
+      <h2>Plano de Manutenção Preventiva (PMO) e Ativos</h2>
+      <p class="subtitle">Cronograma preventivo de equipamentos, bombas, geradores e elevadores.</p>
+    </div>
+  </header>
+
+  <div class="table-card">
+    <table class="simple-table">
+      <thead>
+        <tr>
+          <th>Equipamento / Ativo</th>
+          <th>Localização</th>
+          <th>Periodicidade</th>
+          <th>Próxima Manutenção</th>
+          <th>Responsável Técnico</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (item of itens(); track item.id) {
+          <tr>
+            <td><strong>{{ item.equipamento }}</strong></td>
+            <td>{{ item.localizacao }}</td>
+            <td>{{ item.periodicidade }}</td>
+            <td>{{ item.proximaManutencao }}</td>
+            <td>{{ item.responsavelTecnico }}</td>
+            <td>
+              <app-status-badge [status]="item.status === 'em_dia' ? 'aprovado' : 'alerta'" [label]="item.status || ''"></app-status-badge>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</div>

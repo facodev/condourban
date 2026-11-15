@@ -1,0 +1,13 @@
+@if (isOpen()) {
+  <div class="modal-backdrop" (click)="close()" role="dialog" aria-modal="true" [attr.aria-label]="title() || 'Janela modal'">
+    <div class="modal-dialog" (click)="$event.stopPropagation()">
+      <header class="modal-header">
+        <h3 class="text-balance">{{ title() }}</h3>
+        <button type="button" class="close-btn focus-ring" (click)="close()" aria-label="Fechar modal">&times;</button>
+      </header>
+      <div class="modal-body">
+        <ng-content></ng-content>
+      </div>
+    </div>
+  </div>
+}

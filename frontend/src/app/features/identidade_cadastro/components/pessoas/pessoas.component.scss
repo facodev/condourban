@@ -1,0 +1,196 @@
+:host {
+  display: block;
+}
+
+.input-readonly {
+  background: var(--color-surface-subtle, #f1f5f9);
+  color: var(--color-text-secondary, #334155);
+  cursor: not-allowed;
+}
+
+.field-hint {
+  display: block;
+  margin-top: 0.25rem;
+  font-size: 0.75rem;
+  color: var(--color-text-muted, #64748b);
+  line-height: 1.4;
+}
+
+/* GERENCIADOR DE TELEFONES */
+.phones-section {
+  margin: 1.25rem 0;
+  padding: 1rem;
+  border-radius: var(--radius-md, 8px);
+  background: var(--color-surface-subtle, #f8fafc);
+  border: 1px solid var(--color-border, #e2e8f0);
+}
+
+.phones-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.875rem;
+  gap: 1rem;
+}
+
+.btn-add-phone {
+  background: var(--color-primary-subtle, #eff6ff);
+  color: var(--color-primary, #2563eb);
+  border: 1px dashed var(--color-primary, #2563eb);
+  padding: 0.35rem 0.75rem;
+  border-radius: 6px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.15s ease-in-out;
+
+  &:hover {
+    background: var(--color-primary, #2563eb);
+    color: #ffffff;
+  }
+}
+
+.phones-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.phone-item-card {
+  background: #ffffff;
+  border: 1px solid var(--color-border, #e2e8f0);
+  border-radius: 6px;
+  padding: 0.75rem;
+}
+
+.phone-item-fields {
+  display: grid;
+  grid-template-columns: 140px 1fr auto;
+  gap: 0.75rem;
+  align-items: flex-end;
+
+  @media (max-width: 640px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.phone-sublabel {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-text-secondary, #475569);
+  margin-bottom: 0.25rem;
+}
+
+.phone-col-flags {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding-bottom: 0.125rem;
+}
+
+.phone-checkbox-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.4rem 0.65rem;
+  border-radius: 6px;
+  border: 1px solid var(--color-border, #cbd5e1);
+  background: #ffffff;
+  color: var(--color-text-muted, #64748b);
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.15s ease-in-out;
+
+  input[type="radio"],
+  input[type="checkbox"] {
+    cursor: pointer;
+    margin: 0;
+  }
+
+  &.active {
+    background: #eff6ff;
+    border-color: #93c5fd;
+    color: #1d4ed8;
+  }
+
+  &.whatsapp-badge.active {
+    background: #f0fdf4;
+    border-color: #86efac;
+    color: #15803d;
+  }
+}
+
+.btn-remove-phone {
+  background: transparent;
+  color: var(--color-danger, #ef4444);
+  border: 1px solid var(--color-border, #e2e8f0);
+  border-radius: 6px;
+  width: 2rem;
+  height: 2rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 0.875rem;
+  transition: all 0.15s;
+
+  &:hover {
+    background: #fee2e2;
+    border-color: #fca5a5;
+  }
+}
+
+/* EXIBIÇÃO NA TABELA */
+.phone-display-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+}
+
+.phone-entry {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+}
+
+.phone-tags {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  flex-wrap: wrap;
+}
+
+.tag-tipo {
+  font-size: 0.625rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  padding: 0.1rem 0.35rem;
+  border-radius: 3px;
+  background: #f1f5f9;
+  color: #475569;
+  border: 1px solid #e2e8f0;
+}
+
+.tag-principal {
+  font-size: 0.625rem;
+  font-weight: 700;
+  padding: 0.1rem 0.35rem;
+  border-radius: 3px;
+  background: #eff6ff;
+  color: #1d4ed8;
+  border: 1px solid #bfdbfe;
+}
+
+.tag-whatsapp {
+  font-size: 0.625rem;
+  font-weight: 700;
+  padding: 0.1rem 0.35rem;
+  border-radius: 3px;
+  background: #f0fdf4;
+  color: #15803d;
+  border: 1px solid #bbf7d0;
+}

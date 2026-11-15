@@ -1,0 +1,17 @@
+{
+  "package_id": "agile.ti.mobile.condomob",
+  "title": "Condomob Condomínios",
+  "developer": "Condomob",
+  "play_url": "https://play.google.com/store/apps/details?id=agile.ti.mobile.condomob&hl=pt_BR",
+  "screenshot_count_available": 18,
+  "files": [
+    "02-app-01.jpg",
+    "02-app-02.jpg",
+    "02-app-03.jpg",
+    "02-app-04.jpg",
+    "02-app-05.jpg",
+    "02-app-06.jpg"
+  ],
+  "icon": "https://play-lh.googleusercontent.com/bqKqewWAlF9JvQq4SgKn1ZjJRNjfU1DGqdHY2LZ6xcVOmWP0GHRpTBzUs7iXaTeqKPsTTcH3Pv45t-xxjnXrGqg",
+  "source": "google-play-scraper"
+}

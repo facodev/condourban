@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Marca portal">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0F6B5C"/>
+      <stop offset="100%" stop-color="#0A4F44"/>
+    </linearGradient>
+  </defs>
+  <!-- building frame -->
+  <rect x="10" y="8" width="44" height="48" rx="6" fill="url(#g)"/>
+  <!-- portal opening -->
+  <path d="M22 56 V28 a10 10 0 0 1 20 0 V56" fill="#D8EFEA"/>
+  <!-- keyhole accent -->
+  <circle cx="32" cy="34" r="4" fill="#0F6B5C"/>
+  <rect x="30.5" y="36" width="3" height="8" rx="1" fill="#0F6B5C"/>
+</svg>

@@ -1,0 +1,78 @@
+<div class="page-container">
+  <header class="page-header">
+    <div>
+      <h2>Recepção e Retirada de Encomendas</h2>
+      <p class="subtitle">Controle de pacotes com validação de retirada por PIN.</p>
+    </div>
+  </header>
+
+  @if (loading()) {
+    <div class="state-banner state-loading" role="status">Carregando encomendas…</div>
+  } @else if (erro()) {
+    <div class="state-banner state-error" role="alert">
+      <p>{{ erro() }}</p>
+      <button type="button" class="btn-pickup focus-ring" (click)="carregar()">Tentar novamente</button>
+    </div>
+  } @else if (pacotes().length === 0) {
+    <div class="state-banner state-empty">
+      <h3>Nenhuma encomenda registrada</h3>
+      <p>Quando houver pacotes sob custódia, eles aparecerão aqui com o PIN de retirada.</p>
+    </div>
+  } @else {
+    <div class="encomendas-list">
+      @for (pkg of pacotes(); track pkg.id) {
+        <div class="encomenda-card">
+          <div class="package-icon" aria-hidden="true">📦</div>
+          <div class="info">
+            <div class="top">
+              <h3>{{ pkg.transportadora || 'Encomenda' }} — Unidade {{ pkg.unidadeDestino || pkg.unidadeId }}</h3>
+              <app-status-badge [status]="pkg.status"></app-status-badge>
+            </div>
+            @if (pkg.moradorNome) {
+              <p class="destinatario">Destinatário: <strong>{{ pkg.moradorNome }}</strong></p>
+            }
+            <p class="meta">Recebido em: {{ pkg.recebidoEm || '—' }}</p>
+            @if (statusRecebida(pkg.status) && pkg.codigoRetirada) {
+              <div class="pickup-code">
+                Código para Retirada: <strong>{{ pkg.codigoRetirada }}</strong>
+              </div>
+            }
+          </div>
+
+          <div class="actions">
+            @if (statusRecebida(pkg.status) && podeBaixar()) {
+              @if (encomendaBaixaId() === pkg.id) {
+                <div class="baixa-form">
+                  <label class="sr-only" [attr.for]="'pin-' + pkg.id">PIN de retirada</label>
+                  <input
+                    class="pin-input focus-ring"
+                    [id]="'pin-' + pkg.id"
+                    type="text"
+                    inputmode="numeric"
+                    maxlength="4"
+                    [(ngModel)]="pinDigitado"
+                    placeholder="PIN"
+                    aria-label="PIN de retirada"
+                  />
+                  <button
+                    type="button"
+                    class="btn-pickup focus-ring"
+                    [disabled]="baixaEmAndamento() === pkg.id || !pinDigitado.trim()"
+                    (click)="confirmarBaixa()"
+                  >
+                    {{ baixaEmAndamento() === pkg.id ? 'Validando…' : 'Confirmar' }}
+                  </button>
+                  <button type="button" class="btn-cancel focus-ring" (click)="cancelarBaixa()">Cancelar</button>
+                </div>
+              } @else {
+                <button type="button" class="btn-pickup focus-ring" (click)="abrirBaixa(pkg.id)">Registrar Retirada</button>
+              }
+            } @else if (!statusRecebida(pkg.status)) {
+              <span class="delivered-text">Entregue em {{ pkg.retiradoEm || '—' }}</span>
+            }
+          </div>
+        </div>
+      }
+    </div>
+  }
+</div>

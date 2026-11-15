@@ -1,0 +1,242 @@
+<div class="view-layout">
+  <!-- CABEÇALHO EDITORIAL -->
+  <header class="section-hero">
+    <div class="hero-titles">
+      <div class="hero-context-badge">
+        <span class="pulse-indicator"></span>
+        <span>Módulo 01 • Fila de Triagem & Auto-Onboarding</span>
+      </div>
+      <h1 class="hero-title">Aprovações de Onboarding & Convites</h1>
+      <p class="hero-subtitle">
+        Validação documental de novos moradores, inquilinos e geração de convites seguros com token de 7 dias.
+      </p>
+    </div>
+    <div class="hero-actions">
+      <app-button (click)="mostrarConvite.set(!mostrarConvite())" variant="primary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+          <polyline points="22,6 12,13 2,6"></polyline>
+        </svg>
+        <span>{{ mostrarConvite() ? 'Fechar Convite' : 'Emitir Convite Seguro' }}</span>
+      </app-button>
+    </div>
+  </header>
+
+  <!-- NAVEGAÇÃO INTERNA DO BOUNDED CONTEXT -->
+  <nav class="subnav-tabs">
+    <a routerLink="/identidade-cadastro/pessoas" routerLinkActive="active" class="tab-link">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+        <circle cx="12" cy="7" r="4"></circle>
+      </svg>
+      <span>Pessoas Físicas</span>
+    </a>
+    <a routerLink="/identidade-cadastro/ocupacoes" routerLinkActive="active" class="tab-link">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+        <polyline points="9 22 9 12 15 12 15 22"></polyline>
+      </svg>
+      <span>Vínculos & Ocupações</span>
+    </a>
+    @if (sessionService.podeGerenciarUsuarios()) {
+      <a routerLink="/identidade-cadastro/usuarios" routerLinkActive="active" class="tab-link">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+          <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+        </svg>
+        <span>Usuários & Perfis (RBAC)</span>
+      </a>
+    }
+    @if (sessionService.podeGerenciarCadastros()) {
+      <a routerLink="/identidade-cadastro/onboarding" routerLinkActive="active" class="tab-link">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+          <circle cx="8.5" cy="7" r="4"></circle>
+          <polyline points="17 11 19 13 23 9"></polyline>
+        </svg>
+        <span>Onboarding & Convites</span>
+      </a>
+    }
+    <a routerLink="/identidade-cadastro/veiculos-pets" routerLinkActive="active" class="tab-link">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <rect x="1" y="3" width="15" height="13"></rect>
+        <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
+        <circle cx="5.5" cy="18.5" r="2.5"></circle>
+        <circle cx="18.5" cy="18.5" r="2.5"></circle>
+      </svg>
+      <span>Veículos & Pets</span>
+    </a>
+  </nav>
+
+  <!-- FAIXA DE RESUMO ONBOARDING -->
+  <section class="metrics-ribbon">
+    <div class="metric-cell">
+      <div class="metric-glyph">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"></circle>
+          <polyline points="12 6 12 12 16 14"></polyline>
+        </svg>
+      </div>
+      <div class="metric-data">
+        <span class="metric-value">{{ pendentesCount() }}</span>
+        <span class="metric-label">Em Análise / Pendentes</span>
+      </div>
+    </div>
+
+    <div class="metric-divider"></div>
+
+    <div class="metric-cell">
+      <div class="metric-glyph">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+          <polyline points="22 4 12 14.01 9 11.01"></polyline>
+        </svg>
+      </div>
+      <div class="metric-data">
+        <span class="metric-value">{{ aprovadasCount() }}</span>
+        <span class="metric-label">Solicitações Aprovadas</span>
+      </div>
+    </div>
+
+    <div class="metric-divider"></div>
+
+    <div class="metric-cell">
+      <div class="metric-glyph">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+          <polyline points="22,6 12,13 2,6"></polyline>
+        </svg>
+      </div>
+      <div class="metric-data">
+        <span class="metric-value">7 Dias</span>
+        <span class="metric-label">Validade Padrão do Token</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- FORMULÁRIO DE EMISSÃO DE CONVITE -->
+  @if (mostrarConvite()) {
+    <div class="form-panel">
+      <div class="panel-header">
+        <h2 class="panel-title">Emitir Convite de Auto-Onboarding</h2>
+        <p class="panel-desc">Envie um token de acesso para o futuro morador ou inquilino preencher seus dados civis e fotos.</p>
+      </div>
+
+      <form (ngSubmit)="enviarConvite()" class="form-body">
+        <div class="field-grid three-col">
+          <div class="field-group">
+            <label class="field-label">E-mail do Destinatário <span class="required">*</span></label>
+            <input [(ngModel)]="conviteEmail" name="conviteEmail" type="email" required placeholder="novo.morador@exemplo.com" class="input-control" autofocus />
+          </div>
+
+          <div class="field-group">
+            <label class="field-label">Unidade Destino <span class="required">*</span></label>
+            <select [(ngModel)]="conviteUnidadeId" name="conviteUnidadeId" required class="select-control">
+              <option value="">Selecione a unidade…</option>
+              @for (u of unidades(); track u.id) {
+                <option [value]="u.id">Unidade {{ u.identificacao || u.number }}</option>
+              }
+            </select>
+          </div>
+
+          <div class="field-group">
+            <label class="field-label">Natureza da Ocupação</label>
+            <select [(ngModel)]="conviteTipo" name="conviteTipo" class="select-control">
+              <option value="MORADOR">Morador Residente</option>
+              <option value="INQUILINO">Inquilino / Locatário</option>
+              <option value="PROPRIETARIO">Proprietário</option>
+            </select>
+          </div>
+        </div>
+
+        @if (mensagemConvite()) {
+          <div class="success-banner">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+              <polyline points="22 4 12 14.01 9 11.01"></polyline>
+            </svg>
+            <span>{{ mensagemConvite() }}</span>
+          </div>
+        }
+
+        @if (erroConvite()) {
+          <div class="error-banner">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="12" y1="8" x2="12" y2="12"></line>
+              <line x1="12" y1="16" x2="12.01" y2="16"></line>
+            </svg>
+            <span>{{ erroConvite() }}</span>
+          </div>
+        }
+
+        <div class="form-actions">
+          <app-button type="submit" [disabled]="enviandoConvite() || !conviteEmail.trim() || !conviteUnidadeId" variant="primary">
+            {{ enviandoConvite() ? 'Gerando Link…' : 'Gerar Convite com Token' }}
+          </app-button>
+          <app-button type="button" variant="outline" (click)="mostrarConvite.set(false)">Cancelar</app-button>
+        </div>
+      </form>
+    </div>
+  }
+
+  <!-- FILA DE SOLICITAÇÕES -->
+  <div class="requests-grid">
+    @for (item of solicitacoes(); track item.id) {
+      <div class="request-card" [class.is-pending]="isPending(item.status)">
+        <div class="card-top">
+          <div class="candidate-header">
+            <div class="candidate-avatar">
+              {{ (item.nome || 'S').charAt(0).toUpperCase() }}
+            </div>
+            <div>
+              <h3 class="candidate-name">{{ item.nome }}</h3>
+              <span class="candidate-unit">
+                Unidade: <strong>{{ item.unidadeIdentificador || 'Não informada' }}</strong> • {{ item.tipoVinculo || item.tipoOcupacao || 'Morador' }}
+              </span>
+            </div>
+          </div>
+          <app-status-badge [status]="item.status.toLowerCase()"></app-status-badge>
+        </div>
+
+        <div class="card-details">
+          <div class="detail-line">
+            <span class="label">E-mail:</span>
+            <span class="value">{{ item.email }}</span>
+          </div>
+          @if (item.telefone) {
+            <div class="detail-line">
+              <span class="label">Telefone:</span>
+              <span class="value">{{ item.telefone }}</span>
+            </div>
+          }
+          <div class="detail-line">
+            <span class="label">Data de Envio:</span>
+            <span class="value font-mono">{{ item.criadoEm ? (item.criadoEm | date:'dd/MM/yyyy HH:mm') : 'Recente' }}</span>
+          </div>
+        </div>
+
+        @if (isPending(item.status)) {
+          <div class="action-footer">
+            <button class="btn-reject" (click)="rejeitar(item.id)">
+              Recusar
+            </button>
+            <button class="btn-approve" (click)="aprovar(item.id)">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+              <span>Aprovar Cadastro</span>
+            </button>
+          </div>
+        }
+      </div>
+    } @empty {
+      <div class="empty-state">
+        <div class="empty-icon">📬</div>
+        <h3>Fila de onboarding limpa</h3>
+        <p>Nenhuma solicitação aguardando homologação no momento. Emita novos convites acima.</p>
+        <app-button (click)="mostrarConvite.set(true)" variant="primary" size="sm">+ Emitir Convite</app-button>
+      </div>
+    }
+  </div>
+</div>

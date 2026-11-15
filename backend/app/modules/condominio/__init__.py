@@ -1,0 +1,1 @@
+"""Domínio: Núcleo do Condomínio."""

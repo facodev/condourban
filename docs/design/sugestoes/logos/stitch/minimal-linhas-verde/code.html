@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Logo Stitch — minimal-linhas-verde</title>
+  <style>
+    html, body {
+      margin: 0; min-height: 100%;
+      background: #eef2f0;
+      font-family: system-ui, sans-serif;
+    }
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      padding: 1.5rem;
+    }
+    .frame {
+      width: min(168px, 42vw);
+      height: min(168px, 42vw);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .frame svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+      border-radius: 22%;
+      box-shadow: 0 10px 28px rgba(15, 35, 30, 0.12);
+    }
+    .cap {
+      color: #5C6763;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+  <div class="frame">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
+  <!-- Minimalist squircle background with soft clean tone -->
+  <rect width="512" height="512" rx="128" fill="#F0FDF4"/>
+  
+  <!-- Subtle minimalist rounded container border -->
+  <rect x="16" y="16" width="480" height="480" rx="112" stroke="#0D5C4D" stroke-width="6" stroke-opacity="0.12"/>
+
+  <!-- Elegant minimalist continuous geometric emblem -->
+  <g transform="translate(0, 0)">
+    <!-- Main Architectural Gable Line -->
+    <path d="M150 250L256 144L362 250" stroke="#0D5C4D" stroke-width="26" stroke-linecap="round" stroke-linejoin="round"/>
+    
+    <!-- Central Tower (Clean Pillar) -->
+    <rect x="234" y="220" width="44" height="148" rx="22" fill="#0D5C4D"/>
+    
+    <!-- Left Living Pillar -->
+    <rect x="174" y="276" width="40" height="92" rx="20" fill="#0D5C4D" fill-opacity="0.35"/>
+    
+    <!-- Right Living Pillar with vibrant accent -->
+    <rect x="298" y="260" width="40" height="108" rx="20" fill="#10B981"/>
+    
+    <!-- Minimalist Living Dot / Connected Community -->
+    <circle cx="256" cy="188" r="10" fill="#10B981"/>
+  </g>
+</svg>
+  </div>
+  <p class="cap">minimal-linhas-verde · preview 168px</p>
+</body>
+</html>

@@ -1,0 +1,640 @@
+<div class="view-layout">
+  <!-- CABEÇALHO EDITORIAL & NAVEGAÇÃO DE SUB-MÓDULO -->
+  <header class="section-hero">
+    <div class="hero-titles">
+      <div class="hero-context-badge">
+        <span class="pulse-indicator"></span>
+        <span>Módulo 01 • Identidade &amp; Cadastro Civil</span>
+      </div>
+      <h1 class="hero-title">Pessoas Físicas &amp; Registros Civis</h1>
+      <p class="hero-subtitle">
+        @if (sessionService.escopoSomenteUnidade()) {
+          Cadastros civis vinculados à sua unidade. Demais registros do condomínio ficam restritos à gestão.
+        } @else {
+          Base civil LGPD de condôminos, proprietários, dependentes e prestadores independentemente de conta de login.
+        }
+      </p>
+    </div>
+    @if (sessionService.podeGerenciarCadastros()) {
+      <div class="hero-actions">
+        <app-button (click)="mostrarForm.set(!mostrarForm())" variant="primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <line x1="12" y1="5" x2="12" y2="19"></line>
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+          </svg>
+          <span>{{ mostrarForm() ? 'Fechar Formulário' : 'Nova Pessoa Física' }}</span>
+        </app-button>
+      </div>
+    }
+  </header>
+
+  <!-- NAVEGAÇÃO INTERNA DO BOUNDED CONTEXT -->
+  <nav class="subnav-tabs" aria-label="Sub-navegação de Identidade e Cadastro">
+    <a routerLink="/identidade-cadastro/pessoas" routerLinkActive="active" matRipple class="tab-link">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+        <circle cx="12" cy="7" r="4"></circle>
+      </svg>
+      <span>Pessoas Físicas</span>
+    </a>
+    <a routerLink="/identidade-cadastro/ocupacoes" routerLinkActive="active" matRipple class="tab-link">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+        <polyline points="9 22 9 12 15 12 15 22"></polyline>
+      </svg>
+      <span>Vínculos &amp; Ocupações</span>
+    </a>
+    @if (sessionService.podeGerenciarUsuarios()) {
+      <a routerLink="/identidade-cadastro/usuarios" routerLinkActive="active" matRipple class="tab-link">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+          <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+        </svg>
+        <span>Usuários &amp; Perfis (RBAC)</span>
+      </a>
+    }
+    @if (sessionService.podeGerenciarCadastros()) {
+      <a routerLink="/identidade-cadastro/onboarding" routerLinkActive="active" matRipple class="tab-link">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+          <circle cx="8.5" cy="7" r="4"></circle>
+          <polyline points="17 11 19 13 23 9"></polyline>
+        </svg>
+        <span>Onboarding &amp; Convites</span>
+      </a>
+    }
+    <a routerLink="/identidade-cadastro/veiculos-pets" routerLinkActive="active" matRipple class="tab-link">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <rect x="1" y="3" width="15" height="13"></rect>
+        <polygon points="16 8 20 8 23 11 23 16 16 16 8"></polygon>
+        <circle cx="5.5" cy="18.5" r="2.5"></circle>
+        <circle cx="18.5" cy="18.5" r="2.5"></circle>
+      </svg>
+      <span>Veículos &amp; Pets</span>
+    </a>
+  </nav>
+
+  <!-- FAIXA DE RESUMO CIVIL -->
+  <section class="metrics-ribbon">
+    <div class="metric-cell">
+      <div class="metric-glyph">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+          <circle cx="9" cy="7" r="4"></circle>
+        </svg>
+      </div>
+      <div class="metric-data">
+        <span class="metric-value">{{ pessoas().length }}</span>
+        <span class="metric-label">Pessoas Cadastradas</span>
+      </div>
+    </div>
+
+    <div class="metric-divider"></div>
+
+    <div class="metric-cell">
+      <div class="metric-glyph text-emerald">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <rect x="3" y="4" width="18" height="16" rx="2"></rect>
+          <line x1="7" y1="8" x2="17" y2="8"></line>
+          <line x1="7" y1="12" x2="13" y2="12"></line>
+        </svg>
+      </div>
+      <div class="metric-data">
+        <span class="metric-value">{{ totalComCpf() }}</span>
+        <span class="metric-label">Com Documento CPF</span>
+      </div>
+    </div>
+
+    <div class="metric-divider"></div>
+
+    <div class="metric-cell">
+      <div class="metric-glyph text-blue">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+        </svg>
+      </div>
+      <div class="metric-data">
+        <span class="metric-value">{{ totalComContato() }}</span>
+        <span class="metric-label">Com Telefone / Celular</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEEDBACK VISUAL / TOAST -->
+  @if (toastMensagem()) {
+    <div class="toast-alert" [class.toast-error]="toastTipo() === 'erro'" role="status" aria-live="polite">
+      <span>{{ toastMensagem() }}</span>
+      <button type="button" (click)="toastMensagem.set('')" class="toast-close" aria-label="Fechar aviso">✕</button>
+    </div>
+  }
+
+  <!-- FORMULÁRIO DE CADASTRO EXPANSÍVEL -->
+  @if (mostrarForm()) {
+    <div class="form-panel">
+      <div class="panel-header">
+        <h2 class="panel-title">Cadastrar Nova Pessoa Física</h2>
+        <p class="panel-desc">Registro civil primário para vínculo a unidades, portaria e permissões.</p>
+      </div>
+
+      <form (ngSubmit)="salvarPessoa()" class="form-body">
+        <div class="field-grid">
+          <div class="field-group">
+            <label class="field-label">Nome Completo <span class="required">*</span></label>
+            <input [(ngModel)]="novoNome" name="novoNome" required placeholder="Ex: Carlos Eduardo de Oliveira…" class="input-control" autofocus />
+          </div>
+          <div class="field-group">
+            <label class="field-label">E-mail Principal <span class="required">*</span></label>
+            <input [(ngModel)]="novoEmail" name="novoEmail" type="email" required placeholder="carlos@exemplo.com…" class="input-control" />
+          </div>
+        </div>
+
+        <div class="field-grid">
+          <div class="field-group">
+            <label class="field-label">CPF (Formatado automaticamente)</label>
+            <input
+              [ngModel]="novoCpf"
+              (ngModelChange)="aoDigitarCpfNovo($event)"
+              name="novoCpf"
+              placeholder="000.000.000-00"
+              maxlength="14"
+              class="input-control font-mono"
+            />
+            <span class="field-hint">Validação de dígitos verificadores conforme algoritmo da Receita Federal.</span>
+          </div>
+        </div>
+
+        <!-- GERENCIADOR DE TELEFONES (MÚLTIPLOS COM TIPO, PRINCIPAL E WHATSAPP) -->
+        <div class="phones-section">
+          <div class="phones-header">
+            <div>
+              <label class="field-label font-bold">Telefones de Contato</label>
+              <span class="field-hint block">Permitido cadastrar 1 número por tipo (celular, residencial, comercial). Indique o principal e se possui WhatsApp.</span>
+            </div>
+            @if (telefonesNovo().length < 3) {
+              <button type="button" class="btn-add-phone" (click)="adicionarTelefoneNovo()">
+                + Adicionar Telefone
+              </button>
+            }
+          </div>
+
+          <div class="phones-list">
+            @for (tel of telefonesNovo(); track $index; let i = $index) {
+              <div class="phone-item-card">
+                <div class="phone-item-fields">
+                  <!-- TIPO -->
+                  <div class="phone-col-type">
+                    <label class="phone-sublabel">Tipo <span class="required">*</span></label>
+                    <select [(ngModel)]="tel.tipo" [name]="'telTipo_' + i" class="input-control select-type">
+                      <option value="celular">📱 Celular</option>
+                      <option value="residencial">🏠 Residencial</option>
+                      <option value="comercial">🏢 Comercial</option>
+                    </select>
+                  </div>
+
+                  <!-- NÚMERO -->
+                  <div class="phone-col-number">
+                    <label class="phone-sublabel">Número com DDD <span class="required">*</span></label>
+                    <input
+                      [ngModel]="tel.numero"
+                      (ngModelChange)="aoDigitarTelefoneNovo(i, $event)"
+                      [name]="'telNumero_' + i"
+                      placeholder="(11) 98765-4321"
+                      maxlength="15"
+                      class="input-control font-mono"
+                    />
+                  </div>
+
+                  <!-- FLAGS: PRINCIPAL & WHATSAPP -->
+                  <div class="phone-col-flags">
+                    <label class="phone-checkbox-badge" [class.active]="tel.principal">
+                      <input
+                        type="radio"
+                        name="telPrincipalGroupNovo"
+                        [checked]="tel.principal"
+                        (change)="definirPrincipalNovo(i)"
+                      />
+                      <span>★ Principal</span>
+                    </label>
+
+                    <label class="phone-checkbox-badge whatsapp-badge" [class.active]="tel.whatsapp">
+                      <input
+                        type="checkbox"
+                        [checked]="tel.whatsapp"
+                        (change)="toggleWhatsappNovo(i)"
+                      />
+                      <span>WhatsApp</span>
+                    </label>
+
+                    @if (telefonesNovo().length > 1) {
+                      <button
+                        type="button"
+                        class="btn-remove-phone"
+                        (click)="removerTelefoneNovo(i)"
+                        title="Remover telefone"
+                        aria-label="Remover telefone"
+                      >
+                        ✕
+                      </button>
+                    }
+                  </div>
+                </div>
+              </div>
+            }
+          </div>
+        </div>
+
+        @if (errorMessage()) {
+          <div class="error-banner">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="12" y1="8" x2="12" y2="12"></line>
+              <line x1="12" y1="16" x2="12.01" y2="16"></line>
+            </svg>
+            <span>{{ errorMessage() }}</span>
+          </div>
+        }
+
+        <div class="form-actions">
+          <app-button type="submit" [disabled]="salvando() || !novoNome.trim() || !novoEmail.trim()" variant="primary">
+            {{ salvando() ? 'Salvando…' : 'Salvar Pessoa Física' }}
+          </app-button>
+          <app-button type="button" variant="outline" (click)="mostrarForm.set(false)">Cancelar</app-button>
+        </div>
+      </form>
+    </div>
+  }
+
+  <!-- BARRA DE PESQUISA & FILTROS -->
+  <section class="toolbar-card">
+    <div class="search-box">
+      <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <circle cx="11" cy="11" r="8"></circle>
+        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+      </svg>
+      <input
+        type="text"
+        placeholder="Filtrar por nome, CPF, telefone ou e-mail…"
+        [ngModel]="busca()"
+        (ngModelChange)="aoMudarBusca($event)"
+      />
+    </div>
+
+    <div class="filter-group">
+      <select
+        [ngModel]="filtroCadastro()"
+        (ngModelChange)="aoMudarFiltroCadastro($event)"
+        class="select-filter"
+        title="Filtrar por situação cadastral"
+      >
+        <option value="TODOS">📋 Todos os Cadastros</option>
+        <option value="COM_CPF">Com CPF Informado</option>
+        <option value="SEM_CPF">Sem CPF Informado</option>
+        <option value="COM_CONTATO">Com Telefone / Celular</option>
+      </select>
+
+      @if (filtroCadastro() !== 'TODOS' || busca().trim()) {
+        <button type="button" matRipple class="btn-clear-filter focus-ring" (click)="limparFiltros()" title="Limpar filtros">
+          ✕ Limpar
+        </button>
+      }
+    </div>
+
+    <span class="search-count">Exibindo {{ pessoasFiltradas().length }} de {{ pessoas().length }} pessoas</span>
+  </section>
+
+  <!-- TABELA DE PESSOAS FÍSICAS -->
+  <div class="table-container">
+    <div class="table-header-info">
+      <h3>Relação de Pessoas Físicas e Registros Civis (LGPD)</h3>
+      <span class="total-tag">{{ pessoasFiltradas().length }} pessoas listadas</span>
+    </div>
+
+    <div class="table-responsive">
+      <table class="styled-table">
+        <thead>
+          <tr>
+            <th>Pessoa Física / Titular</th>
+            <th>CPF</th>
+            <th>E-mail Principal</th>
+            <th>Telefones de Contato</th>
+            <th>Status Civil</th>
+            <th class="actions-col">Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (pessoa of pessoasPaginadas(); track pessoa.id) {
+            <tr class="table-row">
+              <td>
+                <div class="user-cell">
+                  <div class="user-glyph">
+                    {{ (pessoa.nome_completo || pessoa.nomeCompleto || pessoa.nome || '?').charAt(0).toUpperCase() }}
+                  </div>
+                  <div class="user-text">
+                    <span class="user-name">{{ pessoa.nome_completo || pessoa.nomeCompleto || pessoa.nome }}</span>
+                    <span class="user-id font-mono">ID: {{ pessoa.id.slice(0, 8) }}… • Conforme LGPD</span>
+                  </div>
+                </div>
+              </td>
+              <td class="font-mono font-semibold text-text-secondary whitespace-nowrap">
+                @if (pessoa.cpf) {
+                  <span>{{ pessoa.cpf | cpf }}</span>
+                } @else {
+                  <span class="text-xs text-text-subtle font-sans font-normal">Não informado</span>
+                }
+              </td>
+              <td class="font-medium text-text-secondary">
+                {{ pessoa.email || 'Não informado' }}
+              </td>
+              <td>
+                <div class="phone-display-stack">
+                  @if (pessoa.telefones && pessoa.telefones.length > 0) {
+                    @for (tel of pessoa.telefones; track $index) {
+                      <div class="phone-entry">
+                        <span class="font-mono font-semibold text-xs">{{ tel.numero | phone }}</span>
+                        <div class="phone-tags">
+                          <span class="tag-tipo">{{ tel.tipo }}</span>
+                          @if (tel.principal) {
+                            <span class="tag-principal">★ Principal</span>
+                          }
+                          @if (tel.whatsapp) {
+                            <span class="tag-whatsapp">WhatsApp</span>
+                          }
+                        </div>
+                      </div>
+                    }
+                  } @else if (pessoa.celular || pessoa.telefone) {
+                    <div class="phone-entry">
+                      <span class="font-mono font-semibold text-xs">{{ (pessoa.celular || pessoa.telefone) | phone }}</span>
+                      <div class="phone-tags">
+                        <span class="tag-tipo">celular</span>
+                        <span class="tag-principal">★ Principal</span>
+                      </div>
+                    </div>
+                  } @else {
+                    <span class="text-xs text-text-subtle">Sem telefone</span>
+                  }
+                </div>
+              </td>
+              <td>
+                <app-status-badge status="ativo" label="Ativo • LGPD"></app-status-badge>
+              </td>
+              <td class="actions-col">
+                @if (sessionService.podeGerenciarCadastros() || sessionService.pessoaIdSessao() === pessoa.id) {
+                  <div class="row-actions justify-end">
+                    <button
+                      type="button"
+                      matRipple
+                      class="btn-action-edit focus-ring"
+                      [title]="sessionService.podeEditarDadosCivis() ? 'Editar Pessoa Física' : 'Atualizar dados de contato'"
+                      [attr.aria-label]="sessionService.podeEditarDadosCivis() ? 'Editar Pessoa Física' : 'Atualizar dados de contato'"
+                      (click)="iniciarEdicao(pessoa)"
+                    >
+                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                        <path d="M12 20h9"></path>
+                        <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
+                      </svg>
+                    </button>
+                    @if (sessionService.podeGerenciarCadastros()) {
+                      <button type="button" matRipple class="btn-delete focus-ring" title="Excluir Pessoa Física" aria-label="Excluir Pessoa Física" (click)="iniciarExclusao(pessoa)">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                          <polyline points="3 6 5 6 21 6"></polyline>
+                          <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                        </svg>
+                      </button>
+                    }
+                  </div>
+                } @else {
+                  <span class="text-xs text-text-subtle">Somente leitura</span>
+                }
+              </td>
+            </tr>
+          } @empty {
+            <tr>
+              <td colspan="6" class="empty-cell">
+                <div class="empty-content">
+                  <p>Nenhuma pessoa física localizada para os filtros informados.</p>
+                  @if (sessionService.podeGerenciarCadastros()) {
+                    <app-button (click)="mostrarForm.set(true)" variant="primary" size="sm">+ Cadastrar Primeira Pessoa</app-button>
+                  }
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+
+    <!-- BARRA DE PAGINAÇÃO PADRONIZADA -->
+    <div class="table-pagination">
+      <div class="pagination-info">
+        <span>
+          Mostrando <strong>{{ indiceInicial() }}–{{ indiceFinal() }}</strong> de <strong>{{ pessoasFiltradas().length }}</strong> pessoas
+        </span>
+        <label class="page-size-control">
+          <span>Itens por página:</span>
+          <select [ngModel]="itensPorPagina()" (ngModelChange)="aoMudarItensPorPagina($event)">
+            <option [ngValue]="5">5</option>
+            <option [ngValue]="10">10</option>
+            <option [ngValue]="20">20</option>
+            <option [ngValue]="50">50</option>
+          </select>
+        </label>
+      </div>
+
+      <div class="pagination-controls">
+        <button
+          type="button"
+          matRipple
+          class="page-btn focus-ring"
+          [disabled]="paginaAtual() === 1"
+          (click)="mudarPagina(paginaAtual() - 1)"
+        >
+          ‹ Anterior
+        </button>
+        @for (p of paginasArray(); track p) {
+          <button
+            type="button"
+            matRipple
+            class="page-btn focus-ring"
+            [class.active]="paginaAtual() === p"
+            (click)="mudarPagina(p)"
+          >
+            {{ p }}
+          </button>
+        }
+        <button
+          type="button"
+          matRipple
+          class="page-btn focus-ring"
+          [disabled]="paginaAtual() === totalPaginas()"
+          (click)="mudarPagina(paginaAtual() + 1)"
+        >
+          Próxima ›
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL DE EDIÇÃO DE PESSOA FÍSICA -->
+  @if (pessoaEmEdicao()) {
+    <div class="modal-backdrop">
+      <div class="modal-card">
+        <div class="modal-header">
+          <h3 class="modal-title">
+            {{ sessionService.podeEditarDadosCivis() ? 'Editar Registro Civil' : 'Atualizar Contato' }}
+          </h3>
+          <button type="button" class="modal-close-btn focus-ring" (click)="cancelarEdicao()" aria-label="Fechar modal">✕</button>
+        </div>
+
+        <form (ngSubmit)="salvarEdicao()" class="modal-form">
+          <div class="field-group">
+            <label class="field-label">Nome Completo @if (sessionService.podeEditarDadosCivis()) { <span class="required">*</span> }</label>
+            <input
+              [(ngModel)]="editNome"
+              name="editNome"
+              class="input-control"
+              [required]="sessionService.podeEditarDadosCivis()"
+              [readonly]="!sessionService.podeEditarDadosCivis()"
+              [attr.aria-readonly]="!sessionService.podeEditarDadosCivis()"
+              [class.input-readonly]="!sessionService.podeEditarDadosCivis()"
+            />
+            @if (!sessionService.podeEditarDadosCivis()) {
+              <span class="field-hint">Nome civil só pode ser alterado pela administração do condomínio.</span>
+            }
+          </div>
+
+          <div class="field-group">
+            <label class="field-label">E-mail de Contato <span class="required">*</span></label>
+            <input [(ngModel)]="editEmail" name="editEmail" type="email" required class="input-control" autofocus />
+          </div>
+
+          <div class="field-group">
+            <label class="field-label">CPF (Formatado automaticamente)</label>
+            <input
+              [ngModel]="editCpf"
+              (ngModelChange)="aoDigitarCpfEdicao($event)"
+              name="editCpf"
+              maxlength="14"
+              class="input-control font-mono"
+              [readonly]="!sessionService.podeEditarDadosCivis()"
+              [attr.aria-readonly]="!sessionService.podeEditarDadosCivis()"
+              [class.input-readonly]="!sessionService.podeEditarDadosCivis()"
+            />
+            @if (!sessionService.podeEditarDadosCivis()) {
+              <span class="field-hint">CPF é dado sensível (LGPD) — alteração restrita ao síndico.</span>
+            }
+          </div>
+
+          <!-- GERENCIADOR DE TELEFONES NA EDIÇÃO -->
+          <div class="phones-section">
+            <div class="phones-header">
+              <div>
+                <label class="field-label font-bold">Telefones de Contato</label>
+                <span class="field-hint block">1 número por tipo (celular, residencial, comercial).</span>
+              </div>
+              @if (telefonesEdicao().length < 3) {
+                <button type="button" class="btn-add-phone" (click)="adicionarTelefoneEdicao()">
+                  + Adicionar Telefone
+                </button>
+              }
+            </div>
+
+            <div class="phones-list">
+              @for (tel of telefonesEdicao(); track $index; let i = $index) {
+                <div class="phone-item-card">
+                  <div class="phone-item-fields">
+                    <!-- TIPO -->
+                    <div class="phone-col-type">
+                      <label class="phone-sublabel">Tipo <span class="required">*</span></label>
+                      <select [(ngModel)]="tel.tipo" [name]="'editTelTipo_' + i" class="input-control select-type">
+                        <option value="celular">📱 Celular</option>
+                        <option value="residencial">🏠 Residencial</option>
+                        <option value="comercial">🏢 Comercial</option>
+                      </select>
+                    </div>
+
+                    <!-- NÚMERO -->
+                    <div class="phone-col-number">
+                      <label class="phone-sublabel">Número com DDD <span class="required">*</span></label>
+                      <input
+                        [ngModel]="tel.numero"
+                        (ngModelChange)="aoDigitarTelefoneEdicao(i, $event)"
+                        [name]="'editTelNumero_' + i"
+                        placeholder="(11) 98765-4321"
+                        maxlength="15"
+                        class="input-control font-mono"
+                      />
+                    </div>
+
+                    <!-- FLAGS: PRINCIPAL & WHATSAPP -->
+                    <div class="phone-col-flags">
+                      <label class="phone-checkbox-badge" [class.active]="tel.principal">
+                        <input
+                          type="radio"
+                          name="telPrincipalGroupEdicao"
+                          [checked]="tel.principal"
+                          (change)="definirPrincipalEdicao(i)"
+                        />
+                        <span>★ Principal</span>
+                      </label>
+
+                      <label class="phone-checkbox-badge whatsapp-badge" [class.active]="tel.whatsapp">
+                        <input
+                          type="checkbox"
+                          [checked]="tel.whatsapp"
+                          (change)="toggleWhatsappEdicao(i)"
+                        />
+                        <span>WhatsApp</span>
+                      </label>
+
+                      @if (telefonesEdicao().length > 1) {
+                        <button
+                          type="button"
+                          class="btn-remove-phone"
+                          (click)="removerTelefoneEdicao(i)"
+                          title="Remover telefone"
+                          aria-label="Remover telefone"
+                        >
+                          ✕
+                        </button>
+                      }
+                    </div>
+                  </div>
+                </div>
+              }
+            </div>
+          </div>
+
+          @if (erroEdicao()) {
+            <div class="error-banner">
+              <span>{{ erroEdicao() }}</span>
+            </div>
+          }
+
+          <div class="modal-actions">
+            <app-button
+              type="submit"
+              variant="primary"
+              [disabled]="salvandoEdicao() || !editEmail.trim() || (sessionService.podeEditarDadosCivis() && !editNome.trim())"
+            >
+              {{ salvandoEdicao() ? 'Salvando…' : 'Salvar Alterações' }}
+            </app-button>
+            <app-button type="button" variant="outline" (click)="cancelarEdicao()">Cancelar</app-button>
+          </div>
+        </form>
+      </div>
+    </div>
+  }
+
+  <!-- DIALOG PADRONIZADO DE CONFIRMAÇÃO DE EXCLUSÃO -->
+  <app-confirm-dialog
+    [isOpen]="!!pessoaEmExclusao()"
+    title="Confirmar Exclusão"
+    [message]="'Deseja realmente excluir permanentemente ' + (pessoaEmExclusao()?.nome_completo || pessoaEmExclusao()?.nomeCompleto || pessoaEmExclusao()?.nome || '') + '? A exclusão só é permitida se a pessoa não possuir vínculos ativos.'"
+    confirmText="Sim, Excluir"
+    cancelText="Cancelar"
+    [isDestructive]="true"
+    (confirmed)="confirmarExclusao()"
+    (cancelled)="cancelarExclusao()"
+  ></app-confirm-dialog>
+</div>

@@ -1,0 +1,19 @@
+<div class="card surface-card overflow-hidden" [class.hoverable]="hoverable()">
+  @if (title() || subtitle()) {
+    <div class="card-header flex items-center justify-between gap-4">
+      <div>
+        @if (title()) {
+          <h3 class="card-title text-balance">{{ title() }}</h3>
+        }
+        @if (subtitle()) {
+          <p class="card-subtitle">{{ subtitle() }}</p>
+        }
+      </div>
+      <ng-content select="[card-action]"></ng-content>
+    </div>
+  }
+  <div class="card-body">
+    <ng-content></ng-content>
+  </div>
+  <ng-content select="[card-footer]"></ng-content>
+</div>

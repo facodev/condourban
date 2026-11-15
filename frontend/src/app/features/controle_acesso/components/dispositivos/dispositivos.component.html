@@ -1,0 +1,34 @@
+<div class="page-container">
+  <header class="page-header">
+    <div>
+      <h2>Dispositivos e Hardware IoT</h2>
+      <p class="subtitle">Monitoramento de status de catracas, antenas RFID, faciais e cancelas.</p>
+    </div>
+  </header>
+
+  <div class="devices-grid">
+    @for (dev of dispositivos(); track dev.id) {
+      <div class="device-card">
+        <div class="header">
+          <div class="title-wrap">
+            <span class="icon">{{ getDeviceIcon(dev.tipo) }}</span>
+            <div>
+              <h3>{{ dev.nome }}</h3>
+              <span class="loc">{{ dev.localizacao }}</span>
+            </div>
+          </div>
+          <app-status-badge [status]="dev.online ? 'ativo' : 'inativo'" [label]="dev.online ? 'Online' : 'Offline'"></app-status-badge>
+        </div>
+
+        <div class="info">
+          <p>🌐 <strong>IP:</strong> {{ dev.ip }}</p>
+          <p>🔄 <strong>Último Sync:</strong> {{ dev.ultimoSync }}</p>
+        </div>
+
+        <div class="actions">
+          <button class="btn-sync" (click)="sincronizar(dev.id)">Forçar Sincronização</button>
+        </div>
+      </div>
+    }
+  </div>
+</div>

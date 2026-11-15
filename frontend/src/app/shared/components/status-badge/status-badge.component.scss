@@ -1,0 +1,57 @@
+:host {
+  display: inline-flex;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.2rem 0.625rem;
+  border-radius: var(--radius-full, 9999px);
+  font-size: 0.7188rem;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+  border: 1px solid transparent;
+  white-space: nowrap;
+}
+
+.dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.badge-pendente,
+.badge-em_analise,
+.badge-enviada,
+.badge-alerta {
+  background: var(--color-warning-bg, #fffbeb);
+  border-color: var(--color-warning-border, #fde68a);
+  color: var(--color-warning-text, #92400e);
+}
+
+.badge-aprovado,
+.badge-ativo,
+.badge-concluido,
+.badge-disponivel {
+  background: var(--color-success-bg, #ecfdf5);
+  border-color: var(--color-success-border, #a7f3d0);
+  color: var(--color-success-text, #065f46);
+}
+
+.badge-rejeitado,
+.badge-cancelado,
+.badge-inativo,
+.badge-interditado {
+  background: var(--color-danger-bg, #fef2f2);
+  border-color: var(--color-danger-border, #fecaca);
+  color: var(--color-danger-text, #991b1b);
+}
+
+.badge-info {
+  background: var(--color-info-bg, #f0f9ff);
+  border-color: var(--color-info-border, #bae6fd);
+  color: var(--color-info-text, #075985);
+}

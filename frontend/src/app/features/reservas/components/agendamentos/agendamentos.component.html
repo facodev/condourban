@@ -1,0 +1,29 @@
+<div class="page-container">
+  <header class="page-header">
+    <div>
+      <h2>Calendário e Reservas de Espaços</h2>
+      <p class="subtitle">Agendamentos de churrasqueiras, salões e gestão integrada de listas de convidados.</p>
+    </div>
+  </header>
+
+  <div class="reservas-grid">
+    @for (item of agendamentos(); track item.id) {
+      <div class="reserva-card">
+        <div class="header">
+          <h3>{{ item.areaComumNome }}</h3>
+          <app-status-badge [status]="item.status"></app-status-badge>
+        </div>
+
+        <div class="body">
+          <p>📅 <strong>Data:</strong> {{ item.data }} ({{ item.horarioInicio }} - {{ item.horarioFim }})</p>
+          <p>👤 <strong>Solicitante:</strong> {{ item.moradorNome }} (Unidade {{ item.unidade }})</p>
+          @if (item.listaConvidados && item.listaConvidados.length > 0) {
+            <div class="guests-summary">
+              👥 {{ item.listaConvidados.length }} convidados na lista para a portaria
+            </div>
+          }
+        </div>
+      </div>
+    }
+  </div>
+</div>

@@ -1,0 +1,9 @@
+<button
+  [type]="type()"
+  [disabled]="disabled()"
+  matRipple
+  [matRippleDisabled]="disabled()"
+  [class]="'btn focus-ring inline-flex items-center justify-center gap-2 font-semibold select-none btn-' + variant() + (size() === 'sm' ? ' btn-sm' : '')"
+>
+  <ng-content></ng-content>
+</button>

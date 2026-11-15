@@ -1,0 +1,9 @@
+﻿{
+  "title": "Condominizando / wCond (Novitatus)",
+  "app_url": "https://app.condominizando.com.br/login",
+  "also": "https://www.wcond.com/",
+  "play_url": null,
+  "note": "Sem listagem Play dedicada encontrada; prints do login web/app (white-label Novitatus).",
+  "files": ["02-app-01.png", "02-app-02.png"],
+  "source": "web-app-login"
+}

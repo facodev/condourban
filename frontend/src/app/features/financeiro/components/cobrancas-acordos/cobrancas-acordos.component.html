@@ -1,0 +1,33 @@
+<div class="page-container">
+  <header class="page-header">
+    <div>
+      <h2>Cobranças, Boletos e Acordos</h2>
+      <p class="subtitle">Emissão de 2ª via de boleto condominial, código Pix Copia e Cola e acordos.</p>
+    </div>
+  </header>
+
+  <div class="cobrancas-list">
+    @for (item of cobrancas(); track item.id) {
+      <div class="cobranca-card">
+        <div class="main-info">
+          <span class="ref">Mês Referência: {{ item.mesReferencia }} ({{ item.unidade }})</span>
+          <div class="valor">{{ item.valor | moeda }}</div>
+          <span class="vencimento">Vencimento: {{ item.vencimento }}</span>
+        </div>
+
+        <div class="status-wrap">
+          <app-status-badge [status]="item.status === 'pago' ? 'aprovado' : (item.status === 'atrasado' ? 'rejeitado' : 'pendente')" [label]="item.status"></app-status-badge>
+        </div>
+
+        <div class="actions">
+          @if (item.status !== 'pago') {
+            <button class="btn btn-pix">Copiar Código Pix</button>
+            <button class="btn btn-secondary">Baixar Boleto PDF</button>
+          } @else {
+            <span class="paid-badge">✓ Quitado</span>
+          }
+        </div>
+      </div>
+    }
+  </div>
+</div>

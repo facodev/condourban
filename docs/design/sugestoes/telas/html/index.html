@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sugestões visuais — hub</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --brand: #0F6B5C; --brand-strong: #0A4F44; --surface: #F4F6F5;
+      --card: #fff; --ink: #1A1F1E; --muted: #5C6763; --border: #D5DCD9;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; font-family: "Source Sans 3", system-ui, sans-serif;
+      background: linear-gradient(165deg, #e8f3ef 0%, var(--surface) 40%, #eef1f0 100%);
+      color: var(--ink); min-height: 100vh; padding: 2rem 1.25rem 3rem;
+    }
+    .wrap { max-width: 920px; margin: 0 auto; }
+    h1 { font-family: Fraunces, Georgia, serif; font-size: 2rem; margin: 0 0 .35rem; color: var(--brand-strong); }
+    .lead { color: var(--muted); margin: 0 0 2rem; max-width: 40rem; }
+    h2 { font-size: 1rem; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); margin: 2rem 0 .75rem; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1rem; }
+    a.card {
+      display: block; text-decoration: none; color: inherit;
+      background: var(--card); border: 1px solid var(--border); border-radius: 14px;
+      padding: 1.15rem 1.25rem; transition: border-color .15s, transform .15s;
+    }
+    a.card:hover { border-color: var(--brand); transform: translateY(-2px); }
+    a.card strong { display: block; color: var(--brand-strong); margin-bottom: .35rem; }
+    a.card span { font-size: .92rem; color: var(--muted); line-height: 1.4; }
+    .note {
+      margin-top: 2.5rem; padding: 1rem 1.15rem; border-radius: 12px;
+      background: #D8EFEA; color: var(--brand-strong); font-size: .95rem;
+    }
+    .note a { color: var(--brand-strong); font-weight: 600; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <p style="margin:0 0 1rem">
+      <a href="../../index.html" style="color:var(--brand);font-weight:600;text-decoration:none">← Hub sugestões</a>
+      ·
+      <a href="../../../../index.html" style="color:var(--brand);font-weight:600;text-decoration:none">CondoUrban raiz</a>
+    </p>
+    <h1>Sugestões visuais</h1>
+    <p class="lead">Compare paletas, layouts da home e ícones. Escolha e registre em D1/D2/D3. Documentação: pasta <code>docs/design/sugestoes/</code>.</p>
+
+    <h2>Paletas</h2>
+    <div class="grid">
+      <a class="card" href="comparar-paletas.html"><strong>Comparar 6 paletas</strong><span>A verde · B laranja · C ardósia · D oliva · <b>E roxo</b> · <b>F azul</b></span></a>
+    </div>
+
+    <h2>Layouts (home morador)</h2>
+    <div class="grid">
+      <a class="card" href="layout-grade.html"><strong>1 — Grade de tiles</strong><span>Atalhos em grade 2 colunas</span></a>
+      <a class="card" href="layout-destaques.html"><strong>2 — Destaques + grade</strong><span>Ações quentes + recursos</span></a>
+      <a class="card" href="layout-lista.html"><strong>3 — Lista por seções</strong><span>Agrupado como o drawer</span></a>
+    </div>
+
+    <h2>Ícones</h2>
+    <div class="grid">
+      <a class="card" href="icones-amostra.html"><strong>Lucide × Material × Phosphor</strong><span>Mesmos módulos, três estilos</span></a>
+    </div>
+
+    <p class="note">Depois de decidir, preencha a tabela “Decisão” em <a href="../README.md">sugestoes/README.md</a> e a pergunta D1 em <code>docs/plano/05-perguntas-abertas.md</code>.</p>
+  </div>
+</body>
+</html>

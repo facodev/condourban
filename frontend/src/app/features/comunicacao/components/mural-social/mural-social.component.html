@@ -1,0 +1,22 @@
+<div class="page-container">
+  <header class="page-header">
+    <div>
+      <h2>Mural Social e Enquetes</h2>
+      <p class="subtitle">Enquetes da comunidade, achados e perdidos e classificados dos moradores.</p>
+    </div>
+  </header>
+
+  <div class="mural-grid">
+    @for (item of itens(); track item.id) {
+      <div class="mural-card">
+        <div class="badge-type">{{ formatTipo(item.tipo) }}</div>
+        <h3>{{ item.titulo }}</h3>
+        <p class="desc">{{ item.descricao }}</p>
+        <div class="footer">
+          <span>Postado por: <strong>{{ item.autorNome }}</strong></span>
+          <span>{{ item.publicadoEm }}</span>
+        </div>
+      </div>
+    }
+  </div>
+</div>

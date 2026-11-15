@@ -1,0 +1,96 @@
+<div class="table-container surface-card overflow-hidden w-full">
+  <div class="table-responsive">
+    <table class="styled-table w-full text-left text-sm tabular-nums">
+      <thead>
+        <tr>
+          @for (col of columns(); track col.key) {
+            <th
+              [style.width]="col.width"
+              [class.sortable]="col.sortable"
+              (click)="col.sortable ? toggleSort(col.key) : null"
+            >
+              <div class="th-content">
+                <span>{{ col.header }}</span>
+                @if (col.sortable && sortKey() === col.key) {
+                  <span class="sort-icon" aria-hidden="true">{{ sortAsc() ? '▲' : '▼' }}</span>
+                }
+              </div>
+            </th>
+          }
+        </tr>
+      </thead>
+      <tbody>
+        @if (paginatedData().length === 0) {
+          <tr>
+            <td [attr.colspan]="columns().length" class="empty-cell">
+              Nenhum registro encontrado.
+            </td>
+          </tr>
+        } @else {
+          @for (row of paginatedData(); track $index) {
+            <tr class="table-row" (click)="rowClick.emit(row)" [class.clickable]="hasRowClick()">
+              @for (col of columns(); track col.key) {
+                <td>
+                  @if (col.formatter) {
+                    {{ col.formatter(row) }}
+                  } @else {
+                    {{ getCellValue(row, col.key) }}
+                  }
+                </td>
+              }
+            </tr>
+          }
+        }
+      </tbody>
+    </table>
+  </div>
+
+  <div class="table-pagination">
+    <div class="pagination-info">
+      <span>
+        Mostrando <strong>{{ startIndex() }}–{{ endIndex() }}</strong> de <strong>{{ sortedData().length }}</strong> registros
+      </span>
+      <label class="page-size-control">
+        <span>Itens por página:</span>
+        <select [ngModel]="effectivePageSize()" (ngModelChange)="onPageSizeChange($event)">
+          <option [ngValue]="5">5</option>
+          <option [ngValue]="10">10</option>
+          <option [ngValue]="20">20</option>
+          <option [ngValue]="50">50</option>
+        </select>
+      </label>
+    </div>
+
+    <div class="pagination-controls">
+      <button
+        type="button"
+        matRipple
+        class="page-btn focus-ring"
+        [disabled]="currentPage() === 1"
+        (click)="changePage(currentPage() - 1)"
+      >
+        ‹ Anterior
+      </button>
+      @for (p of pagesArray(); track p) {
+        <button
+          type="button"
+          matRipple
+          class="page-btn focus-ring"
+          [class.active]="currentPage() === p"
+          (click)="changePage(p)"
+        >
+          {{ p }}
+        </button>
+      }
+      <button
+        type="button"
+        matRipple
+        class="page-btn focus-ring"
+        [disabled]="currentPage() === totalPages()"
+        (click)="changePage(currentPage() + 1)"
+      >
+        Próxima ›
+      </button>
+    </div>
+  </div>
+</div>

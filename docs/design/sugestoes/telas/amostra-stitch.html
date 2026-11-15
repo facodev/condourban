@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Amostra Stitch — telas do app</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root { --brand:#0F6B5C; --strong:#0A4F44; --surface:#F4F6F5; --card:#fff; --ink:#1A1F1E; --muted:#5C6763; --border:#D5DCD9; --soft:#D8EFEA; }
+    * { box-sizing:border-box; }
+    body { margin:0; font-family:"Source Sans 3",system-ui,sans-serif; background:linear-gradient(165deg,#e8f3ef,var(--surface) 45%); color:var(--ink); padding:1.75rem 1.25rem 3rem; }
+    .wrap { max-width:1180px; margin:0 auto; }
+    a.back { color:var(--brand); font-weight:600; text-decoration:none; }
+    h1 { font-family:Fraunces,Georgia,serif; color:var(--strong); margin:.5rem 0 .35rem; }
+    .lead { color:var(--muted); margin:0 0 1.75rem; max-width:42rem; }
+    .toolbar { display:flex; flex-wrap:wrap; gap:.6rem; margin-bottom:1.5rem; }
+    .toolbar a {
+      display:inline-flex; align-items:center; gap:.35rem;
+      padding:.45rem .85rem; border-radius:999px; border:1px solid var(--border);
+      background:var(--card); color:var(--strong); text-decoration:none; font-size:.85rem; font-weight:600;
+    }
+    .toolbar a:hover { border-color:var(--brand); background:var(--soft); }
+    .grid {
+      display:grid;
+      grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+      gap:1.75rem;
+      justify-items:center;
+    }
+    .phone {
+      width:min(100%, 300px);
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:28px;
+      overflow:hidden;
+      box-shadow:0 12px 40px rgba(15,35,30,.06);
+      display:flex;
+      flex-direction:column;
+    }
+    .phone .bezel {
+      background:#0b1220;
+      padding:10px 10px 0;
+      display:flex;
+      justify-content:center;
+    }
+    .phone .bezel .notch {
+      width:96px; height:18px; background:#0b1220; border-radius:0 0 12px 12px;
+      position:relative; z-index:1;
+    }
+    .phone .screen-wrap {
+      background:#0b1220;
+      padding:0 10px 10px;
+    }
+    .phone .screen {
+      display:block;
+      width:100%;
+      aspect-ratio:9/19.5;
+      object-fit:cover;
+      object-position:top;
+      border-radius:18px;
+      background:#e8ecea;
+    }
+    .phone .meta { padding:1rem 1.1rem 1.15rem; }
+    .phone .meta h2 { margin:0; font-size:1.05rem; color:var(--strong); font-family:Fraunces,Georgia,serif; font-weight:600; }
+    .phone .meta p { margin:.35rem 0 0; color:var(--muted); font-size:.85rem; line-height:1.4; }
+    .phone .meta .actions { margin-top:.75rem; display:flex; flex-wrap:wrap; gap:.5rem; }
+    .phone .meta .actions a {
+      font-size:.8rem; font-weight:700; color:#fff; background:var(--brand);
+      text-decoration:none; padding:.4rem .75rem; border-radius:999px;
+    }
+    .phone .meta .actions a.secondary {
+      background:transparent; color:var(--brand); border:1px solid var(--border);
+    }
+    .phone .meta .actions a.secondary:hover { border-color:var(--brand); background:var(--soft); }
+    .note {
+      margin-top:2rem; padding:1rem 1.15rem; border-radius:12px;
+      background:var(--soft); color:var(--strong); font-size:.92rem;
+    }
+    .note a { color:var(--strong); font-weight:700; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <a class="back" href="index.html">← Galeria de telas</a>
+    · <a class="back" href="../index.html">Hub sugestões</a>
+    <h1>Amostra Stitch — páginas</h1>
+    <p class="lead">Prints das telas geradas no Stitch. Abra o <strong>HTML interativo</strong> (code.html) ou o PNG em tela cheia.</p>
+
+    <div class="toolbar">
+      <a href="#home-dashboard">Home dashboard</a>
+      <a href="#home-grade">Home grade</a>
+      <a href="#correspondencias">Correspondências</a>
+      <a href="#visitas">Visitas</a>
+      <a href="#reservas">Reservas</a>
+      <a href="html/index.html">Protótipos HTML →</a>
+    </div>
+
+    <div class="grid">
+      <article class="phone" id="home-dashboard">
+        <div class="bezel"><div class="notch"></div></div>
+        <div class="screen-wrap">
+          <img class="screen" src="stitch/home-dashboard-morador/screen.png" alt="Home dashboard morador"/>
+        </div>
+        <div class="meta">
+          <h2>Home dashboard</h2>
+          <p>Visão morador com resumo e atalhos. Pasta <code>home-dashboard-morador</code>.</p>
+          <div class="actions">
+            <a href="stitch/home-dashboard-morador/code.html" target="_blank">Abrir HTML</a>
+            <a class="secondary" href="stitch/home-dashboard-morador/screen.png" target="_blank">PNG</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="phone" id="home-grade">
+        <div class="bezel"><div class="notch"></div></div>
+        <div class="screen-wrap">
+          <img class="screen" src="stitch/home-grade-tiles-verde/screen.png" alt="Home grade tiles verde"/>
+        </div>
+        <div class="meta">
+          <h2>Home grade verde</h2>
+          <p>Tiles em grade 2 colunas, tema verde petróleo.</p>
+          <div class="actions">
+            <a href="stitch/home-grade-tiles-verde/code.html" target="_blank">Abrir HTML</a>
+            <a class="secondary" href="stitch/home-grade-tiles-verde/screen.png" target="_blank">PNG</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="phone" id="correspondencias">
+        <div class="bezel"><div class="notch"></div></div>
+        <div class="screen-wrap">
+          <img class="screen" src="stitch/correspondencias-encomendas/screen.png" alt="Correspondências"/>
+        </div>
+        <div class="meta">
+          <h2>Correspondências</h2>
+          <p>Encomendas na portaria, pendentes e retirada.</p>
+          <div class="actions">
+            <a href="stitch/correspondencias-encomendas/code.html" target="_blank">Abrir HTML</a>
+            <a class="secondary" href="stitch/correspondencias-encomendas/screen.png" target="_blank">PNG</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="phone" id="visitas">
+        <div class="bezel"><div class="notch"></div></div>
+        <div class="screen-wrap">
+          <img class="screen" src="stitch/visitas-convites/screen.png" alt="Visitas e convites"/>
+        </div>
+        <div class="meta">
+          <h2>Visitas / convites</h2>
+          <p>Lista de visitas, QR e status na portaria.</p>
+          <div class="actions">
+            <a href="stitch/visitas-convites/code.html" target="_blank">Abrir HTML</a>
+            <a class="secondary" href="stitch/visitas-convites/screen.png" target="_blank">PNG</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="phone" id="reservas">
+        <div class="bezel"><div class="notch"></div></div>
+        <div class="screen-wrap">
+          <img class="screen" src="stitch/reservas-areas-comuns/screen.png" alt="Reservas áreas comuns"/>
+        </div>
+        <div class="meta">
+          <h2>Reservas</h2>
+          <p>Áreas comuns — salão, churrasqueira, quadra.</p>
+          <div class="actions">
+            <a href="stitch/reservas-areas-comuns/code.html" target="_blank">Abrir HTML</a>
+            <a class="secondary" href="stitch/reservas-areas-comuns/screen.png" target="_blank">PNG</a>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <p class="note">
+      Logos Stitch: <a href="../logos/amostra-svg.html">amostra de logos (SVG + Stitch)</a> ·
+      Galeria geral: <a href="index.html">telas/index.html</a>
+    </p>
+  </div>
+</body>
+</html>

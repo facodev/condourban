@@ -1,0 +1,101 @@
+<div class="form-container">
+  <div class="breadcrumb">
+    <a routerLink="/condominio">Condomínio & Estrutura</a>
+    <span class="sep">/</span>
+    <span class="current">Nova Unidade</span>
+  </div>
+
+  <div class="form-panel">
+    <div class="panel-header">
+      <div class="header-glyph">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+          <polyline points="9 22 9 12 15 12 15 22"></polyline>
+        </svg>
+      </div>
+      <div>
+        <h1 class="panel-title">Cadastrar Unidade Autônoma</h1>
+        <p class="panel-desc">Adicione um apartamento, cobertura, casa ou sala ao condomínio.</p>
+      </div>
+    </div>
+
+    <form (ngSubmit)="save()" class="form-body">
+      <div class="field-grid">
+        <div class="field-group">
+          <label for="identificacao" class="field-label">
+            Número / Identificador <span class="required">*</span>
+          </label>
+          <input
+            id="identificacao"
+            type="text"
+            [(ngModel)]="identificacao"
+            name="identificacao"
+            required
+            placeholder="Ex: 101, 202, Cobertura 01"
+            class="input-control"
+            autofocus
+          />
+          <span class="field-hint">Número oficial da porta ou identificador municipal.</span>
+        </div>
+
+        <div class="field-group">
+          <label for="blocoId" class="field-label">Bloco / Torre de Origem</label>
+          <select id="blocoId" [(ngModel)]="blocoId" name="blocoId" class="select-control">
+            <option value="">Sem bloco específico (Edificação única)</option>
+            @for (bloco of blocos(); track bloco.id) {
+              <option [value]="bloco.id">{{ bloco.nome || bloco.name }}</option>
+            }
+          </select>
+          <span class="field-hint">Vincule a edificação para facilitar a navegação.</span>
+        </div>
+      </div>
+
+      <div class="field-grid">
+        <div class="field-group">
+          <label for="andar" class="field-label">Andar / Pavimento</label>
+          <input
+            id="andar"
+            type="text"
+            [(ngModel)]="andar"
+            name="andar"
+            placeholder="Ex: 1, 2, 10, Térreo"
+            class="input-control"
+          />
+        </div>
+
+        <div class="field-group">
+          <label for="tipo" class="field-label">Tipologia da Unidade</label>
+          <select id="tipo" [(ngModel)]="tipo" name="tipo" class="select-control">
+            <option value="APARTAMENTO">Apartamento Residencial</option>
+            <option value="COBERTURA">Cobertura / Penthouse</option>
+            <option value="CASA">Casa / Sobrado</option>
+            <option value="SALA_COMERCIAL">Sala Comercial / Escritório</option>
+          </select>
+        </div>
+      </div>
+
+      @if (errorMessage()) {
+        <div class="error-banner">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" y1="8" x2="12" y2="12"></line>
+            <line x1="12" y1="16" x2="12.01" y2="16"></line>
+          </svg>
+          <span>{{ errorMessage() }}</span>
+        </div>
+      }
+
+      <div class="panel-actions">
+        <app-button type="submit" [disabled]="isLoading() || !identificacao.trim()" variant="primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>
+            <polyline points="17 21 17 13 7 13 7 21"></polyline>
+            <polyline points="7 3 7 8 15 8"></polyline>
+          </svg>
+          <span>{{ isLoading() ? 'Criando Unidade…' : 'Salvar Unidade' }}</span>
+        </app-button>
+        <app-button type="button" variant="outline" (click)="cancel()">Cancelar</app-button>
+      </div>
+    </form>
+  </div>
+</div>

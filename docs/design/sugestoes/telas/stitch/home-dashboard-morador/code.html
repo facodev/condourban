@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_tab" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { colors: { "on-secondary-fixed-variant": "#3f465c", "surface-bright": "#f8f9ff", "surface-variant": "#d3e4fe", "surface-tint": "#0053db", "secondary-fixed-dim": "#bec6e0", "tertiary-container": "#007d55", "secondary": "#565e74", "on-secondary-fixed": "#131b2e", "error": "#ba1a1a", "surface-dim": "#cbdbf5", "tertiary-fixed": "#6ffbbe", "surface-container": "#e5eeff", "on-tertiary-container": "#bdffdb", "surface-container-lowest": "#ffffff", "secondary-fixed": "#dae2fd", "on-surface": "#0b1c30", "tertiary-fixed-dim": "#4edea3", "surface-container-high": "#dce9ff", "tertiary": "#006242", "surface-container-highest": "#d3e4fe", "error-container": "#ffdad6", "outline-variant": "#c3c6d7", "on-tertiary-fixed": "#002113", "on-primary": "#ffffff", "on-background": "#0b1c30", "inverse-primary": "#b4c5ff", "outline": "#737686", "secondary-container": "#dae2fd", "on-primary-fixed-variant": "#003ea8", "primary": "#004ac6", "on-surface-variant": "#434655", "on-error-container": "#93000a", "background": "#f8f9ff", "on-error": "#ffffff", "primary-container": "#2563eb", "primary-fixed-dim": "#b4c5ff", "surface": "#f8f9ff", "on-secondary": "#ffffff", "on-tertiary": "#ffffff", "on-primary-fixed": "#00174b", "on-secondary-container": "#5c647a", "primary-fixed": "#dbe1ff", "on-primary-container": "#eeefff", "on-tertiary-fixed-variant": "#005236", "surface-container-low": "#eff4ff", "inverse-on-surface": "#eaf1ff", "inverse-surface": "#213145" }, borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, spacing: { "space-sm": "0.5rem", "gutter": "1rem", "space-xl": "1.5rem", "margin": "1.25rem", "space-xs": "0.25rem", "space-lg": "1rem", "space-md": "0.75rem" }, fontFamily: { "headline-sm": ["Plus Jakarta Sans"], "body-lg": ["Plus Jakarta Sans"], "body-md": ["Plus Jakarta Sans"], "headline-md": ["Plus Jakarta Sans"], "label-sm": ["Plus Jakarta Sans"], "label-lg": ["Plus Jakarta Sans"], "label-md": ["Plus Jakarta Sans"], "display": ["Plus Jakarta Sans"], "body-sm": ["Plus Jakarta Sans"], "headline-lg": ["Plus Jakarta Sans"], "currency-display": ["Plus Jakarta Sans"] }, fontSize: { "headline-sm": ["18px", { lineHeight: "24px", fontWeight: "600" }], "body-lg": ["16px", { lineHeight: "24px", fontWeight: "500" }], "body-md": ["14px", { lineHeight: "20px", fontWeight: "400" }], "headline-md": ["20px", { lineHeight: "26px", fontWeight: "700" }], "label-sm": ["11px", { lineHeight: "14px", fontWeight: "700" }], "label-lg": ["14px", { lineHeight: "18px", fontWeight: "600" }], "label-md": ["12px", { lineHeight: "16px", fontWeight: "600" }], "display": ["32px", { lineHeight: "40px", fontWeight: "800" }], "body-sm": ["13px", { lineHeight: "18px", fontWeight: "400" }], "headline-lg": ["26px", { lineHeight: "32px", fontWeight: "700" }], "currency-display": ["30px", { lineHeight: "36px", fontWeight: "800" }] } } } }</script><style>@layer base{html,body{width:100%;margin:0;padding:0;background-color:#f8f9ff;-webkit-tap-highlight-color:transparent;}body{overscroll-behavior-y:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><style id="stitch-preview-fit">
+/* Moldura no tamanho de um celular (iPhone ~390x844) */
+html {
+  background: #c5d0cb !important;
+  min-height: 100% !important;
+}
+body {
+  --phone-w: 390px;
+  --phone-h: 844px;
+  width: var(--phone-w) !important;
+  max-width: var(--phone-w) !important;
+  min-height: var(--phone-h) !important;
+  margin: 28px auto !important;
+  padding: 0 !important;
+  border-radius: 40px !important;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  box-shadow:
+    0 0 0 11px #0b1220,
+    0 0 0 14px #3a4454,
+    0 28px 64px rgba(15, 35, 30, 0.28) !important;
+  /* transform cria containing block: fixed fica preso no "celular" */
+  transform: translateZ(0) !important;
+  position: relative !important;
+  background-color: #f8f9ff !important;
+  -webkit-overflow-scrolling: touch;
+}
+/* Header/nav fixos relativos ao telefone, não à janela */
+body header.fixed,
+body nav.fixed,
+body .fixed,
+body [class*="fixed"] {
+  max-width: 100% !important;
+  left: 0 !important;
+  right: 0 !important;
+}
+body > header,
+body > main,
+body > nav,
+body > footer {
+  width: 100% !important;
+  max-width: 100% !important;
+}
+/* Home que já tinha frame interno: remove moldura dupla */
+body main[data-purpose="mobile-viewport"] {
+  max-width: 100% !important;
+  min-height: var(--phone-h) !important;
+  height: auto !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  margin: 0 !important;
+}
+@media (max-width: 420px) {
+  html { background: inherit !important; }
+  body {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-height: 100vh !important;
+    margin: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    transform: none !important;
+  }
+}
+</style></head><body class="bg-surface font-body-md text-on-surface antialiased min-h-screen flex flex-col"><header class="fixed top-0 w-full z-50 pt-safe bg-surface-container-lowest/90 backdrop-blur-xl shadow-[0_1px_10px_rgba(11,28,48,0.05)]"><div class="h-16 px-margin flex items-center justify-between gap-space-sm"><div class="flex items-center gap-space-md min-w-0 flex-1"><img alt="Logo CondoViva" class="h-8 w-auto object-contain flex-shrink-0" src="https://lh3.googleusercontent.com/aida/AEtjO1UeYn2mdNNpaFQir84fa3NSbFvOjRxY4U2PL5vm-c82z-z0G8f_YWzd0wWMEzTh6gwYScbaGVkV2dU1z0ke-WCFJyYKbKUAwqJjvZPhhsJIopVBIuN0Uzf0NqU0duRPwmI7TXxyD6MEcClTWrAqfMNaW7KeYqJ6weQxFhfCfMajw68xp55Lochk7OeTX-HbzFgbhmc1FSimmHAnRpxn9gPcQrvPlHr63L6ihUxAp_3LFwnaDpUdaDaz_Q"/><div class="flex flex-col min-w-0"><div class="flex items-center gap-1.5"><h1 class="font-label-lg text-label-lg text-on-surface truncate">Residencial Jardim das Flores</h1></div><span class="font-label-sm text-label-sm text-secondary truncate">Apto 402 • Bloco B • Início</span></div></div><div class="flex items-center gap-space-xs flex-shrink-0"><a class="relative w-11 h-11 flex items-center justify-center rounded-full text-secondary hover:text-on-surface transition-colors" data-path="notificacoes" href="#"><span class="material-symbols-outlined text-[24px]">notifications</span><span class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full ring-2 ring-surface-container-lowest"></span></a><a class="w-11 h-11 flex items-center justify-center rounded-full focus:outline-none focus:ring-2 focus:ring-primary/20" data-path="perfil-do-morador" href="#"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA1ZKX8g6bhpiI9qMEDl00GV4mSRcHF1eSjg2gMbEbpYrd4CK3u8OHR6-L84czoXl9lzClozfwlyXPJ-qe9Lvc4WQL3Osqg7NA6qNobvtUHQcuILn1jdkSSZurptT9wD-xl4sQyNAO4-p-kZCtEVxZeIOufOM9wGIwq9F4vuIBo-UFpdmdA_zwL3c_NGKJskoZDLJbAdc57mBJzxs8gakewtBfINxST3Ktq8iDftkq7bxeru0vJqLvd"/></a></div></div></header><main class="flex-1 flex flex-col relative w-full pt-16 pb-24 bg-surface min-h-screen"><div class="flex flex-col w-full px-margin pb-6 gap-y-5">
+<!-- Top Greeting & Unit Badge -->
+<section class="flex flex-col gap-1 pt-3">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<h2 class="font-headline-md text-headline-md text-on-surface">Olá, Lucas Silva!</h2>
+<span class="text-xl select-none inline-block animate-bounce">👋</span>
+</div>
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container-high text-secondary font-label-sm text-label-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+        Online
+      </span>
+</div>
+<p class="font-body-sm text-body-sm text-secondary">
+      Residencial Jardim das Flores • Bloco B - Apto 402
+    </p>
+</section>
+<!-- Hero Quick Pass: Digital Key / QR Code Card -->
+<section class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-primary via-primary-container to-primary-container text-on-primary p-5 shadow-lg shadow-primary/15 transition-transform active:scale-[0.99]">
+<div class="absolute -right-6 -bottom-6 w-36 h-36 bg-white/10 rounded-full blur-2xl pointer-events-none"></div>
+<div class="absolute top-0 right-0 w-24 h-24 bg-tertiary-fixed/15 rounded-full blur-xl pointer-events-none"></div>
+<div class="relative z-10 flex flex-col gap-4">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-3">
+<div class="w-11 h-11 rounded-xl bg-white/15 backdrop-blur-md flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined text-[26px]">contactless</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-primary-fixed">Acesso Seguro</span>
+<h3 class="font-headline-sm text-headline-sm text-on-primary">Chave Virtual &amp; QR Code</h3>
+</div>
+</div>
+<span class="px-2.5 py-0.5 rounded-full bg-white/20 backdrop-blur-md font-label-sm text-label-sm text-on-primary">
+          Ativo
+        </span>
+</div>
+<div class="flex items-center justify-between pt-1">
+<div class="flex items-center gap-2 text-on-primary/80 font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-[18px]">lock_open</span>
+<span>Portaria Social &amp; Garagem</span>
+</div>
+<button class="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-surface-container-lowest text-primary font-label-lg text-label-lg shadow-sm hover:bg-surface-bright active:scale-95 transition-all" id="btn-qr-access" type="button">
+<span class="material-symbols-outlined text-[20px]">qr_code_scanner</span>
+<span>Acesso Rápido</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Packages Pending Banner -->
+<section class="rounded-2xl bg-secondary-container text-on-secondary-container p-4 shadow-sm transition-all">
+<div class="flex items-center justify-between gap-3">
+<div class="flex items-center gap-3 min-w-0">
+<div class="relative w-11 h-11 rounded-xl bg-surface-container-lowest text-primary flex items-center justify-center flex-shrink-0 shadow-sm">
+<span class="material-symbols-outlined text-[24px]">inventory_2</span>
+<span class="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-error text-on-error font-label-sm text-[10px] flex items-center justify-center font-bold">2</span>
+</div>
+<div class="flex flex-col min-w-0">
+<h4 class="font-headline-sm text-headline-sm text-on-surface truncate">2 Encomendas na Portaria</h4>
+<p class="font-body-sm text-body-sm text-secondary truncate">Mercado Livre &amp; Amazon • Recebidas hoje</p>
+</div>
+</div>
+<a class="flex-shrink-0 inline-flex items-center gap-1 px-3 py-2 rounded-xl bg-surface-container-lowest text-primary font-label-md text-label-md shadow-sm active:scale-95 transition-transform" data-path="encomendas" href="#">
+<span>Código</span>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</a>
+</div>
+</section>
+<!-- Quick Actions Grid (4 Items) -->
+<section class="flex flex-col gap-2.5">
+<div class="flex items-center justify-between">
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Atalhos Rápidos</h3>
+<span class="font-label-sm text-label-sm text-secondary">Ações diárias</span>
+</div>
+<div class="grid grid-cols-4 gap-2.5">
+<!-- Quick Action 1: Liberar Visita -->
+<a class="flex flex-col items-center justify-center p-3 rounded-2xl bg-surface-container-lowest shadow-sm hover:shadow-md active:scale-95 transition-all text-center gap-2 group" data-path="visitas" href="#">
+<div class="w-12 h-12 rounded-xl bg-primary-fixed text-primary flex items-center justify-center transition-colors group-hover:bg-primary group-hover:text-on-primary">
+<span class="material-symbols-outlined text-[26px]">person_add</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface leading-tight">Liberar Visita</span>
+</a>
+<!-- Quick Action 2: Reservar Área -->
+<a class="flex flex-col items-center justify-center p-3 rounded-2xl bg-surface-container-lowest shadow-sm hover:shadow-md active:scale-95 transition-all text-center gap-2 group" data-path="reservas" href="#">
+<div class="w-12 h-12 rounded-xl bg-surface-container-high text-primary flex items-center justify-center transition-colors group-hover:bg-primary group-hover:text-on-primary">
+<span class="material-symbols-outlined text-[26px]">event</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface leading-tight">Reservar Área</span>
+</a>
+<!-- Quick Action 3: Abrir Portão -->
+<button class="flex flex-col items-center justify-center p-3 rounded-2xl bg-surface-container-lowest shadow-sm hover:shadow-md active:scale-95 transition-all text-center gap-2 group" id="btn-open-gate" type="button">
+<div class="w-12 h-12 rounded-xl bg-tertiary-container text-on-tertiary-container flex items-center justify-center transition-colors group-hover:bg-tertiary group-hover:text-on-tertiary">
+<span class="material-symbols-outlined text-[26px]">garage_home</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface leading-tight">Abrir Portão</span>
+</button>
+<!-- Quick Action 4: Mural de Avisos -->
+<a class="flex flex-col items-center justify-center p-3 rounded-2xl bg-surface-container-lowest shadow-sm hover:shadow-md active:scale-95 transition-all text-center gap-2 group" data-path="mural" href="#">
+<div class="w-12 h-12 rounded-xl bg-surface-container text-secondary flex items-center justify-center transition-colors group-hover:bg-primary group-hover:text-on-primary">
+<span class="material-symbols-outlined text-[26px]">campaign</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface leading-tight">Mural Avisos</span>
+</a>
+</div>
+</section>
+<!-- Active Reservation Card -->
+<section class="flex flex-col gap-2.5">
+<div class="flex items-center justify-between">
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Minhas Atividades</h3>
+<a class="font-label-md text-label-md text-primary" data-path="reservas" href="#">Ver todas</a>
+</div>
+<div class="relative overflow-hidden rounded-2xl bg-surface-container-lowest shadow-sm p-4 flex flex-col gap-3">
+<div class="flex items-start justify-between gap-3">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-xl bg-tertiary-container/20 text-tertiary flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-[26px]">outdoor_grill</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-tertiary font-semibold uppercase tracking-wider">Próxima Reserva</span>
+<h4 class="font-headline-sm text-headline-sm text-on-surface">Churrasqueira Gourmet 01</h4>
+</div>
+</div>
+<span class="px-2.5 py-1 rounded-full bg-surface-container-high text-on-secondary-container font-label-sm text-label-sm">
+          Confirmada
+        </span>
+</div>
+<div class="flex items-center justify-between pt-2 border-t border-surface-container-high/60">
+<div class="flex items-center gap-2 text-secondary font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-[18px]">calendar_today</span>
+<span>Sábado, 28 Out</span>
+<span class="w-1 h-1 rounded-full bg-secondary"></span>
+<span class="material-symbols-outlined text-[18px]">schedule</span>
+<span>12:00 - 18:00</span>
+</div>
+<button class="text-primary font-label-md text-label-md active:underline flex items-center gap-0.5" type="button">
+<span>Detalhes</span>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Community Notice Board (Mural Recente) -->
+<section class="flex flex-col gap-3">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Comunicados do Condomínio</h3>
+<span class="w-2 h-2 rounded-full bg-error"></span>
+</div>
+<a class="font-label-md text-label-md text-primary" data-path="mural" href="#">Histórico</a>
+</div>
+<!-- Notice Card 1 -->
+<div class="rounded-2xl bg-surface-container-lowest p-4 shadow-sm flex flex-col gap-2.5 transition-all">
+<div class="flex items-center justify-between">
+<span class="px-2.5 py-0.5 rounded-full bg-error-container text-on-error-container font-label-sm text-label-sm font-bold flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-error"></span>
+          Importante
+        </span>
+<span class="font-body-sm text-body-sm text-secondary">Amanhã • 09h às 12h</span>
+</div>
+<div class="flex flex-col gap-1">
+<h4 class="font-headline-sm text-headline-sm text-on-surface">Manutenção Preventiva dos Elevadores</h4>
+<p class="font-body-sm text-body-sm text-secondary">
+          Interdição programada para calibração de cabos no Bloco B. Os moradores deverão utilizar as escadas de emergência durante o período.
+        </p>
+</div>
+<div class="flex items-center justify-between pt-2 text-secondary font-label-sm text-label-sm">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">domain</span>
+          Bloco B
+        </span>
+<span class="text-secondary/80">Administração Predial</span>
+</div>
+</div>
+<!-- Notice Card 2 -->
+<div class="rounded-2xl bg-surface-container-lowest p-4 shadow-sm flex flex-col gap-2.5 transition-all">
+<div class="flex items-center justify-between">
+<span class="px-2.5 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">gavel</span>
+          Convocação
+        </span>
+<span class="font-body-sm text-body-sm text-secondary">24 de Outubro • 19:30</span>
+</div>
+<div class="flex flex-col gap-1">
+<h4 class="font-headline-sm text-headline-sm text-on-surface">Assembleia Geral Ordinária</h4>
+<p class="font-body-sm text-body-sm text-secondary">
+          Pauta: Prestação de contas do ano vigente, eleição do conselho fiscal e aprovação da modernização do sistema de portaria autônoma.
+        </p>
+</div>
+<div class="flex items-center justify-between pt-2 text-secondary font-label-sm text-label-sm">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">meeting_room</span>
+          Salão de Festas Principal
+        </span>
+<button class="text-primary font-label-md text-label-md active:underline" type="button">
+          Confirmar Presença
+        </button>
+</div>
+</div>
+</section>
+<!-- Interactive Modal / Access Sheet for QR Code -->
+<div class="fixed inset-0 z-50 flex items-end justify-center bg-on-surface/40 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300" id="modal-qr-sheet">
+<div class="w-full max-w-lg bg-surface-container-lowest rounded-t-3xl p-6 shadow-2xl transform translate-y-full transition-transform duration-300 flex flex-col items-center gap-4" id="modal-content">
+<div class="w-10 h-1 rounded-full bg-secondary/30 mb-1"></div>
+<div class="text-center flex flex-col gap-1">
+<h3 class="font-headline-md text-headline-md text-on-surface">QR Code de Entrada</h3>
+<p class="font-body-sm text-body-sm text-secondary">Aproxime o código do leitor ótico da portaria social</p>
+</div>
+<!-- QR Code Display Box -->
+<div class="p-4 bg-surface rounded-2xl shadow-inner flex flex-col items-center justify-center gap-2">
+<div class="w-52 h-52 bg-white rounded-xl p-3 flex items-center justify-center shadow-sm">
+<!-- Simplified inline SVG QR pattern -->
+<svg class="w-full h-full text-on-surface" fill="currentColor" viewbox="0 0 100 100">
+<path d="M0,0 h30 v30 h-30 z M6,6 h18 v18 h-18 z M10,10 h10 v10 h-10 z"></path>
+<path d="M70,0 h30 v30 h-30 z M76,6 h18 v18 h-18 z M80,10 h10 v10 h-10 z"></path>
+<path d="M0,70 h30 v30 h-30 z M6,76 h18 v18 h-18 z M10,80 h10 v10 h-10 z"></path>
+<rect height="8" width="8" x="40" y="8"></rect>
+<rect height="16" width="8" x="52" y="8"></rect>
+<rect height="8" width="20" x="40" y="24"></rect>
+<rect height="8" width="16" x="8" y="40"></rect>
+<rect height="16" width="8" x="28" y="40"></rect>
+<rect height="20" width="20" x="40" y="40"></rect>
+<rect height="8" width="12" x="68" y="40"></rect>
+<rect height="20" width="8" x="84" y="40"></rect>
+<rect height="12" width="12" x="40" y="68"></rect>
+<rect height="8" width="16" x="56" y="68"></rect>
+<rect height="16" width="16" x="76" y="68"></rect>
+<rect height="8" width="28" x="40" y="84"></rect>
+</svg>
+</div>
+<div class="flex items-center gap-1.5 text-tertiary font-label-sm text-label-sm">
+<span class="w-2 h-2 rounded-full bg-tertiary animate-pulse"></span>
+<span>Válido por 01:45 min</span>
+</div>
+</div>
+<div class="w-full flex gap-3 pt-2">
+<button class="flex-1 py-3 rounded-xl bg-surface-container-high text-on-surface font-label-lg text-label-lg active:scale-95 transition-all" id="btn-close-qr" type="button">
+          Fechar
+        </button>
+<button class="flex-1 py-3 rounded-xl bg-primary text-on-primary font-label-lg text-label-lg shadow-md shadow-primary/20 active:scale-95 transition-all flex items-center justify-center gap-1.5" type="button">
+<span class="material-symbols-outlined text-[18px]">share</span>
+<span>Compartilhar</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Toast Notification for Gate Action -->
+<div class="fixed bottom-20 left-1/2 -translate-x-1/2 px-4 py-3 rounded-xl bg-inverse-surface text-inverse-on-surface shadow-xl flex items-center gap-2 opacity-0 pointer-events-none transition-all duration-300 z-50" id="toast-gate">
+<span class="material-symbols-outlined text-[20px] text-tertiary-fixed">check_circle</span>
+<span class="font-body-sm text-body-sm font-medium">Comando enviado! Portão abrindo...</span>
+</div>
+</div>
+<script>
+  (function() {
+    const modal = document.getElementById('modal-qr-sheet');
+    const modalContent = document.getElementById('modal-content');
+    const openBtn = document.getElementById('btn-qr-access');
+    const closeBtn = document.getElementById('btn-close-qr');
+    const gateBtn = document.getElementById('btn-open-gate');
+    const toast = document.getElementById('toast-gate');
+
+    function openModal() {
+      modal.classList.remove('opacity-0', 'pointer-events-none');
+      modalContent.classList.remove('translate-y-full');
+    }
+
+    function closeModal() {
+      modal.classList.add('opacity-0', 'pointer-events-none');
+      modalContent.classList.add('translate-y-full');
+    }
+
+    if (openBtn && modal) {
+      openBtn.addEventListener('click', openModal);
+    }
+
+    if (closeBtn && modal) {
+      closeBtn.addEventListener('click', closeModal);
+    }
+
+    if (modal) {
+      modal.addEventListener('click', function(e) {
+        if (e.target === modal) {
+          closeModal();
+        }
+      });
+    }
+
+    if (gateBtn && toast) {
+      gateBtn.addEventListener('click', function() {
+        toast.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-2');
+        toast.classList.add('translate-y-0');
+        setTimeout(function() {
+          toast.classList.add('opacity-0', 'pointer-events-none', 'translate-y-2');
+          toast.classList.remove('translate-y-0');
+        }, 3000);
+      });
+    }
+  })();
+</script></main><nav class="fixed bottom-0 w-full z-50 pb-safe bg-surface-container-lowest/95 backdrop-blur-xl shadow-[0_-4px_16px_rgba(11,28,48,0.06)]" data-active-classes="text-primary font-bold"><div class="h-16 px-space-md flex items-center justify-around"><a class="flex flex-col items-center justify-center flex-1 h-full py-1 text-secondary transition-all" data-path="inicio" href="#"><span class="material-symbols-outlined text-[24px]">home</span><span class="font-label-sm text-label-sm tracking-tight mt-0.5">Início</span></a><a class="relative flex flex-col items-center justify-center flex-1 h-full py-1 text-secondary transition-all" data-path="encomendas" href="#"><div class="relative flex items-center justify-center"><span class="material-symbols-outlined text-[24px]">inventory_2</span><span class="absolute -top-1 -right-2 min-w-[16px] h-4 px-1 flex items-center justify-center text-[10px] font-bold text-on-error bg-error rounded-full ring-2 ring-surface-container-lowest">2</span></div><span class="font-label-sm text-label-sm tracking-tight mt-0.5">Encomendas</span></a><a class="flex flex-col items-center justify-center flex-1 h-full py-1 text-secondary transition-all" data-path="visitas" href="#"><span class="material-symbols-outlined text-[24px]">how_to_reg</span><span class="font-label-sm text-label-sm tracking-tight mt-0.5">Visitas</span></a><a class="flex flex-col items-center justify-center flex-1 h-full py-1 text-secondary transition-all" data-path="reservas" href="#"><span class="material-symbols-outlined text-[24px]">event_available</span><span class="font-label-sm text-label-sm tracking-tight mt-0.5">Reservas</span></a></div></nav></body></html>

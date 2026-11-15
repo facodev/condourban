@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Logos — galeria</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root { --brand:#0F6B5C; --strong:#0A4F44; --soft:#D8EFEA; --surface:#F4F6F5; --card:#fff; --ink:#1A1F1E; --muted:#5C6763; --border:#D5DCD9; }
+    * { box-sizing:border-box; }
+    body { margin:0; font-family:"Source Sans 3",system-ui,sans-serif; background:var(--surface); color:var(--ink); padding:1.5rem 1.25rem 3rem; }
+    .wrap { max-width:1000px; margin:0 auto; }
+    a.back { color:var(--brand); font-weight:600; text-decoration:none; }
+    h1 { font-family:Fraunces,Georgia,serif; color:var(--strong); margin:.5rem 0; }
+    .lead { color:var(--muted); margin:0 0 1rem; }
+    h2 { font-size:.78rem; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); margin:2rem 0 .75rem; }
+    .grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(180px,1fr)); gap:1rem; }
+    .card { background:var(--card); border:1px solid var(--border); border-radius:14px; padding:1rem; text-align:center; }
+    .card.fav { border-color:var(--brand); box-shadow:0 0 0 2px var(--soft); }
+    .card img { max-width:100%; max-height:100px; object-fit:contain; }
+    .card.icon img { width:80px; height:80px; }
+    .card.proposta { padding:.75rem .75rem .6rem; }
+    .card.proposta img {
+      display:block;
+      width:100%;
+      height:auto;
+      max-height:none;
+      object-fit:contain;
+      border-radius:10px;
+      background:#fff;
+    }
+    .card span { display:block; margin-top:.65rem; font-size:.8rem; font-weight:600; color:var(--muted); }
+    .card.proposta span { margin-top:.55rem; }
+    .card .tag { display:inline-block; margin-top:.35rem; font-size:.65rem; font-weight:700; color:var(--brand); background:var(--soft); padding:.15rem .45rem; border-radius:999px; }
+    .wide { grid-column: 1 / -1; }
+    @media (min-width:700px) { .wide { grid-column: span 2; } }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <a class="back" href="../index.html">← Hub sugestões</a>
+    · <a class="back" href="../../../../index.html">CondoUrban raiz</a>
+    <h1>Logos</h1>
+    <p class="lead">Logo oficial no topo. Abaixo: propostas de nome, SVG e Stitch.</p>
+
+    <h2>Oficial</h2>
+    <div class="grid">
+      <div class="card fav wide" style="padding:1.25rem">
+        <img src="oficial/condourban-logo-badge.png" alt="CondoUrban — logo com fundo claro" style="max-height:none;width:min(320px,100%);height:auto;margin:0 auto;display:block;aspect-ratio:1068/906;object-fit:contain"/>
+        <span>CondoUrban · badge (fundos escuros)</span>
+        <div class="tag">recomendado em hero/rodapé escuro</div>
+      </div>
+      <div class="card fav" style="padding:1.25rem">
+        <img src="oficial/condourban-mark.png" alt="CondoUrban — ícone transparente" style="max-height:140px;width:auto;margin:0 auto;display:block"/>
+        <span>Ícone transparente</span>
+        <div class="tag">header / app</div>
+      </div>
+      <div class="card" style="padding:1.25rem">
+        <img src="oficial/condourban-logo.png" alt="CondoUrban — lockup transparente" style="max-height:160px;width:auto;margin:0 auto;display:block"/>
+        <span>Lockup transparente</span>
+        <div class="tag">só em fundo claro</div>
+      </div>
+    </div>
+
+    <h2>Propostas de nome (PNG)</h2>
+    <p class="lead" style="margin-top:-.25rem;font-size:.9rem">49 arquivos em propostas/ — variantes com conflito usam _1, _2…</p>
+    <div class="grid">
+      <a class="card proposta" href="propostas/condoacesso.png" target="_blank" style="text-decoration:none;color:inherit"><img src="propostas/condoacesso.png" alt="CondoAcesso"/><span>CondoAcesso</span></a>
+      <a class="card proposta" href="propostas/condoagora.png" target="_blank" style="text-decoration:none;color:inherit"><img src="propostas/condoagora.png" alt="CondoAgora"/><span>CondoAgora</span></a>
+      <a class="card proposta" href="propostas/condoagora_3.png" target="_blank" style="text-decoration:none;color:inherit"><img src="propostas/condoagora_3.png" alt="CondoAgora _3"/><span>CondoAgora _3</span></a>
+      <a class="card proposta" href="propostas/condoalerta.png" target="_blank" style="text-decoration:none;color:inherit"><img src="propostas/condoalerta.png" alt="CondoAlerta"/><span>CondoAlerta</span></a>
+      <a class="card proposta" href="propostas/condoapp.png" target="_blank" style="text-decoration:none;color:inherit"><img src="propostas/condoapp.png" alt="CondoApp"/><span>CondoApp</span></a>
+      <a class="card proposta" href="propostas/condoapp_3.png" target="_blank" style="text-decoration:none;color:inherit"><img src="propostas/condoapp_3.png" alt="CondoApp _3"/><span>CondoApp _3</span></a>
+      <a class="card proposta" href="propostas/condoavisos.png" target="_blank" style="text-decoration:none;color:inherit"><img src="propostas/condoavisos.png" alt="CondoAvisos"/><span>CondoAvisos</span></a>
+      <a class="card proposta" href="propostas/condobem.png" target="_blank" style="text-decoration:none;color:inherit"><img src="propostas/condobem.png" alt="CondoBem"/><span>CondoBem</span></a>
+      <a class="card proposta" href="propostas/condochat.png" target="_blank" style="text-decoration:none;color:inherit"><img src="propostas/condochat.png" alt="CondoChat"/><span>CondoChat</span></a>
+      <a class="card proposta" href="propostas/condocloud.png" target="_blank" style="text-decoration:none;color:inherit"><img src="propostas/condocloud.png" alt="CondoCloud"/><span>CondoCloud</span></a>
+      <a class="card proposta" href="propostas/condocomunica.png" target="_blank" style="text-decoration:none;color:inherit"><img src="propostas/condocomunica.png" alt="CondoComunica"/><span>CondoComunica</span></a>
+      <a class="card proposta" href="propostas/condoconecta.png" target="_blank" style="text-decoration:none;color:inherit"><img src="propostas/condoconecta.png" alt="CondoConecta"/><span>CondoConecta</span></a>
+      <a class="card proposta" href="propostas/condoconecta_2.png" target="_blank" style="text-decoration:none;color:inherit"><img src="propostas/condoconecta_2.png" alt="CondoConecta _2"/><span>CondoConecta _2</span></a>
+      <a class="card proposta" href="propostas/condoconecta_3.png" target="_blank" style="text-decoration:none;color:inherit"><img src="propostas/condoconecta_3.png" alt="CondoConecta _3"/><span>CondoConecta _3</span></a>
+      <a class="card proposta" href="propostas/condoentrega.png" target="_blank" style="text-decoration:none;color:inherit"><img src="propostas/condoentrega.png" alt="CondoEntrega"/><span>CondoEntrega</span></a>
+      <a class="card proposta" href="propostas/condoevolui.png" target="_blank" style="text-decoration:none;color:inherit"><img src="propostas/condoevolui.png" alt="CondoEvolui"/><span>CondoEvolui</span></a>
+      <a class="card proposta" href="propostas/condofacil.png" target="_blank" style="text-decoration:none;color:inherit"><img src="propostas/condofacil.png" alt="CondoFácil"/><span>CondoFácil</span></a>
+      <a class="card proposta" href="propostas/condofacil_3.png" target="_blank" style="text-decoration:none;color:inherit"><img src="propostas/condofacil_3.png" alt="CondoFácil _3"/><span>CondoFácil _3</span></a>
+      <a class="card proposta" href="propostas/condofale.png" target="_blank" style="text-decoration:none;color:inherit"><img src="propostas/condofale.png" alt="CondoFale"/><span>CondoFale</span></a>
+      <a class="card proposta" href="propostas/condogestao.png" target="_blank" style="text-decoration:none;color:inherit"><img src="propostas/condogestao.png" alt="CondoGestão"/><span>CondoGestão</span></a>
+      <a class="card proposta" href="propostas/condohub.png" target="_blank" style="text-decoration:none;color:inherit"><img src="propostas/condohub.png" alt="CondoHub"/><span>CondoHub</span></a>
+      <a class="card proposta" href="propostas/condohub_2.png" target="_blank" style="text-decoration:none;color:inherit"><img src="propostas/condohub_2.png" alt="CondoHub _2"/><span>CondoHub _2</span></a>
+      <a class="card proposta" href="propostas/condojuntos.png" target="_blank" style="text-decoration:none;color:inherit"><img src="propostas/condojuntos.png" alt="CondoJuntos"/><span>CondoJuntos</span></a>
+      <a class="card proposta" href="propostas/condolink.png" target="_blank" style="text-decoration:none;color:inherit"><img src="propostas/condolink.png" alt="CondoLink"/><span>CondoLink</span></a>
+      <a class="card proposta" href="propostas/condomais.png" target="_blank" style="text-decoration:none;color:inherit"><img src="propostas/condomais.png" alt="CondoMais"/><span>CondoMais</span></a>
+      <a class="card proposta" href="propostas/condomais_2.png" target="_blank" style="text-decoration:none;color:inherit"><img src="propostas/condomais_2.png" alt="CondoMais _2"/><span>CondoMais _2</span></a>
+      <a class="card proposta" href="propostas/condomais_3.png" target="_blank" style="text-decoration:none;color:inherit"><img src="propostas/condomais_3.png" alt="CondoMais _3"/><span>CondoMais _3</span></a>
+      <a class="card proposta" href="propostas/condome.png" target="_blank" style="text-decoration:none;color:inherit"><img src="propostas/condome.png" alt="Condome"/><span>Condome</span></a>
+      <a class="card proposta" href="propostas/condominar.png" target="_blank" style="text-decoration:none;color:inherit"><img src="propostas/condominar.png" alt="Condominar"/><span>Condominar</span></a>
+      <a class="card proposta" href="propostas/condominiar.png" target="_blank" style="text-decoration:none;color:inherit"><img src="propostas/condominiar.png" alt="Condominiar"/><span>Condominiar</span></a>
+      <a class="card proposta" href="propostas/condominiar_1.png" target="_blank" style="text-decoration:none;color:inherit"><img src="propostas/condominiar_1.png" alt="Condominiar _1"/><span>Condominiar _1</span></a>
+      <a class="card proposta" href="propostas/condoonline.png" target="_blank" style="text-decoration:none;color:inherit"><img src="propostas/condoonline.png" alt="CondoOnline"/><span>CondoOnline</span></a>
+      <a class="card proposta" href="propostas/condoonline_2.png" target="_blank" style="text-decoration:none;color:inherit"><img src="propostas/condoonline_2.png" alt="CondoOnline _2"/><span>CondoOnline _2</span></a>
+      <a class="card proposta" href="propostas/condoprime.png" target="_blank" style="text-decoration:none;color:inherit"><img src="propostas/condoprime.png" alt="CondoPrime"/><span>CondoPrime</span></a>
+      <a class="card proposta" href="propostas/condoreserva.png" target="_blank" style="text-decoration:none;color:inherit"><img src="propostas/condoreserva.png" alt="CondoReserva"/><span>CondoReserva</span></a>
+      <a class="card proposta" href="propostas/condoseguro.png" target="_blank" style="text-decoration:none;color:inherit"><img src="propostas/condoseguro.png" alt="CondoSeguro"/><span>CondoSeguro</span></a>
+      <a class="card proposta" href="propostas/condoseguro_2.png" target="_blank" style="text-decoration:none;color:inherit"><img src="propostas/condoseguro_2.png" alt="CondoSeguro _2"/><span>CondoSeguro _2</span></a>
+      <a class="card proposta" href="propostas/condoserv.png" target="_blank" style="text-decoration:none;color:inherit"><img src="propostas/condoserv.png" alt="CondoServ"/><span>CondoServ</span></a>
+      <a class="card proposta" href="propostas/condosmart.png" target="_blank" style="text-decoration:none;color:inherit"><img src="propostas/condosmart.png" alt="CondoSmart"/><span>CondoSmart</span></a>
+      <a class="card proposta" href="propostas/condosmart_3.png" target="_blank" style="text-decoration:none;color:inherit"><img src="propostas/condosmart_3.png" alt="CondoSmart _3"/><span>CondoSmart _3</span></a>
+      <a class="card proposta" href="propostas/condosustentavel.png" target="_blank" style="text-decoration:none;color:inherit"><img src="propostas/condosustentavel.png" alt="CondoSustentável"/><span>CondoSustentável</span></a>
+      <a class="card proposta" href="propostas/condovida.png" target="_blank" style="text-decoration:none;color:inherit"><img src="propostas/condovida.png" alt="CondoVida"/><span>CondoVida</span></a>
+      <a class="card proposta" href="propostas/condovida_2.png" target="_blank" style="text-decoration:none;color:inherit"><img src="propostas/condovida_2.png" alt="CondoVida _2"/><span>CondoVida _2</span></a>
+      <a class="card proposta" href="propostas/condovida_3.png" target="_blank" style="text-decoration:none;color:inherit"><img src="propostas/condovida_3.png" alt="CondoVida _3"/><span>CondoVida _3</span></a>
+      <a class="card proposta" href="propostas/meucondominio.png" target="_blank" style="text-decoration:none;color:inherit"><img src="propostas/meucondominio.png" alt="MeuCondomínio"/><span>MeuCondomínio</span></a>
+      <a class="card proposta" href="propostas/meucondominio_2.png" target="_blank" style="text-decoration:none;color:inherit"><img src="propostas/meucondominio_2.png" alt="MeuCondomínio _2"/><span>MeuCondomínio _2</span></a>
+      <a class="card proposta" href="propostas/meucondominio_3.png" target="_blank" style="text-decoration:none;color:inherit"><img src="propostas/meucondominio_3.png" alt="MeuCondomínio _3"/><span>MeuCondomínio _3</span></a>
+      <a class="card proposta" href="propostas/vivacondominio.png" target="_blank" style="text-decoration:none;color:inherit"><img src="propostas/vivacondominio.png" alt="VivaCondomínio"/><span>VivaCondomínio</span></a>
+      <a class="card proposta" href="propostas/vivacondominio_3.png" target="_blank" style="text-decoration:none;color:inherit"><img src="propostas/vivacondominio_3.png" alt="VivaCondomínio _3"/><span>VivaCondomínio _3</span></a>
+    </div>
+
+    <h2>Favoritos (SVG)</h2>
+    <div class="grid">
+      <div class="card fav icon"><img src="svg/mark-casa.svg" alt=""/><span>Casa</span><div class="tag">preferido</div></div>
+      <div class="card fav icon"><img src="svg/mark-predio.svg" alt=""/><span>Prédio</span><div class="tag">preferido</div></div>
+      <div class="card fav icon"><img src="svg/mark-chave.svg" alt=""/><span>Chave</span><div class="tag">preferido</div></div>
+      <div class="card fav icon"><img src="svg/mark-casa-chave.svg" alt=""/><span>Casa + chave</span><div class="tag">combo</div></div>
+      <div class="card icon"><img src="svg/mark-casa-azul.svg" alt=""/><span>Casa azul</span></div>
+      <div class="card icon"><img src="svg/mark-casa-roxo.svg" alt=""/><span>Casa roxa</span></div>
+    </div>
+
+    <h2>App icons</h2>
+    <div class="grid">
+      <div class="card icon"><img src="svg/app-icon-casa.svg" alt="" style="border-radius:18px"/><span>App — casa</span></div>
+      <div class="card icon"><img src="svg/app-icon-predio.svg" alt="" style="border-radius:18px"/><span>App — prédio</span></div>
+      <div class="card icon"><img src="svg/app-icon-chave.svg" alt="" style="border-radius:18px"/><span>App — chave</span></div>
+    </div>
+
+    <h2>Wordmarks</h2>
+    <div class="grid">
+      <div class="card wide"><img src="svg/wordmark-habitar-casa.svg" alt="" style="width:min(280px,100%);height:auto"/><span>CondoUrban + casa</span></div>
+      <div class="card wide"><img src="svg/wordmark-habitar-chave.svg" alt="" style="width:min(280px,100%);height:auto"/><span>CondoUrban + chave</span></div>
+    </div>
+
+    <h2>Alternativa (portal — menos preferido)</h2>
+    <div class="grid">
+      <div class="card icon"><img src="svg/mark-a-portal.svg" alt=""/><span>Portal</span></div>
+      <div class="card icon"><img src="svg/mark-a-portal-azul.svg" alt=""/><span>Portal azul</span></div>
+      <div class="card icon"><img src="svg/mark-a-portal-roxo.svg" alt=""/><span>Portal roxo</span></div>
+    </div>
+
+    <h2>Stitch (PNG)</h2>
+    <p class="lead" style="margin-top:-.25rem;font-size:.9rem">Também na <a href="amostra-svg.html" style="color:var(--brand);font-weight:700">amostra SVG + Stitch</a>.</p>
+    <div class="grid">
+      <a class="card" href="stitch/harmony-emerald/code.html" target="_blank" style="text-decoration:none;color:inherit"><img src="stitch/harmony-emerald/screen.png" alt=""/><span>Harmony emerald</span></a>
+      <a class="card" href="stitch/smart-modern/code.html" target="_blank" style="text-decoration:none;color:inherit"><img src="stitch/smart-modern/screen.png" alt=""/><span>Smart modern</span></a>
+      <a class="card" href="stitch/verde-petroleo/code.html" target="_blank" style="text-decoration:none;color:inherit"><img src="stitch/verde-petroleo/screen.png" alt=""/><span>Verde petróleo</span></a>
+      <a class="card" href="stitch/condoviva/code.html" target="_blank" style="text-decoration:none;color:inherit"><img src="stitch/condoviva/screen.png" alt=""/><span>CondoViva</span></a>
+      <a class="card" href="stitch/minimal-arcos-azul/code.html" target="_blank" style="text-decoration:none;color:inherit"><img src="stitch/minimal-arcos-azul/screen.png" alt=""/><span>Arcos azul</span></a>
+      <a class="card" href="stitch/minimal-linhas-verde/code.html" target="_blank" style="text-decoration:none;color:inherit"><img src="stitch/minimal-linhas-verde/screen.png" alt=""/><span>Linhas verde</span></a>
+      <a class="card" href="stitch/minimal-silhueta-verde/code.html" target="_blank" style="text-decoration:none;color:inherit"><img src="stitch/minimal-silhueta-verde/screen.png" alt=""/><span>Silhueta verde</span></a>
+    </div>
+  </div>
+</body>
+</html>

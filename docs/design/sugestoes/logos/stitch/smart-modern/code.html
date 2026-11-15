@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Logo Stitch — smart-modern</title>
+  <style>
+    html, body {
+      margin: 0; min-height: 100%;
+      background: #eef2f0;
+      font-family: system-ui, sans-serif;
+    }
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      padding: 1.5rem;
+    }
+    .frame {
+      width: min(168px, 42vw);
+      height: min(168px, 42vw);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .frame svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+      border-radius: 22%;
+      box-shadow: 0 10px 28px rgba(15, 35, 30, 0.12);
+    }
+    .cap {
+      color: #5C6763;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+  <div class="frame">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
+  <defs>
+    <linearGradient id="primaryGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2563EB"/>
+      <stop offset="100%" stop-color="#1D4ED8"/>
+    </linearGradient>
+    <linearGradient id="accentGrad" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#10B981"/>
+      <stop offset="100%" stop-color="#34D399"/>
+    </linearGradient>
+    <linearGradient id="subtleGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#3B82F6" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#1D4ED8" stop-opacity="0.05"/>
+    </linearGradient>
+    <filter id="softShadow" x="-10%" y="-10%" width="120%" height="120%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="16" stdDeviation="24" flood-color="#1E3A8A" flood-opacity="0.18"/>
+    </filter>
+  </defs>
+
+  <!-- Container Base with rounded corners -->
+  <rect width="512" height="512" rx="120" fill="url(#primaryGrad)"/>
+  
+  <!-- Subtle architectural background patterns -->
+  <circle cx="256" cy="256" r="180" fill="none" stroke="white" stroke-opacity="0.08" stroke-width="1.5"/>
+  <circle cx="256" cy="256" r="130" fill="none" stroke="white" stroke-opacity="0.06" stroke-width="1.5"/>
+
+  <!-- Main Emblem Group -->
+  <g filter="url(#softShadow)">
+    <!-- Tower Left (Residential Module 1) -->
+    <path d="M148 240C148 226.745 158.745 216 172 216H208C221.255 216 232 226.745 232 240V348C232 354.627 226.627 360 220 360H160C153.373 360 148 354.627 148 348V240Z" fill="white" fill-opacity="0.9"/>
+    
+    <!-- Tower Right / Main Tower (Residential Module 2 with Gable Top) -->
+    <path d="M224 186.4C224 179.67 228.082 173.57 234.336 170.963L274.336 154.296C280.485 151.734 287.515 151.734 293.664 154.296L333.664 170.963C339.918 173.57 344 179.67 344 186.4V348C344 354.627 338.627 360 332 360H236C229.373 360 224 354.627 224 348V186.4Z" fill="white"/>
+
+    <!-- Central Unity Portal / Gateway Arch -->
+    <path d="M232 360V300C232 284.536 244.536 272 260 272H268C283.464 272 296 284.536 296 300V360H232Z" fill="url(#primaryGrad)"/>
+
+    <!-- Dynamic Smart Community Badge (Accent Emerald Spark / Beacon) -->
+    <circle cx="264" cy="220" r="22" fill="url(#accentGrad)"/>
+    <path d="M264 208L267.5 216.5L276 220L267.5 223.5L264 232L260.5 223.5L252 220L260.5 216.5L264 208Z" fill="white"/>
+
+    <!-- Modern Architecture Grid Windows (Tower Left) -->
+    <rect x="172" y="244" width="18" height="18" rx="4" fill="#2563EB" fill-opacity="0.6"/>
+    <rect x="194" y="244" width="18" height="18" rx="4" fill="#2563EB" fill-opacity="0.6"/>
+    <rect x="172" y="272" width="18" height="18" rx="4" fill="#2563EB" fill-opacity="0.6"/>
+    <rect x="194" y="272" width="18" height="18" rx="4" fill="#2563EB" fill-opacity="0.6"/>
+    <rect x="172" y="300" width="18" height="18" rx="4" fill="#2563EB" fill-opacity="0.6"/>
+    <rect x="194" y="300" width="18" height="18" rx="4" fill="#2563EB" fill-opacity="0.6"/>
+
+    <!-- Smart Living Connected Dot Nodes (Tower Right) -->
+    <rect x="300" y="250" width="20" height="20" rx="6" fill="#10B981" fill-opacity="0.85"/>
+    <rect x="300" y="282" width="20" height="20" rx="6" fill="#2563EB" fill-opacity="0.65"/>
+    <rect x="300" y="314" width="20" height="20" rx="6" fill="#2563EB" fill-opacity="0.45"/>
+  </g>
+
+  <!-- Community Growth & Living Harmony Leaf Swoosh -->
+  <path d="M148 376C186 394 230 398 274 388C314.552 378.784 348.5 354 368 322" stroke="url(#accentGrad)" stroke-width="12" stroke-linecap="round"/>
+</svg>
+  </div>
+  <p class="cap">smart-modern · preview 168px</p>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<div class="page-container">
+  <header class="page-header">
+    <div>
+      <h2>Credenciais e Permissões de Acesso</h2>
+      <p class="subtitle">Cadastro e controle de tags RFID, biometria facial e regras de horários.</p>
+    </div>
+  </header>
+
+  <div class="table-card">
+    <table class="simple-table">
+      <thead>
+        <tr>
+          <th>Pessoa / Morador</th>
+          <th>Tipo de Credencial</th>
+          <th>Identificador / Código</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (cred of credenciais(); track cred.id) {
+          <tr>
+            <td><strong>{{ cred.pessoaNome }}</strong></td>
+            <td>
+              <span class="type-tag">{{ formatTipo(cred.tipo) }}</span>
+            </td>
+            <td><code>{{ cred.codigoIdentificador }}</code></td>
+            <td>
+              <app-status-badge [status]="cred.status"></app-status-badge>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</div>

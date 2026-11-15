@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CondoUrban — Escolher landing</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --brand: #0F6B5C;
+      --brand-strong: #0A4F44;
+      --ink: #1A1F1E;
+      --muted: #5C6763;
+      --border: #D5DCD9;
+      --surface: #F2F5F3;
+      --font-display: "Fraunces", Georgia, serif;
+      --font-body: "Source Sans 3", system-ui, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: var(--font-body);
+      color: var(--ink);
+      background:
+        radial-gradient(900px 420px at 10% -10%, color-mix(in srgb, var(--brand) 14%, transparent), transparent),
+        var(--surface);
+      line-height: 1.55;
+      min-height: 100vh;
+    }
+    .wrap {
+      width: min(960px, calc(100% - 2.5rem));
+      margin: 0 auto;
+      padding: 3.5rem 0 4rem;
+    }
+    .back {
+      display: inline-block;
+      margin-bottom: 1.5rem;
+      color: var(--muted);
+      font-weight: 600;
+      text-decoration: none;
+      font-size: .95rem;
+    }
+    .back:hover { color: var(--brand-strong); }
+    h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 2.75rem);
+      color: var(--brand-strong);
+      letter-spacing: -0.03em;
+      margin: 0 0 .6rem;
+      line-height: 1.15;
+    }
+    .lead {
+      margin: 0 0 2.5rem;
+      color: var(--muted);
+      font-size: 1.1rem;
+      max-width: 40rem;
+    }
+    .grid {
+      display: grid;
+      gap: 1.25rem;
+    }
+    @media (min-width: 780px) {
+      .grid { grid-template-columns: repeat(3, 1fr); }
+    }
+    .card {
+      display: flex;
+      flex-direction: column;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 1.4rem 1.35rem 1.5rem;
+      text-decoration: none;
+      color: inherit;
+      transition: transform .15s, box-shadow .15s, border-color .15s;
+      min-height: 100%;
+    }
+    .card:hover {
+      transform: translateY(-3px);
+      border-color: color-mix(in srgb, var(--brand) 40%, var(--border));
+      box-shadow: 0 16px 40px rgb(15 107 92 / 12%);
+    }
+    .tag {
+      display: inline-block;
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      color: var(--brand);
+      background: #D8EFEA;
+      padding: .3rem .55rem;
+      border-radius: 999px;
+      margin-bottom: .9rem;
+      width: fit-content;
+    }
+    .card h2 {
+      font-family: var(--font-display);
+      font-size: 1.45rem;
+      margin: 0 0 .55rem;
+      color: var(--brand-strong);
+      letter-spacing: -0.02em;
+    }
+    .card p {
+      margin: 0 0 1.25rem;
+      color: var(--muted);
+      font-size: .98rem;
+      flex: 1;
+    }
+    .card .cta {
+      font-weight: 700;
+      color: var(--brand);
+      font-size: .95rem;
+    }
+    .urls {
+      margin-top: 2.75rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: .92rem;
+    }
+    .urls code {
+      display: block;
+      margin: .35rem 0;
+      font-size: .85rem;
+      color: var(--ink);
+      word-break: break-all;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <a class="back" href="../index.html">← Hub CondoUrban</a>
+    <p style="margin:1rem 0 0">
+      <img src="assets/condourban-logo-badge.png" alt="CondoUrban" width="220" height="187" style="display:block;width:min(14rem,70vw);height:auto;aspect-ratio:1068/906;object-fit:contain" />
+    </p>
+    <h1>Escolha a landing</h1>
+    <p class="lead">Três propostas de marketing com a marca CondoUrban. Abra, compare e diga qual vira a oficial.</p>
+
+    <div class="grid">
+      <a class="card" href="v1/index.html">
+        <span class="tag">v1 · Atmosférica</span>
+        <h2>Hero escuro + fachada</h2>
+        <p>Full-bleed com edifício, mockup de celular e tom premium. A versão original que evoluímos.</p>
+        <span class="cta">Abrir v1 →</span>
+      </a>
+      <a class="card" href="v2/index.html">
+        <span class="tag">v2 · Clara</span>
+        <h2>Estilo CondoLiving</h2>
+        <p>Fundo claro, prova social, abas por persona, chips flutuantes no celular e formulário de demo.</p>
+        <span class="cta">Abrir v2 →</span>
+      </a>
+      <a class="card" href="v3/index.html">
+        <span class="tag">v3 · Híbrida</span>
+        <h2>Hero escuro + corpo claro</h2>
+        <p>Atmosfera da v1 no topo, faixa de stats e abas da v2 no restante — meio-termo.</p>
+        <span class="cta">Abrir v3 →</span>
+      </a>
+    </div>
+
+    <div class="urls">
+      Com o servidor local (`scripts\start-local.bat`):
+      <code>http://127.0.0.1:8016/landing/</code>
+      <code>http://127.0.0.1:8016/landing/v1/</code>
+      <code>http://127.0.0.1:8016/landing/v2/</code>
+      <code>http://127.0.0.1:8016/landing/v3/</code>
+    </div>
+  </div>
+</body>
+</html>

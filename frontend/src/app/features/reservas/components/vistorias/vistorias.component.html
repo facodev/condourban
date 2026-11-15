@@ -1,0 +1,23 @@
+<div class="page-container">
+  <header class="page-header">
+    <div>
+      <h2>Vistorias de Espaços e Caução</h2>
+      <p class="subtitle">Checklist de vistoria pré e pós-evento com anexos de fotos e liberação de caução.</p>
+    </div>
+  </header>
+
+  <div class="vistorias-list">
+    @for (vis of vistorias(); track vis.id) {
+      <div class="vistoria-card">
+        <div class="header">
+          <div>
+            <h3>{{ vis.areaComumNome }} — Vistoria {{ vis.tipo === 'pre_uso' ? 'Pré-Uso' : 'Pós-Uso' }}</h3>
+            <span class="meta">Realizada por {{ vis.responsavelNome }} em {{ vis.realizadoEm }}</span>
+          </div>
+          <app-status-badge [status]="vis.statusCaucao === 'devolvido' ? 'aprovado' : 'alerta'" [label]="'Caução: ' + vis.statusCaucao"></app-status-badge>
+        </div>
+        <p class="obs">{{ vis.observacoes }}</p>
+      </div>
+    }
+  </div>
+</div>

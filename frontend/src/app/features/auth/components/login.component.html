@@ -1,0 +1,49 @@
+<div class="login-wrapper max-w-[420px] my-16 mx-auto p-4">
+  <app-card title="Entrar no CondoUrban">
+    <form (ngSubmit)="onSubmit()" class="login-form flex flex-col gap-5">
+      <div class="form-group flex flex-col gap-2">
+        <label for="email" class="text-sm font-medium text-text">E-mail</label>
+        <input
+          id="email"
+          type="email"
+          [(ngModel)]="email"
+          name="email"
+          autocomplete="email"
+          spellcheck="false"
+          required
+          placeholder="seu@email.com…"
+          class="input-control"
+        />
+      </div>
+
+      <div class="form-group flex flex-col gap-2">
+        <label for="password" class="text-sm font-medium text-text">Senha</label>
+        <input
+          id="password"
+          type="password"
+          [(ngModel)]="password"
+          name="password"
+          autocomplete="current-password"
+          required
+          placeholder="••••••••"
+          class="input-control"
+        />
+      </div>
+
+      @if (errorMessage()) {
+        <p class="error-msg text-danger text-sm" role="alert" aria-live="polite">{{ errorMessage() }}</p>
+      }
+
+      <app-button type="submit" [disabled]="isLoading()">
+        {{ isLoading() ? 'Entrando…' : 'Acessar Conta' }}
+      </app-button>
+
+      <div class="divider text-center text-sm text-text-muted">ou continue com</div>
+
+      <div class="social-login grid grid-cols-2 gap-3">
+        <app-button type="button" variant="outline" (click)="loginGoogle()">Google</app-button>
+        <app-button type="button" variant="outline" (click)="loginInstagram()">Instagram</app-button>
+      </div>
+    </form>
+  </app-card>
+</div>

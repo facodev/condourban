@@ -1,0 +1,17 @@
+{
+  "package_id": "online.residente",
+  "title": "Residente Online",
+  "developer": "Wagner Fernandes",
+  "play_url": "https://play.google.com/store/apps/details?id=online.residente&hl=pt_BR",
+  "screenshot_count_available": 14,
+  "files": [
+    "02-app-01.png",
+    "02-app-02.png",
+    "02-app-03.png",
+    "02-app-04.png",
+    "02-app-05.png",
+    "02-app-06.png"
+  ],
+  "icon": "https://play-lh.googleusercontent.com/W9Uu87jqbVT70tBuxVIC2shxO08SIQYxIP2NJnjcb3unjtkUmDuFj7qW8RLstReNkhRgWHp4yGs49khNAxsF",
+  "source": "google-play-scraper"
+}

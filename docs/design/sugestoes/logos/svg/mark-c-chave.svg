@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Marca chave">
+  <circle cx="26" cy="26" r="14" fill="none" stroke="#0F6B5C" stroke-width="6"/>
+  <circle cx="26" cy="26" r="5" fill="#0F6B5C"/>
+  <path d="M36 30 L54 48" stroke="#0F6B5C" stroke-width="6" stroke-linecap="round"/>
+  <path d="M48 42 L54 42 M48 48 L54 48" stroke="#0F6B5C" stroke-width="5" stroke-linecap="round"/>
+  <circle cx="50" cy="14" r="6" fill="#E8A317"/>
+</svg>

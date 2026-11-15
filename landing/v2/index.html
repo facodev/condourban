@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CondoUrban — v2 Clara | Gestão condominial</title>
+  <meta name="description" content="Landing clara estilo CondoLiving — gestão e acesso CondoUrban." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://images.unsplash.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="version-bar">
+    Versão 2 · Clara (estilo CondoLiving) —
+    <a href="../index.html">comparar as 3</a>
+  </div>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="#topo" aria-label="CondoUrban — início">
+        <img class="logo-img logo-img--mark" src="../assets/condourban-mark.png" alt="CondoUrban" width="48" height="44" />
+        <span class="logo-word">CondoUrban</span>
+      </a>
+      <nav class="nav" aria-label="Principal">
+        <a href="#produto">Soluções</a>
+        <a href="#recursos">Recursos</a>
+        <a href="#para-quem">Para quem</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <div class="header-actions">
+        <a class="link-demo" href="#contato">Agendar demo</a>
+        <a class="btn btn-primary" href="#entrar">Entrar</a>
+        <button class="menu-toggle" type="button" id="menuToggle" aria-label="Menu" aria-expanded="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+      </div>
+    </div>
+    <nav class="nav-mobile" id="navMobile" hidden>
+      <a href="#produto">Soluções</a>
+      <a href="#recursos">Recursos</a>
+      <a href="#para-quem">Para quem</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contato">Agendar demo</a>
+      <a href="#entrar">Entrar</a>
+    </nav>
+  </header>
+
+  <main id="topo">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <span class="pill">Sistema completo para condomínios</span>
+          <h1>A gestão do seu <span class="hl">condomínio</span> na palma da mão — <span class="hl">simples</span>, <span class="hl">segura</span> e <span class="hl">moderna</span>.</h1>
+          <p class="hero-lead">Facial na portaria, reservas, encomendas e comunicados no app. Um sistema para síndico, portaria e morador — sem apagar incêndio no WhatsApp.</p>
+          <div class="hero-ctas">
+            <a class="btn btn-primary btn-lg" href="#contato">Agendar demonstração gratuita</a>
+            <a class="link-play" href="#recursos">
+              <span class="play" aria-hidden="true">▶</span>
+              Ver soluções
+            </a>
+          </div>
+          <div class="social-proof">
+            <div class="avatars" aria-hidden="true">
+              <span class="a1"></span><span class="a2"></span><span class="a3"></span><span class="a4"></span>
+            </div>
+            <div class="social-text">
+              <div class="stars" aria-label="4,9 de 5">★★★★★</div>
+              <small>+850 avaliações alvo · 4,9/5,0 <em>(prova real depois)</em></small>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual" aria-hidden="true">
+          <div class="phone-stage">
+            <div class="callout callout-l">
+              <strong>Convite aprovado</strong>
+              <span>Visitante liberado na portaria</span>
+            </div>
+            <div class="callout callout-r">
+              <strong>Encomenda na portaria</strong>
+              <span>Aviso ao morador em segundos</span>
+            </div>
+            <div class="phone">
+              <div class="phone-shell">
+                <div class="phone-island"></div>
+                <div class="phone-screen">
+                  <div class="app-status">
+                    <span>9:41</span>
+                    <span>●●●</span>
+                  </div>
+                  <p class="app-hello">Olá, Ana 👋</p>
+                  <p class="app-sub">Residencial Aurora · apto 302</p>
+                  <div class="app-icons">
+                    <div class="app-icon"><span class="ic ic-box" aria-hidden="true"></span><small>Encomendas</small></div>
+                    <div class="app-icon"><span class="ic ic-cal" aria-hidden="true"></span><small>Reservas</small></div>
+                    <div class="app-icon"><span class="ic ic-people" aria-hidden="true"></span><small>Visitas</small></div>
+                    <div class="app-icon"><span class="ic ic-bell" aria-hidden="true"></span><small>Mural</small></div>
+                    <div class="app-icon"><span class="ic ic-key" aria-hidden="true"></span><small>Acesso</small></div>
+                    <div class="app-icon"><span class="ic ic-note" aria-hidden="true"></span><small>Ocorrências</small></div>
+                  </div>
+                  <div class="app-card">
+                    <strong>Reserva confirmada</strong>
+                    <span>Salão · sáb 19h</span>
+                  </div>
+                  <div class="app-card muted">
+                    <strong>Encomenda chegou</strong>
+                    <span>Há 2 min · portaria</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="stats" id="produto">
+          <div class="stat"><strong>1</strong><span>sistema · gestão + acesso</span></div>
+          <div class="stat"><strong>3</strong><span>perfis · síndico, portaria, morador</span></div>
+          <div class="stat"><strong>Facial</strong><span>Intelbras no roadmap</span></div>
+          <div class="stat"><strong>App</strong><span>rotina no celular</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="features-sec" id="recursos">
+      <div class="container">
+        <div class="section-head">
+          <span class="pill pill-center">Funcionalidades do app</span>
+          <h2>Tudo o que seu condomínio precisa reunido em um só aplicativo.</h2>
+          <p>Sem empilhar ferramentas. Um cadastro, uma verdade — do facial à reserva do salão.</p>
+        </div>
+        <div class="features">
+          <article class="feature">
+            <div class="feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v4"/><path d="M3 10h18v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-8Z"/></svg>
+            </div>
+            <h3>Gestão de encomendas &amp; correios</h3>
+            <p>Registro na portaria e aviso ao morador — menos extravio e menos “sumiu”.</p>
+            <a class="more" href="#contato">Saiba mais sobre encomendas →</a>
+          </article>
+          <article class="feature">
+            <div class="feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/></svg>
+            </div>
+            <h3>Liberação ágil de visitas</h3>
+            <p>Convite com validade, QR e histórico. Portaria e morador no mesmo fluxo.</p>
+            <a class="more" href="#contato">Saiba mais sobre visitas →</a>
+          </article>
+          <article class="feature">
+            <div class="feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+            </div>
+            <h3>Reserva de áreas comuns</h3>
+            <p>Regras do condomínio no sistema: horários, aprovação e histórico.</p>
+            <a class="more" href="#contato">Saiba mais sobre reservas →</a>
+          </article>
+          <article class="feature">
+            <div class="feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg>
+            </div>
+            <h3>Comunicação &amp; mural oficial</h3>
+            <p>Canal oficial do condomínio — no lugar do boato no WhatsApp.</p>
+            <a class="more" href="#contato">Saiba mais sobre comunicados →</a>
+          </article>
+          <article class="feature">
+            <div class="feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16l4-2 4 2 4-2 4 2V8Z"/><path d="M14 2v6h6"/></svg>
+            </div>
+            <h3>Ocorrências com registro</h3>
+            <p>Foto, descrição e acompanhamento — com histórico para a gestão.</p>
+            <a class="more" href="#contato">Saiba mais sobre ocorrências →</a>
+          </article>
+          <article class="feature">
+            <div class="feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20c1.5-3.5 4.5-5 8-5s6.5 1.5 8 5"/></svg>
+            </div>
+            <h3>Facial e controle de acesso</h3>
+            <p>Pré-cadastro facial e credenciais no mesmo cadastro de unidades e pessoas.</p>
+            <a class="more" href="#contato">Saiba mais sobre acesso →</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="persona-sec" id="para-quem">
+      <div class="container">
+        <div class="section-head">
+          <h2>Feito sob medida para cada necessidade</h2>
+          <p>Troque o perfil e veja o que o CondoUrban resolve no dia a dia.</p>
+        </div>
+
+        <div class="tabs" role="tablist">
+          <button class="tab is-active" type="button" data-tab="morador">Para moradores</button>
+          <button class="tab" type="button" data-tab="gestao">Para síndicos &amp; administradoras</button>
+        </div>
+
+        <div class="panel is-active" id="panel-morador">
+          <div class="split">
+            <div>
+              <span class="pill">Comodidade para os moradores</span>
+              <h3>Mais tempo livre e zero atrito com o <span class="hl">dia a dia do condomínio</span>.</h3>
+              <ul class="checks">
+                <li>Autorizar visitante com validade, sem ligar na portaria</li>
+                <li>Saber na hora quando a encomenda chegou</li>
+                <li>Reservar área comum sem fila no grupo do WhatsApp</li>
+              </ul>
+              <a class="btn btn-primary" href="#contato">Quero no meu condomínio</a>
+            </div>
+            <div class="photo-wrap">
+              <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=1000&q=80" alt="Ambiente residencial moderno" />
+              <div class="photo-card">
+                <strong>Reserva confirmada</strong>
+                <span>Salão de festas · sábado 19h</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel" id="panel-gestao">
+          <div class="split">
+            <div>
+              <span class="pill">Operação para gestão e portaria</span>
+              <h3>Menos WhatsApp. Mais <span class="hl">rotina registrada</span>.</h3>
+              <ul class="checks">
+                <li>Comunicados e ocorrências com histórico</li>
+                <li>Liberação alinhada ao facial e credenciais</li>
+                <li>Visão do que acontece no condomínio</li>
+              </ul>
+              <a class="btn btn-primary" href="#contato">Agendar demonstração</a>
+            </div>
+            <div class="photo-wrap">
+              <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1000&q=80" alt="Fachada de condomínio moderno" />
+              <div class="photo-card">
+                <strong>Portaria sincronizada</strong>
+                <span>Visitantes e acessos no mesmo sistema</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="quotes-sec" id="depoimentos">
+      <div class="container">
+        <div class="section-head">
+          <span class="pill pill-center">Depoimentos</span>
+          <h2>Quem usa, recomenda todos os dias.</h2>
+          <p>Prova social real entra aqui. Por enquanto, o tom que buscamos.</p>
+        </div>
+        <div class="quotes">
+          <blockquote class="quote">
+            <div class="stars">★★★★★</div>
+            <p>“Quero o portão abrindo e o morador atendido — sem eu no meio de cada mensagem.”</p>
+            <cite><span class="avatar">S</span><span><strong>Perfil síndico</strong><small>Gestão do dia a dia</small></span></cite>
+          </blockquote>
+          <blockquote class="quote">
+            <div class="stars">★★★★★</div>
+            <p>“Gestão e acesso no mesmo lugar. Um cadastro, uma verdade — sem planilha paralela.”</p>
+            <cite><span class="avatar">P</span><span><strong>Portaria</strong><small>Operação</small></span></cite>
+          </blockquote>
+          <blockquote class="quote">
+            <div class="stars">★★★★★</div>
+            <p>“Reserva e visitante pelo app. Sem ligar, sem grupo caótico.”</p>
+            <cite><span class="avatar">M</span><span><strong>Morador</strong><small>App do condomínio</small></span></cite>
+          </blockquote>
+        </div>
+      </div>
+    </section>
+
+    <section class="faq-sec" id="faq">
+      <div class="container narrow">
+        <div class="section-head">
+          <span class="pill pill-center">Tire suas dúvidas</span>
+          <h2>Perguntas frequentes</h2>
+        </div>
+        <div class="faq">
+          <details>
+            <summary>Quanto custa?</summary>
+            <p>Planos em definição. Na demo montamos a conta conforme unidades e acesso/facial — sem tabela fictícia.</p>
+          </details>
+          <details>
+            <summary>Preciso trocar os equipamentos da portaria?</summary>
+            <p>Depende do que já existe. Avaliamos modelo a modelo (Intelbras no foco inicial).</p>
+          </details>
+          <details>
+            <summary>Tem fidelidade longa?</summary>
+            <p>Detalhes saem na proposta — sem multa escondida na landing.</p>
+          </details>
+          <details>
+            <summary>Tem boleto no app?</summary>
+            <p>Financeiro in-app é fase posterior. Agora o foco é operação: acesso, reservas, portaria e comunicação.</p>
+          </details>
+          <details>
+            <summary>Já sou morador — como entro?</summary>
+            <p>Use Entrar com o acesso liberado pela administração do seu condomínio.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-sec" id="contato">
+      <div class="container">
+        <div class="cta-box">
+          <div class="cta-copy">
+            <h2>Transforme a rotina do seu <span class="hl-light">condomínio</span> com gestão e acesso no mesmo sistema.</h2>
+            <p>Uma conversa curta para ver se o encaixe é CondoUrban — ou se ainda não.</p>
+            <div class="store-row">
+              <span class="store">App Store <em>(em breve)</em></span>
+              <span class="store">Google Play <em>(em breve)</em></span>
+            </div>
+          </div>
+          <form class="cta-form" action="#" method="get" onsubmit="return false;">
+            <h3>Solicitar demonstração</h3>
+            <label>Nome completo<input type="text" name="nome" placeholder="Seu nome" /></label>
+            <label>E-mail<input type="email" name="email" placeholder="voce@email.com" /></label>
+            <label>Telefone / WhatsApp<input type="tel" name="tel" placeholder="(61) 90000-0000" /></label>
+            <label>Eu sou…
+              <select name="perfil">
+                <option>Síndico</option>
+                <option>Administradora</option>
+                <option>Morador / conselho</option>
+              </select>
+            </label>
+            <button class="btn btn-primary" type="submit">Agendar minha apresentação</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <p class="footer-brand">
+          <img class="footer-logo" src="../assets/condourban-logo-badge.png" alt="CondoUrban" width="180" height="153" />
+        </p>
+        <p>Gestão condominial e controle de acesso.</p>
+      </div>
+      <div>
+        <h4>Plataforma</h4>
+        <a href="#recursos">Recursos</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contato">Demo</a>
+      </div>
+      <div>
+        <h4>Público</h4>
+        <a href="#para-quem">Moradores</a>
+        <a href="#para-quem">Síndicos</a>
+        <a href="#para-quem">Portaria</a>
+      </div>
+      <div>
+        <h4>Versões</h4>
+        <a href="../index.html">Comparar as 3</a>
+        <a href="../v1/index.html">v1 Atmosférica</a>
+        <a href="../v3/index.html">v3 Híbrida</a>
+        <a id="entrar" href="../../index.html">Entrar (em breve)</a>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <span>© 2026 CondoUrban</span>
+      <span>Privacidade · Termos · Preview local</span>
+    </div>
+  </footer>
+
+  <script>
+    const toggle = document.getElementById("menuToggle");
+    const mobile = document.getElementById("navMobile");
+    toggle?.addEventListener("click", () => {
+      const open = mobile.classList.toggle("is-open");
+      mobile.hidden = !open;
+      toggle.setAttribute("aria-expanded", String(open));
+    });
+    mobile?.querySelectorAll("a").forEach((a) => a.addEventListener("click", () => {
+      mobile.classList.remove("is-open");
+      mobile.hidden = true;
+      toggle.setAttribute("aria-expanded", "false");
+    }));
+
+    document.querySelectorAll(".tab").forEach((tab) => {
+      tab.addEventListener("click", () => {
+        document.querySelectorAll(".tab").forEach((t) => t.classList.remove("is-active"));
+        document.querySelectorAll(".panel").forEach((p) => p.classList.remove("is-active"));
+        tab.classList.add("is-active");
+        document.getElementById("panel-" + tab.dataset.tab)?.classList.add("is-active");
+      });
+    });
+  </script>
+</body>
+</html>

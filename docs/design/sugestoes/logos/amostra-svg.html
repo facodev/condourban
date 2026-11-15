@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Amostra de logos — SVG + Stitch</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root { --brand:#0F6B5C; --strong:#0A4F44; --surface:#F4F6F5; --card:#fff; --ink:#1A1F1E; --muted:#5C6763; --border:#D5DCD9; --soft:#D8EFEA; }
+    * { box-sizing:border-box; }
+    body { margin:0; font-family:"Source Sans 3",system-ui,sans-serif; background:linear-gradient(160deg,#e7f2ee,var(--surface)); color:var(--ink); padding:2rem 1.25rem 3rem; }
+    .wrap { max-width:1000px; margin:0 auto; }
+    a.back { color:var(--brand); font-weight:600; text-decoration:none; }
+    h1 { font-family:Fraunces,Georgia,serif; color:var(--strong); margin:.5rem 0 .35rem; }
+    .lead { color:var(--muted); margin:0 0 1.5rem; }
+    h2 { font-size:.8rem; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); margin:2rem 0 .75rem; }
+    .grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(160px,1fr)); gap:1rem; }
+    .grid-stitch { display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:1rem; }
+    .card { background:var(--card); border:1px solid var(--border); border-radius:16px; padding:1.25rem; display:flex; flex-direction:column; align-items:center; gap:.75rem; text-decoration:none; color:inherit; }
+    a.card:hover { border-color:var(--brand); }
+    .card.fav { border-color:var(--brand); box-shadow:0 0 0 2px var(--soft); }
+    .card img.mark { width:88px; height:88px; object-fit:contain; }
+    .card span { font-size:.85rem; font-weight:600; color:var(--muted); text-align:center; }
+    .card .actions { display:flex; gap:.5rem; flex-wrap:wrap; justify-content:center; }
+    .card .actions a { font-size:.72rem; font-weight:700; color:var(--brand); text-decoration:none; }
+    .stitch-card { background:var(--card); border:1px solid var(--border); border-radius:16px; overflow:hidden; display:flex; flex-direction:column; }
+    .stitch-card .preview { background:#f0f3f2; padding:1.25rem; display:flex; align-items:center; justify-content:center; min-height:160px; }
+    .stitch-card .preview img { max-width:120px; max-height:120px; object-fit:contain; border-radius:22px; }
+    .stitch-card .meta { padding:.85rem 1rem 1rem; }
+    .stitch-card .meta strong { display:block; color:var(--strong); font-size:.95rem; }
+    .stitch-card .meta small { color:var(--muted); font-size:.75rem; }
+    .stitch-card .meta .actions { margin-top:.55rem; display:flex; gap:.75rem; }
+    .stitch-card .meta .actions a { font-size:.78rem; font-weight:700; color:var(--brand); text-decoration:none; }
+    .wide { grid-column:1/-1; }
+    @media(min-width:700px){ .wide{ grid-column:span 2; } }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <a class="back" href="index.html">← Galeria de logos</a>
+    · <a class="back" href="../index.html">Hub sugestões</a>
+    <h1>Amostra de logos</h1>
+    <p class="lead">Logo oficial, SVG (casa / prédio / chave) e propostas <strong>Stitch</strong>.</p>
+
+    <h2>Oficial</h2>
+    <div class="grid">
+      <div class="card fav wide" style="padding:1.5rem">
+        <img src="oficial/condourban-logo.png" alt="CondoUrban" style="width:min(280px,100%);height:auto"/>
+        <span>CondoUrban · logo oficial</span>
+      </div>
+    </div>
+
+    <h2>Símbolos preferidos (SVG)</h2>
+    <div class="grid">
+      <div class="card fav"><img class="mark" src="svg/mark-casa.svg" alt=""/><span>Casa</span></div>
+      <div class="card fav"><img class="mark" src="svg/mark-predio.svg" alt=""/><span>Prédio</span></div>
+      <div class="card fav"><img class="mark" src="svg/mark-chave.svg" alt=""/><span>Chave</span></div>
+      <div class="card fav"><img class="mark" src="svg/mark-casa-chave.svg" alt=""/><span>Casa + chave</span></div>
+      <div class="card"><img class="mark" src="svg/mark-casa-azul.svg" alt=""/><span>Casa azul</span></div>
+      <div class="card"><img class="mark" src="svg/mark-casa-roxo.svg" alt=""/><span>Casa roxa</span></div>
+    </div>
+
+    <h2>App icons (SVG)</h2>
+    <div class="grid">
+      <div class="card"><img class="mark" src="svg/app-icon-casa.svg" alt="" style="border-radius:20px"/><span>App casa</span></div>
+      <div class="card"><img class="mark" src="svg/app-icon-predio.svg" alt="" style="border-radius:20px"/><span>App prédio</span></div>
+      <div class="card"><img class="mark" src="svg/app-icon-chave.svg" alt="" style="border-radius:20px"/><span>App chave</span></div>
+    </div>
+
+    <h2>Wordmarks (SVG)</h2>
+    <div class="grid">
+      <div class="card wide"><img src="svg/wordmark-habitar-casa.svg" alt="" style="width:min(300px,100%);height:auto"/><span>CondoUrban + casa</span></div>
+      <div class="card wide"><img src="svg/wordmark-habitar-chave.svg" alt="" style="width:min(300px,100%);height:auto"/><span>CondoUrban + chave</span></div>
+    </div>
+
+    <h2>Propostas Stitch</h2>
+    <p class="lead" style="margin-top:-.5rem;font-size:.9rem">PNG de preview + HTML/SVG exportado do Stitch.</p>
+    <div class="grid-stitch">
+      <article class="stitch-card">
+        <div class="preview"><img src="stitch/harmony-emerald/screen.png" alt="Harmony emerald"/></div>
+        <div class="meta">
+          <strong>Harmony emerald</strong>
+          <small>stitch/harmony-emerald</small>
+          <div class="actions">
+            <a href="stitch/harmony-emerald/screen.png" target="_blank">PNG</a>
+            <a href="stitch/harmony-emerald/code.html" target="_blank">Código</a>
+          </div>
+        </div>
+      </article>
+      <article class="stitch-card">
+        <div class="preview"><img src="stitch/smart-modern/screen.png" alt="Smart modern"/></div>
+        <div class="meta">
+          <strong>Smart modern</strong>
+          <small>stitch/smart-modern</small>
+          <div class="actions">
+            <a href="stitch/smart-modern/screen.png" target="_blank">PNG</a>
+            <a href="stitch/smart-modern/code.html" target="_blank">Código</a>
+          </div>
+        </div>
+      </article>
+      <article class="stitch-card">
+        <div class="preview"><img src="stitch/verde-petroleo/screen.png" alt="Verde petróleo"/></div>
+        <div class="meta">
+          <strong>Verde petróleo</strong>
+          <small>stitch/verde-petroleo</small>
+          <div class="actions">
+            <a href="stitch/verde-petroleo/screen.png" target="_blank">PNG</a>
+            <a href="stitch/verde-petroleo/code.html" target="_blank">Código</a>
+          </div>
+        </div>
+      </article>
+      <article class="stitch-card">
+        <div class="preview"><img src="stitch/condoviva/screen.png" alt="CondoViva"/></div>
+        <div class="meta">
+          <strong>CondoViva</strong>
+          <small>stitch/condoviva</small>
+          <div class="actions">
+            <a href="stitch/condoviva/screen.png" target="_blank">PNG</a>
+            <a href="stitch/condoviva/code.html" target="_blank">Código</a>
+          </div>
+        </div>
+      </article>
+      <article class="stitch-card">
+        <div class="preview"><img src="stitch/minimal-arcos-azul/screen.png" alt="Arcos azul"/></div>
+        <div class="meta">
+          <strong>Minimal arcos azul</strong>
+          <small>stitch/minimal-arcos-azul</small>
+          <div class="actions">
+            <a href="stitch/minimal-arcos-azul/screen.png" target="_blank">PNG</a>
+            <a href="stitch/minimal-arcos-azul/code.html" target="_blank">Código</a>
+          </div>
+        </div>
+      </article>
+      <article class="stitch-card">
+        <div class="preview"><img src="stitch/minimal-linhas-verde/screen.png" alt="Linhas verde"/></div>
+        <div class="meta">
+          <strong>Minimal linhas verde</strong>
+          <small>stitch/minimal-linhas-verde</small>
+          <div class="actions">
+            <a href="stitch/minimal-linhas-verde/screen.png" target="_blank">PNG</a>
+            <a href="stitch/minimal-linhas-verde/code.html" target="_blank">Código</a>
+          </div>
+        </div>
+      </article>
+      <article class="stitch-card">
+        <div class="preview"><img src="stitch/minimal-silhueta-verde/screen.png" alt="Silhueta verde"/></div>
+        <div class="meta">
+          <strong>Minimal silhueta verde</strong>
+          <small>stitch/minimal-silhueta-verde</small>
+          <div class="actions">
+            <a href="stitch/minimal-silhueta-verde/screen.png" target="_blank">PNG</a>
+            <a href="stitch/minimal-silhueta-verde/code.html" target="_blank">Código</a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</body>
+</html>

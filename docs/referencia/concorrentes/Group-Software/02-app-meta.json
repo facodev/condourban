@@ -1,0 +1,17 @@
+{
+  "package_id": "br.com.comunidadesmobile_1",
+  "title": "Group Com",
+  "developer": "Group Software Ltda",
+  "play_url": "https://play.google.com/store/apps/details?id=br.com.comunidadesmobile_1&hl=pt_BR",
+  "screenshot_count_available": 21,
+  "files": [
+    "02-app-01.png",
+    "02-app-02.png",
+    "02-app-03.png",
+    "02-app-04.png",
+    "02-app-05.png",
+    "02-app-06.png"
+  ],
+  "icon": "https://play-lh.googleusercontent.com/78xBVctm6ygoD8cRmG-XGmY9msN3Fl7wjKEZazBQAxRwcBzGLyLNSiXFWCZBBXL-yn8kiI-5z4dTAvCGFtxpzw",
+  "source": "google-play-scraper"
+}

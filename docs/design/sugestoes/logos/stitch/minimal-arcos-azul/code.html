@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Logo Stitch — minimal-arcos-azul</title>
+  <style>
+    html, body {
+      margin: 0; min-height: 100%;
+      background: #eef2f0;
+      font-family: system-ui, sans-serif;
+    }
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      padding: 1.5rem;
+    }
+    .frame {
+      width: min(168px, 42vw);
+      height: min(168px, 42vw);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .frame svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+      border-radius: 22%;
+      box-shadow: 0 10px 28px rgba(15, 35, 30, 0.12);
+    }
+    .cap {
+      color: #5C6763;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+  <div class="frame">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
+  <!-- Clean soft blue tinted surface background -->
+  <rect width="512" height="512" rx="128" fill="#EFF6FF"/>
+  <rect x="16" y="16" width="480" height="480" rx="112" stroke="#2563EB" stroke-width="6" stroke-opacity="0.12"/>
+
+  <!-- Minimalist Monomark: Stylized interconnected arches symbolizing community, residence and safety -->
+  <g>
+    <!-- Outer Roof Arch -->
+    <path d="M160 270L256 174L352 270" stroke="#2563EB" stroke-width="28" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <!-- Left Structure -->
+    <path d="M192 276V344C192 352.837 199.163 360 208 360H224C232.837 360 240 352.837 240 344V300C240 291.163 247.163 284 256 284C264.837 284 272 291.163 272 300V344C272 352.837 279.163 360 288 360H304C312.837 360 320 352.837 320 344V276" stroke="#2563EB" stroke-width="28" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <!-- Dynamic Smart Accent Beacon -->
+    <circle cx="256" cy="226" r="14" fill="#10B981"/>
+  </g>
+</svg>
+  </div>
+  <p class="cap">minimal-arcos-azul · preview 168px</p>
+</body>
+</html>

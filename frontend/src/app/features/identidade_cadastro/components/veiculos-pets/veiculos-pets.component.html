@@ -1,0 +1,423 @@
+<div class="view-layout">
+  <!-- CABEÇALHO EDITORIAL -->
+  <header class="section-hero">
+    <div class="hero-titles">
+      <div class="hero-context-badge">
+        <span class="pulse-indicator"></span>
+        <span>Módulo 01 • Controle Patrimonial & Comunitário</span>
+      </div>
+      <h1 class="hero-title">Veículos & Animais de Estimação</h1>
+      <p class="hero-subtitle">
+        Mapeamento de placas autorizadas na garagem e registro sanitário/comunitário de pets por unidade.
+      </p>
+    </div>
+  </header>
+
+  <!-- NAVEGAÇÃO INTERNA DO BOUNDED CONTEXT -->
+  <nav class="subnav-tabs">
+    <a routerLink="/identidade-cadastro/pessoas" routerLinkActive="active" class="tab-link">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+        <circle cx="12" cy="7" r="4"></circle>
+      </svg>
+      <span>Pessoas Físicas</span>
+    </a>
+    <a routerLink="/identidade-cadastro/ocupacoes" routerLinkActive="active" class="tab-link">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+        <polyline points="9 22 9 12 15 12 15 22"></polyline>
+      </svg>
+      <span>Vínculos & Ocupações</span>
+    </a>
+    @if (sessionService.podeGerenciarUsuarios()) {
+      <a routerLink="/identidade-cadastro/usuarios" routerLinkActive="active" class="tab-link">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+          <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+        </svg>
+        <span>Usuários & Perfis (RBAC)</span>
+      </a>
+    }
+    @if (sessionService.podeGerenciarCadastros()) {
+      <a routerLink="/identidade-cadastro/onboarding" routerLinkActive="active" class="tab-link">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+          <circle cx="8.5" cy="7" r="4"></circle>
+          <polyline points="17 11 19 13 23 9"></polyline>
+        </svg>
+        <span>Onboarding & Convites</span>
+      </a>
+    }
+    <a routerLink="/identidade-cadastro/veiculos-pets" routerLinkActive="active" class="tab-link">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <rect x="1" y="3" width="15" height="13"></rect>
+        <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
+        <circle cx="5.5" cy="18.5" r="2.5"></circle>
+        <circle cx="18.5" cy="18.5" r="2.5"></circle>
+      </svg>
+      <span>Veículos & Pets</span>
+    </a>
+  </nav>
+
+  <!-- FAIXA DE RESUMO OPERACIONAL -->
+  <section class="metrics-ribbon">
+    <div class="metric-cell">
+      <div class="metric-glyph">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="1" y="3" width="15" height="13"></rect>
+          <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
+          <circle cx="5.5" cy="18.5" r="2.5"></circle>
+          <circle cx="18.5" cy="18.5" r="2.5"></circle>
+        </svg>
+      </div>
+      <div class="metric-data">
+        <span class="metric-value">{{ veiculos().length }}</span>
+        <span class="metric-label">Veículos Cadastrados</span>
+      </div>
+    </div>
+
+    <div class="metric-divider"></div>
+
+    <div class="metric-cell">
+      <div class="metric-glyph">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 2a4 4 0 0 0-4 4c0 2 2 3 4 5 2-2 4-3 4-5a4 4 0 0 0-4-4z"></path>
+          <circle cx="6" cy="16" r="3"></circle>
+          <circle cx="18" cy="16" r="3"></circle>
+          <circle cx="12" cy="19" r="2"></circle>
+        </svg>
+      </div>
+      <div class="metric-data">
+        <span class="metric-value">{{ pets().length }}</span>
+        <span class="metric-label">Animais de Estimação</span>
+      </div>
+    </div>
+
+    <div class="metric-divider"></div>
+
+    <div class="metric-cell">
+      <div class="metric-glyph">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+          <polyline points="22 4 12 14.01 9 11.01"></polyline>
+        </svg>
+      </div>
+      <div class="metric-data">
+        <span class="metric-value">{{ petsVacinadosCount() }}</span>
+        <span class="metric-label">Pets com Vacinação em Dia</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- BARRA DE BUSCA & FILTRO POR UNIDADE, TORRE E PLACA -->
+  <section class="toolbar-card">
+    <div class="search-box">
+      <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="11" cy="11" r="8"></circle>
+        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+      </svg>
+      <input
+        type="text"
+        placeholder="Buscar por placa, modelo, veículo, pet ou unidade…"
+        [ngModel]="busca()"
+        (ngModelChange)="busca.set($event)"
+      />
+    </div>
+
+    <div class="filter-group">
+      <!-- Filtro por Torre / Bloco -->
+      <select
+        [ngModel]="filtroBloco()"
+        (ngModelChange)="aoMudarFiltroBloco($event)"
+        class="select-filter"
+        title="Filtrar por Torre ou Bloco"
+      >
+        <option value="TODOS">🏢 Todas as Torres</option>
+        @for (b of blocos(); track b.id) {
+          <option [value]="b.id">{{ b.nome || b.name }}</option>
+        }
+      </select>
+
+      <!-- Filtro por Unidade -->
+      <select
+        [ngModel]="filtroUnidade()"
+        (ngModelChange)="filtroUnidade.set($event)"
+        class="select-filter"
+        title="Filtrar por Unidade Habitacional"
+      >
+        <option value="TODOS">🚪 Todas as Unidades</option>
+        @for (u of unidadesDisponiveisFiltro(); track u.id) {
+          <option [value]="u.id">Unidade {{ u.identificacao || u.number }}</option>
+        }
+      </select>
+
+      @if (filtroBloco() !== 'TODOS' || filtroUnidade() !== 'TODOS' || busca().trim()) {
+        <button type="button" class="btn-clear-filter" (click)="limparFiltros()" title="Limpar todos os filtros">
+          ✕ Limpar
+        </button>
+      }
+    </div>
+
+    <span class="search-count">
+      Exibindo {{ veiculosFiltrados().length }} veículos e {{ petsFiltrados().length }} pets
+    </span>
+  </section>
+
+  <!-- DUAL GRID: VEÍCULOS & PETS -->
+  <div class="dual-columns">
+    <!-- SEÇÃO 1: VEÍCULOS -->
+    <section class="section-card">
+      <div class="section-card-header">
+        <div>
+          <h2 class="section-card-title">Automóveis & Motos ({{ veiculosFiltrados().length }})</h2>
+          <p class="section-card-desc">Controle de portaria e liberação de portão automático.</p>
+        </div>
+        @if (sessionService.podeGerenciarCadastros() || (sessionService.escopoSomenteUnidade() && sessionService.unidadeIdsEscopo().length > 0)) {
+          <app-button (click)="mostrarFormVeiculo.set(!mostrarFormVeiculo())" variant="outline" size="sm">
+            {{ mostrarFormVeiculo() ? 'Fechar' : '+ Novo Veículo' }}
+          </app-button>
+        }
+      </div>
+
+      @if (mostrarFormVeiculo()) {
+        <div class="inline-form-box">
+          <form (ngSubmit)="salvarVeiculo()">
+            <div class="form-grid">
+              <div class="field-group">
+                <label class="field-label">Placa do Veículo <span class="required">*</span></label>
+                <input
+                  [(ngModel)]="novaPlaca"
+                  name="novaPlaca"
+                  (ngModelChange)="formatarPlacaInput($event)"
+                  required
+                  placeholder="ABC1D23"
+                  class="input-control font-mono uppercase"
+                  maxlength="8"
+                  autofocus
+                />
+              </div>
+
+              <div class="field-group">
+                <label class="field-label">Unidade Responsável <span class="required">*</span></label>
+                <select [(ngModel)]="veiculoUnidadeId" name="veiculoUnidadeId" required class="select-control">
+                  <option value="">Selecione a unidade…</option>
+                  @for (u of unidades(); track u.id) {
+                    <option [value]="u.id">Unidade {{ u.identificacao || u.number }}</option>
+                  }
+                </select>
+              </div>
+            </div>
+
+            <div class="form-grid three-col">
+              <div class="field-group">
+                <label class="field-label">Modelo / Veículo <span class="required">*</span></label>
+                <input [(ngModel)]="novoModelo" name="novoModelo" required placeholder="Ex: Corolla, Civic" class="input-control" />
+              </div>
+              <div class="field-group">
+                <label class="field-label">Marca / Fabricante</label>
+                <input [(ngModel)]="novaMarca" name="novaMarca" placeholder="Ex: Toyota, Honda" class="input-control" />
+              </div>
+              <div class="field-group">
+                <label class="field-label">Cor</label>
+                <input [(ngModel)]="novaCor" name="novaCor" placeholder="Ex: Prata, Preto" class="input-control" />
+              </div>
+            </div>
+
+            @if (erroVeiculo()) {
+              <p class="form-error">{{ erroVeiculo() }}</p>
+            }
+
+            <div class="form-actions-inline">
+              <app-button type="submit" [disabled]="salvandoVeiculo() || !novaPlaca.trim() || !novoModelo.trim() || !veiculoUnidadeId" variant="primary" size="sm">
+                {{ salvandoVeiculo() ? 'Salvando…' : 'Salvar Veículo' }}
+              </app-button>
+              <app-button type="button" variant="ghost" size="sm" (click)="mostrarFormVeiculo.set(false)">Cancelar</app-button>
+            </div>
+          </form>
+        </div>
+      }
+
+      <div class="items-stack">
+        @for (v of veiculosFiltrados(); track v.id || v.placa) {
+          <div class="vehicle-item">
+            <div class="mercosul-plate">
+              <div class="plate-blue-strip">
+                <span class="plate-country">BRASIL</span>
+                <span class="plate-flag">🇧🇷</span>
+              </div>
+              <div class="plate-code font-mono">{{ v.placa | placa }}</div>
+            </div>
+
+            <div class="vehicle-info">
+              <div class="vehicle-unit-badge">
+                🏠 {{ getUnidadeCompleta(v.unidade_id) }}
+              </div>
+              <h3 class="vehicle-model">{{ v.modelo }} {{ v.marca ? '(' + v.marca + ')' : '' }}</h3>
+              <div class="vehicle-meta">
+                <span>Cor: {{ v.cor || 'Não informada' }}</span>
+                <span class="sep">•</span>
+                <span>Vaga: {{ v.vaga_identificacao || 'Rotativa / Livre' }}</span>
+              </div>
+            </div>
+
+            <div class="vehicle-status">
+              <span class="authorized-chip">Autorizado</span>
+              @if (podeExcluirVeiculo(v)) {
+                <button type="button" class="btn-delete" (click)="confirmarExclusaoVeiculo(v)" title="Excluir Veículo">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="3 6 5 6 21 6"></polyline>
+                    <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                  </svg>
+                  <span>Excluir</span>
+                </button>
+              }
+            </div>
+          </div>
+        } @empty {
+          <div class="empty-compact">
+            <span class="empty-glyph">🚗</span>
+            <p>Nenhum veículo localizado com os filtros selecionados.</p>
+          </div>
+        }
+      </div>
+    </section>
+
+    <!-- SEÇÃO 2: PETS -->
+    <section class="section-card">
+      <div class="section-card-header">
+        <div>
+          <h2 class="section-card-title">Animais de Estimação (Pets) ({{ petsFiltrados().length }})</h2>
+          <p class="section-card-desc">Controle sanitário, porte e identificação para áreas comuns.</p>
+        </div>
+        @if (sessionService.podeGerenciarCadastros() || (sessionService.escopoSomenteUnidade() && sessionService.unidadeIdsEscopo().length > 0)) {
+          <app-button (click)="mostrarFormPet.set(!mostrarFormPet())" variant="outline" size="sm">
+            {{ mostrarFormPet() ? 'Fechar' : '+ Novo Pet' }}
+          </app-button>
+        }
+      </div>
+
+      @if (mostrarFormPet()) {
+        <div class="inline-form-box">
+          <form (ngSubmit)="salvarPet()">
+            <div class="form-grid">
+              <div class="field-group">
+                <label class="field-label">Nome do Pet <span class="required">*</span></label>
+                <input [(ngModel)]="novoNomePet" name="novoNomePet" required placeholder="Ex: Pipoca, Thor, Mel" class="input-control" autofocus />
+              </div>
+
+              <div class="field-group">
+                <label class="field-label">Unidade Responsável <span class="required">*</span></label>
+                <select [(ngModel)]="petUnidadeId" name="petUnidadeId" required class="select-control">
+                  <option value="">Selecione a unidade…</option>
+                  @for (u of unidades(); track u.id) {
+                    <option [value]="u.id">Unidade {{ u.identificacao || u.number }}</option>
+                  }
+                </select>
+              </div>
+            </div>
+
+            <div class="form-grid three-col">
+              <div class="field-group">
+                <label class="field-label">Espécie <span class="required">*</span></label>
+                <select [(ngModel)]="especiePet" name="especiePet" class="select-control">
+                  <option value="CACHORRO">Cachorro</option>
+                  <option value="GATO">Gato</option>
+                  <option value="OUTRO">Outro</option>
+                </select>
+              </div>
+              <div class="field-group">
+                <label class="field-label">Raça</label>
+                <input [(ngModel)]="racaPet" name="racaPet" placeholder="Ex: Golden, SRD, Poodle" class="input-control" />
+              </div>
+              <div class="field-group">
+                <label class="field-label">Porte</label>
+                <select [(ngModel)]="portePet" name="portePet" class="select-control">
+                  <option value="PEQUENO">Pequeno</option>
+                  <option value="MEDIO">Médio</option>
+                  <option value="GRANDE">Grande</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="checkbox-line">
+              <label>
+                <input type="checkbox" [(ngModel)]="vacinacaoEmDia" name="vacinacaoEmDia" />
+                <span>Carteira de vacinação atualizada (Anti-rábica e Polivalente)</span>
+              </label>
+            </div>
+
+            @if (erroPet()) {
+              <p class="form-error">{{ erroPet() }}</p>
+            }
+
+            <div class="form-actions-inline">
+              <app-button type="submit" [disabled]="salvandoPet() || !novoNomePet.trim() || !petUnidadeId" variant="primary" size="sm">
+                {{ salvandoPet() ? 'Salvando…' : 'Salvar Pet' }}
+              </app-button>
+              <app-button type="button" variant="ghost" size="sm" (click)="mostrarFormPet.set(false)">Cancelar</app-button>
+            </div>
+          </form>
+        </div>
+      }
+
+      <div class="items-stack">
+        @for (p of petsFiltrados(); track p.id || p.nome) {
+          <div class="pet-item">
+            <div class="pet-avatar">
+              {{ p.especie === 'GATO' ? '🐱' : (p.especie === 'CACHORRO' ? '🐶' : '🐾') }}
+            </div>
+
+            <div class="pet-info">
+              <div class="pet-unit-badge">
+                🏠 {{ getUnidadeCompleta(p.unidade_id) }}
+              </div>
+              <div class="pet-name-line">
+                <h3 class="pet-name">{{ p.nome }}</h3>
+                <span class="species-badge">{{ p.especie }}</span>
+              </div>
+              <div class="pet-meta">
+                <span>Raça: {{ p.raca || 'SRD' }}</span>
+                <span class="sep">•</span>
+                <span>Porte: {{ p.porte || 'Médio' }}</span>
+              </div>
+            </div>
+
+            <div class="pet-status">
+              @if (p.vacinacao_em_dia || p.vacinado) {
+                <span class="vax-badge vax-yes">Vacinação em Dia</span>
+              } @else {
+                <span class="vax-badge vax-no">Pendente Vax</span>
+              }
+              @if (podeExcluirPet(p)) {
+                <button type="button" class="btn-delete" (click)="confirmarExclusaoPet(p)" title="Excluir Pet">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="3 6 5 6 21 6"></polyline>
+                    <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                  </svg>
+                  <span>Excluir</span>
+                </button>
+              }
+            </div>
+          </div>
+        } @empty {
+          <div class="empty-compact">
+            <span class="empty-glyph">🐾</span>
+            <p>Nenhum animal doméstico localizado com os filtros selecionados.</p>
+          </div>
+        }
+      </div>
+    </section>
+  </div>
+
+  <!-- DIALOG PADRONIZADO DE CONFIRMAÇÃO DE EXCLUSÃO -->
+  <app-confirm-dialog
+    [isOpen]="!!itemParaExcluir()"
+    title="Confirmar Exclusão"
+    [message]="'Deseja realmente remover ' + (itemParaExcluir()?.nome || '') + '? Esta ação não pode ser desfeita.'"
+    confirmText="Sim, Excluir"
+    cancelText="Cancelar"
+    [isDestructive]="true"
+    (confirmed)="executarExclusao()"
+    (cancelled)="itemParaExcluir.set(null)"
+  ></app-confirm-dialog>
+</div>

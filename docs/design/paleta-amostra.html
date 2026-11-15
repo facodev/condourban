@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Paleta — App Condomínio</title>
+  <style>
+    :root {
+      --brand: #0F6B5C;
+      --brand-strong: #0A4F44;
+      --brand-soft: #D8EFEA;
+      --accent: #E8A317;
+      --accent-soft: #FFF4D6;
+      --surface: #F4F6F5;
+      --card: #FFFFFF;
+      --border: #D5DCD9;
+      --ink: #1A1F1E;
+      --ink-muted: #5C6763;
+      --drawer: #1E2A28;
+      --success: #2E7D32;
+      --warning: #ED6C02;
+      --danger: #C62828;
+      --info: #0277BD;
+      --orange-b: #E85D04;
+      --orange-b-strong: #C44D00;
+      --orange-b-soft: #FFE8D6;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; font-family: "Segoe UI", system-ui, sans-serif;
+      background: var(--surface); color: var(--ink); padding: 2rem;
+    }
+    h1 { margin-top: 0; }
+    h2 { margin-top: 2.5rem; color: var(--brand-strong); }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 1rem; }
+    .swatch {
+      background: var(--card); border: 1px solid var(--border); border-radius: 12px; overflow: hidden;
+      box-shadow: 0 1px 3px rgb(26 31 30 / 8%);
+    }
+    .chip { height: 72px; }
+    .meta { padding: .75rem; font-size: .85rem; }
+    .meta strong { display: block; }
+    .meta code { color: var(--ink-muted); font-size: .8rem; }
+    .preview {
+      margin-top: 1rem; padding: 1.25rem; border-radius: 12px; background: var(--brand); color: #fff;
+      display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;
+    }
+    .btn {
+      background: #fff; color: var(--brand-strong); border: 0; border-radius: 8px;
+      padding: .6rem 1rem; font-weight: 600; cursor: default;
+    }
+    .btn-accent { background: var(--accent); color: #1A1F1E; }
+    .note { color: var(--ink-muted); max-width: 60ch; }
+  </style>
+</head>
+<body>
+  <p style="margin:0 0 1rem"><a href="../../index.html" style="color:var(--brand);font-weight:600;text-decoration:none">← CondoUrban (hub)</a>
+  · <a href="sugestoes/index.html" style="color:var(--brand);font-weight:600;text-decoration:none">Sugestões</a></p>
+  <h1>Paleta de cores</h1>
+  <p class="note">Opção A (verde-azulado) — provisão. Abrir este arquivo no navegador. Fonte: <code>paleta-cores.md</code>.</p>
+
+  <h2>Opção A — Brand</h2>
+  <div class="grid">
+    <div class="swatch"><div class="chip" style="background:#0F6B5C"></div><div class="meta"><strong>brand</strong><code>#0F6B5C</code></div></div>
+    <div class="swatch"><div class="chip" style="background:#0A4F44"></div><div class="meta"><strong>brand-strong</strong><code>#0A4F44</code></div></div>
+    <div class="swatch"><div class="chip" style="background:#D8EFEA"></div><div class="meta"><strong>brand-soft</strong><code>#D8EFEA</code></div></div>
+    <div class="swatch"><div class="chip" style="background:#E8A317"></div><div class="meta"><strong>accent</strong><code>#E8A317</code></div></div>
+    <div class="swatch"><div class="chip" style="background:#FFF4D6"></div><div class="meta"><strong>accent-soft</strong><code>#FFF4D6</code></div></div>
+  </div>
+
+  <h2>Neutros</h2>
+  <div class="grid">
+    <div class="swatch"><div class="chip" style="background:#F4F6F5;border-bottom:1px solid #D5DCD9"></div><div class="meta"><strong>surface</strong><code>#F4F6F5</code></div></div>
+    <div class="swatch"><div class="chip" style="background:#FFFFFF;border-bottom:1px solid #D5DCD9"></div><div class="meta"><strong>card</strong><code>#FFFFFF</code></div></div>
+    <div class="swatch"><div class="chip" style="background:#1A1F1E"></div><div class="meta"><strong>ink</strong><code>#1A1F1E</code></div></div>
+    <div class="swatch"><div class="chip" style="background:#5C6763"></div><div class="meta"><strong>ink-muted</strong><code>#5C6763</code></div></div>
+    <div class="swatch"><div class="chip" style="background:#1E2A28"></div><div class="meta"><strong>drawer</strong><code>#1E2A28</code></div></div>
+  </div>
+
+  <h2>Semânticos</h2>
+  <div class="grid">
+    <div class="swatch"><div class="chip" style="background:#2E7D32"></div><div class="meta"><strong>success</strong><code>#2E7D32</code></div></div>
+    <div class="swatch"><div class="chip" style="background:#ED6C02"></div><div class="meta"><strong>warning</strong><code>#ED6C02</code></div></div>
+    <div class="swatch"><div class="chip" style="background:#C62828"></div><div class="meta"><strong>danger</strong><code>#C62828</code></div></div>
+    <div class="swatch"><div class="chip" style="background:#0277BD"></div><div class="meta"><strong>info</strong><code>#0277BD</code></div></div>
+  </div>
+
+  <h2>Preview header / CTA</h2>
+  <div class="preview">
+    <span style="font-size:1.25rem;font-weight:700">Condomínio</span>
+    <span class="btn">Entrar</span>
+    <span class="btn btn-accent">Novo</span>
+  </div>
+
+  <h2>Opção B — Laranja (alternativa)</h2>
+  <div class="grid">
+    <div class="swatch"><div class="chip" style="background:#E85D04"></div><div class="meta"><strong>brand</strong><code>#E85D04</code></div></div>
+    <div class="swatch"><div class="chip" style="background:#C44D00"></div><div class="meta"><strong>brand-strong</strong><code>#C44D00</code></div></div>
+    <div class="swatch"><div class="chip" style="background:#FFE8D6"></div><div class="meta"><strong>brand-soft</strong><code>#FFE8D6</code></div></div>
+  </div>
+</body>
+</html>

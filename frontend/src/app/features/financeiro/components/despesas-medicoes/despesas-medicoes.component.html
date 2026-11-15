@@ -1,0 +1,37 @@
+<div class="page-container">
+  <header class="page-header">
+    <div>
+      <h2>Medições Individuais e Prestação de Contas</h2>
+      <p class="subtitle">Acompanhamento do consumo individual de água e gás e balancetes da gestão.</p>
+    </div>
+  </header>
+
+  <div class="medicoes-grid">
+    @for (item of medicoes(); track item.id) {
+      <div class="medicao-card">
+        <div class="header">
+          <span class="type-icon">{{ item.tipo === 'agua' ? '💧' : '🔥' }}</span>
+          <div>
+            <h3>Consumo de {{ item.tipo | uppercase }}</h3>
+            <span class="ref">Mês: {{ item.mesReferencia }} | {{ item.unidade }}</span>
+          </div>
+        </div>
+
+        <div class="metrics">
+          <div class="metric">
+            <span class="label">Leitura Anterior</span>
+            <span class="val">{{ item.leituraAnterior }} m³</span>
+          </div>
+          <div class="metric">
+            <span class="label">Leitura Atual</span>
+            <span class="val">{{ item.leituraAtual }} m³</span>
+          </div>
+          <div class="metric highlight">
+            <span class="label">Total Consumido</span>
+            <span class="val">{{ item.consumo }} m³</span>
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+</div>

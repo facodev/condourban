@@ -1,0 +1,28 @@
+<div class="page-container">
+  <header class="page-header">
+    <div>
+      <h2>Chamados de Manutenção e Ordens de Serviço</h2>
+      <p class="subtitle">Abertura e acompanhamento de reparos prediais com registro fotográfico.</p>
+    </div>
+  </header>
+
+  <div class="chamados-list">
+    @for (item of chamados(); track item.id) {
+      <div class="chamado-card">
+        <div class="header">
+          <div>
+            <span class="prio-tag" [class]="'prio-' + item.prioridade">{{ item.prioridade | uppercase }}</span>
+            <h3>{{ item.titulo }}</h3>
+            <span class="loc">📍 {{ item.local }}</span>
+          </div>
+          <app-status-badge [status]="item.status"></app-status-badge>
+        </div>
+        <p class="desc">{{ item.descricao }}</p>
+        <div class="footer">
+          <span>Aberto por {{ item.abertoPor }}</span>
+          <span>{{ item.abertoEm }}</span>
+        </div>
+      </div>
+    }
+  </div>
+</div>

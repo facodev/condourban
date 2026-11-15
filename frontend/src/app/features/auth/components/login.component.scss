@@ -1,0 +1,42 @@
+:host {
+  display: block;
+}
+
+.login-wrapper {
+  max-width: 420px;
+  margin: 4rem auto;
+  padding: 1rem;
+}
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  label {
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
+  input {
+    padding: 0.625rem;
+    border: 1px solid var(--color-border, #e2e8f0);
+    border-radius: var(--radius-md, 8px);
+  }
+}
+.divider {
+  text-align: center;
+  font-size: 0.875rem;
+  color: var(--color-text-muted, #64748b);
+}
+.social-login {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+.error-msg {
+  color: var(--color-danger, #dc2626);
+  font-size: 0.875rem;
+}

@@ -1,0 +1,49 @@
+:host {
+  display: block;
+}
+
+.type-pill {
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.2rem 0.55rem;
+  border-radius: 6px;
+  background: #f1f5f9;
+  color: #475569;
+
+  &.carro { background: #eff6ff; color: #1e40af; }
+  &.moto { background: #fef3c7; color: #92400e; }
+  &.pcd { background: #ecfdf5; color: #047857; }
+  &.visitante { background: #fdf4ff; color: #86198f; }
+}
+
+.cobertura-badge {
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.2rem 0.55rem;
+  border-radius: 6px;
+
+  &.coberta { background: #dcfce7; color: #15803d; }
+  &.descoberta { background: #f1f5f9; color: #64748b; }
+}
+
+.unidade-vinculo {
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.bloco-tag {
+  display: inline-block;
+  padding: 0.125rem 0.45rem;
+  border-radius: 4px;
+  background: #f1f5f9;
+  border: 1px solid #cbd5e1;
+  color: #475569;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.unidade-livre {
+  color: #94a3b8;
+  font-style: italic;
+}

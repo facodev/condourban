@@ -1,0 +1,24 @@
+<div class="page-container">
+  <header class="page-header">
+    <div>
+      <h2>Comunicados Oficiais e Mensageria</h2>
+      <p class="subtitle">Canal direto e oficial da administração com os moradores.</p>
+    </div>
+  </header>
+
+  <div class="comunicados-list">
+    @for (item of comunicados(); track item.id) {
+      <div class="comunicado-card" [class.urgent]="item.urgente">
+        @if (item.urgente) {
+          <span class="badge-urgent">COMUNICADO URGENTE</span>
+        }
+        <h3>{{ item.titulo }}</h3>
+        <p class="content">{{ item.conteudo }}</p>
+        <div class="footer">
+          <span>Publicado por: <strong>{{ item.autorNome }}</strong></span>
+          <span>{{ item.publicadoEm }}</span>
+        </div>
+      </div>
+    }
+  </div>
+</div>

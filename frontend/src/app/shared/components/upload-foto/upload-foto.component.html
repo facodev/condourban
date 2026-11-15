@@ -1,0 +1,21 @@
+<div class="upload-container w-full">
+  @if (previewUrl()) {
+    <div class="preview-box">
+      <img [src]="previewUrl()" alt="Foto capturada" class="preview-img" width="240" height="200" />
+      <button type="button" class="btn-remove focus-ring" (click)="clearPhoto()" aria-label="Remover foto selecionada">×</button>
+    </div>
+  } @else {
+    <label class="drop-zone focus-ring">
+      <span class="icon" aria-hidden="true">📷</span>
+      <span class="text">{{ label() }}</span>
+      <span class="hint">Toque para tirar foto ou selecionar da galeria</span>
+      <input
+        type="file"
+        accept="image/*"
+        capture="environment"
+        (change)="onFileSelected($event)"
+        class="file-input"
+      />
+    </label>
+  }
+</div>

@@ -1,0 +1,17 @@
+{
+  "package_id": "com.wecondo",
+  "title": "WeCondo",
+  "developer": "Adapt Soluções e Treinamento LTDA",
+  "play_url": "https://play.google.com/store/apps/details?id=com.wecondo&hl=pt_BR",
+  "screenshot_count_available": 8,
+  "files": [
+    "02-app-01.jpg",
+    "02-app-02.jpg",
+    "02-app-03.jpg",
+    "02-app-04.jpg",
+    "02-app-05.jpg",
+    "02-app-06.jpg"
+  ],
+  "icon": "https://play-lh.googleusercontent.com/kszCK71hl8E2b-SKUVhYt4SjasKBuTulAZidOK3P6N02NbW3klo20F5zxXG5MR5NdloGRDZPiYquSmKZUPQW",
+  "source": "google-play-scraper"
+}

@@ -1,0 +1,24 @@
+services:
+  api:
+    build:
+      context: ./services/api
+    ports:
+      - "8000:8000"
+    environment:
+      APP_NAME: CondoUrban
+      APP_ENV: development
+      DEBUG: "true"
+      DATABASE_URL: sqlite:////data/dev.db
+      JWT_SECRET: change-me-jwt-secret-docker-dev
+      SECRET_KEY: change-me-secret-docker-dev
+      CORS_ORIGINS: http://localhost:4200,http://127.0.0.1:4200
+      API_PREFIX: /api/v1
+    volumes:
+      - api-data:/data
+      - ./uploads:/app/uploads
+    command: >
+      sh -c "python scripts/seed.py &&
+             uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload"
+
+volumes:
+  api-data:

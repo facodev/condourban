@@ -1,0 +1,7 @@
+/*
+ * NOTA ARQUITETURAL:
+ * O ponto de entrada canônico de estilos globais do CondoUrban foi migrado para `src/styles.css`
+ * para suportar nativamente as diretivas CSS-first do Tailwind CSS v4 (@import "tailwindcss", @theme, @utility)
+ * em conjunto com os tokens do Angular Material 3 (--mat-sys-*).
+ */
+@import "./styles.css";

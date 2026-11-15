@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Layout 3 — Lista</title>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root, [data-palette="a"] {
+      --brand: #0F6B5C; --brand-strong: #0A4F44; --brand-soft: #D8EFEA;
+      --surface: #F4F6F5; --card: #fff; --ink: #1A1F1E; --muted: #5C6763; --border: #D5DCD9;
+    }
+    [data-palette="b"] {
+      --brand: #E85D04; --brand-strong: #C44D00; --brand-soft: #FFE8D6;
+      --surface: #F4F6F5; --card: #fff; --ink: #1A1F1E; --muted: #5C6763; --border: #D5DCD9;
+    }
+    [data-palette="c"] {
+      --brand: #1B4F72; --brand-strong: #0E3350; --brand-soft: #D6E4F0;
+      --surface: #F5F7FA; --card: #fff; --ink: #1A2332; --muted: #5A6570; --border: #CDD5DE;
+    }
+    [data-palette="d"] {
+      --brand: #4A5D23; --brand-strong: #354418; --brand-soft: #E8EDD9;
+      --surface: #F7F8F4; --card: #fff; --ink: #1C1F14; --muted: #5C6350; --border: #D5D9C8;
+    }
+    [data-palette="e"] {
+      --brand: #5B3A6E; --brand-strong: #3D254C; --brand-soft: #EDE4F2;
+      --surface: #F7F5F9; --card: #fff; --ink: #1F1824; --muted: #6B5F75; --border: #D9D0E0;
+    }
+    [data-palette="f"] {
+      --brand: #1565C0; --brand-strong: #0D47A1; --brand-soft: #E3F0FF;
+      --surface: #F3F7FC; --card: #fff; --ink: #0D1B2A; --muted: #5A6A7A; --border: #C5D4E8;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: "Source Sans 3", system-ui, sans-serif; background: #dde3e0; color: var(--ink); padding: 1.25rem; }
+    a.back { color: var(--brand); font-weight: 600; text-decoration: none; }
+    h1 { font-size: 1.35rem; margin: .6rem 0 .4rem; }
+    .toolbar { margin-bottom: 1.25rem; }
+    select { padding: .4rem .6rem; border-radius: 8px; border: 1px solid var(--border); }
+    .phone {
+      width: min(360px, 100%); margin: 0 auto; background: var(--surface);
+      border-radius: 28px; border: 3px solid #222; overflow: hidden; min-height: 640px;
+      display: flex; flex-direction: column; box-shadow: 0 12px 40px rgb(0 0 0 / 18%);
+    }
+    .top {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1rem 1.1rem; background: var(--brand-strong); color: #fff;
+    }
+    .top strong { font-size: 1rem; }
+    .body { flex: 1; padding: .75rem 0 1rem; }
+    .label {
+      padding: .75rem 1.1rem .35rem; font-size: .72rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: .05em; color: var(--muted);
+    }
+    .row {
+      display: flex; align-items: center; gap: .85rem; padding: .85rem 1.1rem;
+      background: var(--card); border-bottom: 1px solid var(--border);
+    }
+    .ico {
+      width: 40px; height: 40px; border-radius: 10px; background: var(--brand-soft);
+      display: grid; place-items: center;
+    }
+    .ico svg { width: 22px; height: 22px; stroke: var(--brand); fill: none; stroke-width: 2; }
+    .row span { flex: 1; font-weight: 600; font-size: .95rem; }
+    .row em { font-style: normal; color: var(--muted); font-size: 1.1rem; }
+    .nav {
+      display: flex; justify-content: space-around; padding: .65rem;
+      background: var(--card); border-top: 1px solid var(--border);
+    }
+    .nav span { padding: .35rem .75rem; border-radius: 999px; color: var(--muted); font-size: .85rem; }
+    .nav span.on { background: var(--brand-soft); color: var(--brand); font-weight: 600; }
+  </style>
+</head>
+<body data-palette="a">
+  <a class="back" href="index.html">← Hub</a>
+  <h1>Layout 3 — Lista por seções</h1>
+  <div class="toolbar">
+    <select onchange="document.body.dataset.palette=this.value">
+      <option value="a">A Verde</option>
+      <option value="b">B Laranja</option>
+      <option value="c">C Ardósia</option>
+      <option value="d">D Oliva</option>
+      <option value="e">E Roxo</option>
+      <option value="f">F Azul</option>
+    </select>
+  </div>
+  <div class="phone">
+    <div class="top"><strong>Condomínio</strong><span>☰</span></div>
+    <div class="body">
+      <div class="label">Principal</div>
+      <div class="row"><div class="ico"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><path d="M8 14h.01M12 14h.01M16 14h.01"/></svg></div><span>Reservas</span><em>›</em></div>
+      <div class="row"><div class="ico"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 7L2 7"/></svg></div><span>Correspondências</span><em>›</em></div>
+      <div class="row"><div class="ico"><svg viewBox="0 0 24 24"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div><span>Ocorrências</span><em>›</em></div>
+      <div class="label">Acesso</div>
+      <div class="row"><div class="ico"><svg viewBox="0 0 24 24"><path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/><path d="M13 5v2M13 17v2M13 11v2"/></svg></div><span>Convites</span><em>›</em></div>
+      <div class="row"><div class="ico"><svg viewBox="0 0 24 24"><path d="m3 11 18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg></div><span>Comunicados</span><em>›</em></div>
+      <div class="label">Cadastros</div>
+      <div class="row"><div class="ico"><svg viewBox="0 0 24 24"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/></svg></div><span>Automóveis</span><em>›</em></div>
+    </div>
+    <nav class="nav"><span class="on">Home</span><span>Avisos</span><span>Perfil</span></nav>
+  </div>
+</body>
+</html>

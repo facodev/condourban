@@ -1,0 +1,17 @@
+{
+  "package_id": "br.com.iplanner.mycondapp",
+  "title": "MyCOND",
+  "developer": "App Condominial",
+  "play_url": "https://play.google.com/store/apps/details?id=br.com.iplanner.mycondapp&hl=pt_BR",
+  "screenshot_count_available": 24,
+  "files": [
+    "02-app-01.png",
+    "02-app-02.png",
+    "02-app-03.png",
+    "02-app-04.png",
+    "02-app-05.png",
+    "02-app-06.png"
+  ],
+  "icon": "https://play-lh.googleusercontent.com/V6rw4uaGjKAR-XwVSvZkZMBp5PMjQGQJRcsdQItMGmWroJ2fkCovHIxhyfPlkiIMivezyfaRBg9ByY1JlFKA-dg",
+  "source": "google-play-scraper"
+}

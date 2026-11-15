@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sugestões — hub</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root { --brand:#0F6B5C; --strong:#0A4F44; --soft:#D8EFEA; --surface:#F4F6F5; --card:#fff; --ink:#1A1F1E; --muted:#5C6763; --border:#D5DCD9; }
+    * { box-sizing: border-box; }
+    body { margin:0; font-family:"Source Sans 3",system-ui,sans-serif; background:linear-gradient(165deg,#e8f3ef,var(--surface) 50%); color:var(--ink); padding:2rem 1.25rem 3rem; }
+    .wrap { max-width:900px; margin:0 auto; }
+    h1 { font-family:Fraunces,Georgia,serif; color:var(--strong); margin:0 0 .4rem; }
+    .lead { color:var(--muted); margin:0 0 2rem; }
+    h2 { font-size:.78rem; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); margin:1.75rem 0 .7rem; }
+    .grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:1rem; }
+    a.card { display:block; text-decoration:none; color:inherit; background:var(--card); border:1px solid var(--border); border-radius:16px; padding:1.2rem; transition:.15s; }
+    a.card:hover { border-color:var(--brand); transform:translateY(-2px); }
+    a.card strong { display:block; color:var(--strong); margin-bottom:.35rem; font-size:1.05rem; }
+    a.card span { color:var(--muted); font-size:.9rem; line-height:1.4; }
+    .note { margin-top:2rem; padding:1rem; background:var(--soft); border-radius:12px; color:var(--strong); font-size:.92rem; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <a class="back" href="../../../index.html" style="color:var(--brand);font-weight:600;text-decoration:none">← CondoUrban (hub raiz)</a>
+    <h1>Sugestões de design</h1>
+    <p class="lead">Logos e telas do app agrupados. SVG + Stitch + protótipos HTML.</p>
+
+    <h2>Logos</h2>
+    <div class="grid">
+      <a class="card" href="logos/index.html"><strong>Galeria de logos</strong><span>Logo oficial CondoUrban + SVG/Stitch</span></a>
+    </div>
+
+    <h2>Telas / sugestões do app</h2>
+    <div class="grid">
+      <a class="card" href="telas/index.html"><strong>Galeria de telas</strong><span>Prints Stitch + protótipos HTML</span></a>
+      <a class="card" href="telas/amostra-stitch.html"><strong>Amostra Stitch (páginas)</strong><span>Homes, correspondências, visitas, reservas</span></a>
+      <a class="card" href="telas/html/index.html"><strong>Protótipos HTML</strong><span>Grade, destaques, lista, paletas A–F</span></a>
+    </div>
+
+    <h2>Paleta</h2>
+    <div class="grid">
+      <a class="card" href="../../../landing/index.html"><strong>Landing page</strong><span>Home de marketing CondoUrban (preview)</span></a>
+      <a class="card" href="../paleta-amostra.html"><strong>Paleta oficial (HTML)</strong><span>Tokens de cor do app</span></a>
+    </div>
+
+    <p class="note">Pasta: <code>docs/design/sugestoes/</code> — logos/ e telas/ separados. Abrir com <code>scripts\start-local.bat</code>.</p>
+  </div>
+</body>
+</html>

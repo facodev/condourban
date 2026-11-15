@@ -1,0 +1,695 @@
+<div class="view-layout">
+  <!-- CABEÇALHO EDITORIAL & AÇÕES GERAIS -->
+  <header class="section-hero">
+    <div class="hero-titles">
+      <div class="hero-context-badge">
+        <span class="pulse-indicator"></span>
+        <span>Módulo 01 • Gestão de Posse &amp; Vínculos Habitacionais</span>
+      </div>
+      <h1 class="hero-title">Vínculos &amp; Ocupação de Unidades</h1>
+      <p class="hero-subtitle">
+        Formalização jurídica da ocupação habitacional (proprietários, inquilinos, dependentes e estadias temporárias),
+        com regras estritas de posse direta e vigência contratual.
+      </p>
+    </div>
+    @if (sessionService.podeGerenciarCadastros()) {
+      <div class="hero-actions">
+        <app-button (click)="executarRotina()" variant="outline" [disabled]="executandoRotina()">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"></circle>
+            <polyline points="12 6 12 12 16 14"></polyline>
+          </svg>
+          <span>{{ executandoRotina() ? 'Verificando…' : 'Rotina de Expiração' }}</span>
+        </app-button>
+        <app-button (click)="mostrarForm.set(!mostrarForm())" variant="primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="12" y1="5" x2="12" y2="19"></line>
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+          </svg>
+          <span>{{ mostrarForm() ? 'Fechar Formulário' : '+ Vincular Pessoa a Unidade' }}</span>
+        </app-button>
+      </div>
+    }
+  </header>
+
+  <!-- NAVEGAÇÃO INTERNA DO BOUNDED CONTEXT -->
+  <nav class="subnav-tabs" aria-label="Sub-navegação de Identidade e Cadastro">
+    <a routerLink="/identidade-cadastro/pessoas" routerLinkActive="active" class="tab-link">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+        <circle cx="12" cy="7" r="4"></circle>
+      </svg>
+      <span>Pessoas Físicas</span>
+    </a>
+    <a routerLink="/identidade-cadastro/ocupacoes" routerLinkActive="active" class="tab-link">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+        <polyline points="9 22 9 12 15 12 15 22"></polyline>
+      </svg>
+      <span>Vínculos &amp; Ocupações</span>
+    </a>
+    @if (sessionService.podeGerenciarUsuarios()) {
+      <a routerLink="/identidade-cadastro/usuarios" routerLinkActive="active" class="tab-link">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+          <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+        </svg>
+        <span>Usuários &amp; Perfis (RBAC)</span>
+      </a>
+    }
+    @if (sessionService.podeGerenciarCadastros()) {
+      <a routerLink="/identidade-cadastro/onboarding" routerLinkActive="active" class="tab-link">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+          <circle cx="8.5" cy="7" r="4"></circle>
+          <polyline points="17 11 19 13 23 9"></polyline>
+        </svg>
+        <span>Onboarding &amp; Convites</span>
+      </a>
+    }
+    <a routerLink="/identidade-cadastro/veiculos-pets" routerLinkActive="active" class="tab-link">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <rect x="1" y="3" width="15" height="13"></rect>
+        <polygon points="16 8 20 8 23 11 23 16 16 16 8"></polygon>
+        <circle cx="5.5" cy="18.5" r="2.5"></circle>
+        <circle cx="18.5" cy="18.5" r="2.5"></circle>
+      </svg>
+      <span>Veículos &amp; Pets</span>
+    </a>
+  </nav>
+
+  <!-- FAIXA DE RESUMO OPERACIONAL -->
+  <section class="metrics-ribbon">
+    <div class="metric-cell">
+      <div class="metric-glyph">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+          <circle cx="9" cy="7" r="4"></circle>
+        </svg>
+      </div>
+      <div class="metric-data">
+        <span class="metric-value">{{ ocupacoes().length }}</span>
+        <span class="metric-label">Vínculos Registrados</span>
+      </div>
+    </div>
+
+    <div class="metric-divider"></div>
+
+    <div class="metric-cell">
+      <div class="metric-glyph text-emerald">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+          <polyline points="9 22 9 12 15 12 15 22"></polyline>
+        </svg>
+      </div>
+      <div class="metric-data">
+        <span class="metric-value">{{ totalResidentes() }}</span>
+        <span class="metric-label">Moradores Residentes</span>
+      </div>
+    </div>
+
+    <div class="metric-divider"></div>
+
+    <div class="metric-cell">
+      <div class="metric-glyph text-blue">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+          <circle cx="8.5" cy="7" r="4"></circle>
+        </svg>
+      </div>
+      <div class="metric-data">
+        <span class="metric-value">{{ totalProprietarios() }}</span>
+        <span class="metric-label">Proprietários</span>
+      </div>
+    </div>
+
+    <div class="metric-divider"></div>
+
+    <div class="metric-cell">
+      <div class="metric-glyph text-purple">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+          <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+        </svg>
+      </div>
+      <div class="metric-data">
+        <span class="metric-value">{{ totalInquilinos() }}</span>
+        <span class="metric-label">Inquilinos &amp; Dependentes</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEEDBACK DE ROTINA DE EXPIRAÇÃO -->
+  @if (rotinaFeedback()) {
+    <div class="success-banner">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+        <polyline points="22 4 12 14.01 9 11.01"></polyline>
+      </svg>
+      <span>{{ rotinaFeedback() }}</span>
+      <button type="button" class="btn-close-banner" (click)="rotinaFeedback.set('')">✕</button>
+    </div>
+  }
+
+  <!-- FORMULÁRIO DE VINCULAÇÃO -->
+  @if (mostrarForm()) {
+    <div class="form-panel">
+      <div class="panel-header">
+        <h2 class="panel-title">Vincular Pessoa à Unidade Habitacional</h2>
+        <p class="panel-desc">
+          Define o regime de ocupação (posse direta pelo morador ou locação) e a relação jurídica com a unidade.
+        </p>
+      </div>
+
+      <form (ngSubmit)="salvarOcupacao()" class="form-body">
+        <div class="field-grid">
+          <!-- SELEÇÃO DE PESSOA -->
+          <div class="field-group">
+            <label class="field-label">Pessoa Física <span class="required">*</span></label>
+            <select [(ngModel)]="novaPessoaId" name="novaPessoaId" required class="input-control">
+              <option value="">Selecione uma pessoa física…</option>
+              @for (p of pessoas(); track p.id) {
+                <option [value]="p.id">
+                  {{ p.nome_completo || p.nomeCompleto || p.nome || 'Pessoa' }} {{ p.cpf ? '— CPF: ' + (p.cpf | cpf) : '' }}
+                </option>
+              }
+            </select>
+            <span class="field-hint">Caso a pessoa não esteja na lista, cadastre-a em "Pessoas Físicas".</span>
+          </div>
+
+          <!-- SELEÇÃO DE UNIDADE -->
+          <div class="field-group">
+            <label class="field-label">Unidade Habitacional <span class="required">*</span></label>
+            <select [(ngModel)]="novaUnidadeId" name="novaUnidadeId" required class="input-control">
+              <option value="">Selecione a unidade…</option>
+              @for (u of unidades(); track u.id) {
+                <option [value]="u.id">
+                  Unidade {{ u.identificacao || u.number }} ({{ getBlocoNome(u.bloco_id || u.blocoId) }})
+                </option>
+              }
+            </select>
+            <span class="field-hint">A unidade determina o condomínio e a relação patrimonial.</span>
+          </div>
+        </div>
+
+        <div class="field-grid">
+          <!-- TIPO DE VÍNCULO -->
+          <div class="field-group">
+            <label class="field-label">Tipo de Vínculo Jurídico <span class="required">*</span></label>
+            <select [(ngModel)]="novoTipoVinculo" name="novoTipoVinculo" required class="input-control">
+              <option value="PROPRIETARIO">Proprietário</option>
+              <option value="INQUILINO">Inquilino (Locatário)</option>
+              <option value="DEPENDENTE">Dependente</option>
+              <option value="TEMPORARIO">Morador Temporário</option>
+              <option value="HOSPEDE">Hóspede</option>
+            </select>
+          </div>
+
+          <!-- RESPONSÁVEL (SE DEPENDENTE) -->
+          @if (novoTipoVinculo === 'DEPENDENTE') {
+            <div class="field-group">
+              <label class="field-label">Responsável Residente na Unidade <span class="required">*</span></label>
+              @if (!novaUnidadeId) {
+                <div class="p-2.5 bg-amber-50 border border-amber-200 rounded text-xs text-amber-800">
+                  ⚠️ Selecione primeiro a <strong>Unidade Habitacional</strong> acima para listar os moradores responsáveis ativos.
+                </div>
+              } @else if (ocupacoesAtivasUnidade().length === 0) {
+                <div class="p-2.5 bg-slate-50 border border-slate-200 rounded text-xs text-slate-600">
+                  Nenhum morador titular ativo encontrado nesta unidade para ser responsável.
+                </div>
+              } @else {
+                <select [(ngModel)]="novoResponsavelId" name="novoResponsavelId" required class="input-control">
+                  <option value="">Selecione o titular responsável…</option>
+                  @for (oc of ocupacoesAtivasUnidade(); track oc.id) {
+                    <option [value]="oc.id">
+                      {{ getPessoaNome(oc.pessoa_id) }} ({{ oc.tipo_vinculo }})
+                    </option>
+                  }
+                </select>
+                <span class="field-hint">Vínculo com o titular da unidade para efeito de cascade e autorizações.</span>
+              }
+            </div>
+          }
+        </div>
+
+        <!-- DATAS (OBRIGATÓRIAS PARA TEMPORÁRIOS) -->
+        @if (novoTipoVinculo === 'TEMPORARIO' || novoTipoVinculo === 'HOSPEDE') {
+          <div class="field-grid">
+            <div class="field-group">
+              <label class="field-label">Data de Início <span class="required">*</span></label>
+              <input type="datetime-local" [(ngModel)]="novoInicioEm" name="novoInicioEm" required class="input-control" />
+            </div>
+            <div class="field-group">
+              <label class="field-label">Data de Término <span class="required">*</span></label>
+              <input type="datetime-local" [(ngModel)]="novoFimEm" name="novoFimEm" required class="input-control" />
+              <span class="field-hint">Obrigatório para estadias temporárias (expiração automática).</span>
+            </div>
+          </div>
+        }
+
+        <!-- CAIXAS DE SELEÇÃO VERTICALIZADAS COM ESPAÇAMENTO -->
+        <div class="field-grid-checks">
+          <label class="checkbox-label">
+            <input type="checkbox" [(ngModel)]="novoMoraNoLocal" name="novoMoraNoLocal" />
+            <span><strong>Mora no local (Posse direta):</strong> o morador reside fisicamente na unidade habitacional.</span>
+          </label>
+
+          <label class="checkbox-label">
+            <input type="checkbox" [(ngModel)]="novoPrincipal" name="novoPrincipal" />
+            <span><strong>Contato principal:</strong> referência oficial da unidade para comunicados e votações.</span>
+          </label>
+        </div>
+
+        @if (errorMessage()) {
+          <div class="error-banner">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="12" y1="8" x2="12" y2="12"></line>
+              <line x1="12" y1="16" x2="12.01" y2="16"></line>
+            </svg>
+            <span>{{ errorMessage() }}</span>
+          </div>
+        }
+
+        <div class="form-actions">
+          <app-button
+            type="submit"
+            [disabled]="salvando() || !novaPessoaId || !novaUnidadeId"
+            variant="primary"
+          >
+            {{ salvando() ? 'Salvando Vínculo…' : 'Registrar Vínculo' }}
+          </app-button>
+          <app-button type="button" variant="outline" (click)="mostrarForm.set(false)">Cancelar</app-button>
+        </div>
+      </form>
+    </div>
+  }
+
+  <!-- BARRA DE PESQUISA & FILTROS (ESTILO UNIFICADO) -->
+  <section class="toolbar-card">
+    <div class="search-box">
+      <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="11" cy="11" r="8"></circle>
+        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+      </svg>
+      <input
+        type="text"
+        placeholder="Filtrar por pessoa, documento ou unidade…"
+        [ngModel]="busca()"
+        (ngModelChange)="busca.set($event); paginaAtual.set(1)"
+      />
+    </div>
+
+    <div class="filter-group">
+      <!-- Filtro por Torre / Bloco -->
+      <select
+        [ngModel]="filtroBloco()"
+        (ngModelChange)="aoMudarFiltroBloco($event)"
+        class="select-filter"
+        title="Filtrar por Torre ou Bloco"
+      >
+        <option value="TODOS">🏢 Todas as Torres</option>
+        @for (b of blocos(); track b.id) {
+          <option [value]="b.id">{{ b.nome || b.name }}</option>
+        }
+      </select>
+
+      <!-- Filtro por Unidade -->
+      <select
+        [ngModel]="filtroUnidade()"
+        (ngModelChange)="filtroUnidade.set($event); paginaAtual.set(1)"
+        class="select-filter"
+        title="Filtrar por Unidade Habitacional"
+      >
+        <option value="TODOS">🚪 Todas as Unidades</option>
+        @for (u of unidadesDisponiveisFiltro(); track u.id) {
+          <option [value]="u.id">Unidade {{ u.identificacao || u.number }}</option>
+        }
+      </select>
+
+      <!-- Filtro por Tipo de Vínculo -->
+      <select
+        [ngModel]="filtroTipo()"
+        (ngModelChange)="filtroTipo.set($event); paginaAtual.set(1)"
+        class="select-filter"
+      >
+        <option value="TODOS">Todos os Vínculos</option>
+        <option value="PROPRIETARIO">Proprietários</option>
+        <option value="INQUILINO">Inquilinos</option>
+        <option value="DEPENDENTE">Dependentes</option>
+        <option value="TEMPORARIO">Temporários</option>
+        <option value="HOSPEDE">Hóspedes</option>
+      </select>
+
+      <!-- Filtro por Status -->
+      <select
+        [ngModel]="filtroStatus()"
+        (ngModelChange)="filtroStatus.set($event); paginaAtual.set(1)"
+        class="select-filter"
+      >
+        <option value="TODOS">Todos os Status</option>
+        <option value="ATIVA">Apenas Ativos</option>
+        <option value="INATIVA">Apenas Inativos</option>
+      </select>
+
+      @if (filtroBloco() !== 'TODOS' || filtroUnidade() !== 'TODOS' || filtroTipo() !== 'TODOS' || filtroStatus() !== 'TODOS' || busca().trim()) {
+        <button type="button" class="btn-clear-filter" (click)="limparFiltros()" title="Limpar todos os filtros">
+          ✕ Limpar
+        </button>
+      }
+    </div>
+
+    <span class="search-count">Exibindo {{ ocupacoesFiltradas().length }} de {{ ocupacoes().length }} registros</span>
+  </section>
+
+  <!-- TABELA COM STYLED HEADER E PAGINAÇÃO -->
+  <div class="table-container">
+    <div class="table-header-info">
+      <div>
+        <h3>Relação de Vínculos e Ocupações de Unidades</h3>
+        <p class="text-xs text-text-muted mt-0.5">Gestão formal de moradores, proprietários e regimes habitacionais</p>
+      </div>
+      <span class="total-tag">{{ ocupacoesFiltradas().length }} vínculo(s) listado(s)</span>
+    </div>
+
+    <div class="table-responsive">
+      <table class="styled-table">
+        <thead>
+          <tr>
+            <th>Pessoa Física</th>
+            <th>CPF</th>
+            <th>Unidade / Bloco</th>
+            <th>Vínculo</th>
+            <th>Posse Direta</th>
+            <th>Vigência</th>
+            <th>Status</th>
+            <th class="actions-col">Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (oc of ocupacoesPaginadas(); track oc.id) {
+            <tr class="table-row" matRipple [matRippleColor]="'rgba(30, 64, 175, 0.04)'">
+              <td>
+                <div class="user-cell">
+                  <div class="user-glyph">
+                    {{ getPessoaNome(oc.pessoa_id).charAt(0).toUpperCase() }}
+                  </div>
+                  <div class="user-text">
+                    <span class="user-name font-bold">{{ getPessoaNome(oc.pessoa_id) }}</span>
+                    @if (oc.principal) {
+                      <span class="text-[0.6875rem] font-semibold text-danger">★ Contato Principal</span>
+                    }
+                  </div>
+                </div>
+              </td>
+              <td class="font-mono text-text-secondary whitespace-nowrap">
+                {{ getPessoaCpf(oc.pessoa_id) ? (getPessoaCpf(oc.pessoa_id) | cpf) : 'Não informado' }}
+              </td>
+              <td>
+                <div class="flex items-center gap-2">
+                  <span class="font-mono font-bold text-text">
+                    Unidade {{ getUnidadeIdentificacao(oc.unidade_id) }}
+                  </span>
+                </div>
+              </td>
+              <td>
+                <span class="tipo-badge" [ngClass]="getTipoBadgeClass(oc.tipo_vinculo)">
+                  {{ oc.tipo_vinculo }}
+                </span>
+              </td>
+              <td>
+                @if (oc.mora_no_local) {
+                  <span class="badge-residente">Reside no local</span>
+                } @else {
+                  <span class="badge-nao-residente">Não reside (Locador)</span>
+                }
+              </td>
+              <td class="text-xs font-mono text-text-secondary whitespace-nowrap">
+                Desde: {{ oc.inicio_em ? (oc.inicio_em | date:'dd/MM/yyyy') : 'Início' }}
+                @if (oc.fim_em) {
+                  <br />Até: {{ oc.fim_em | date:'dd/MM/yyyy' }}
+                }
+              </td>
+              <td>
+                <span
+                  class="status-pill text-xs px-2.5 py-0.5 rounded-full font-semibold"
+                  [class.bg-emerald-50]="oc.status === 'ATIVA' || oc.status === 'ATIVO'"
+                  [class.text-emerald-700]="oc.status === 'ATIVA' || oc.status === 'ATIVO'"
+                  [class.border-emerald-200]="oc.status === 'ATIVA' || oc.status === 'ATIVO'"
+                  [class.bg-slate-100]="oc.status !== 'ATIVA' && oc.status !== 'ATIVO'"
+                  [class.text-slate-600]="oc.status !== 'ATIVA' && oc.status !== 'ATIVO'"
+                >
+                  {{ oc.status }}
+                </span>
+              </td>
+              <td class="actions-col">
+                <div class="row-actions justify-end">
+                  @if (sessionService.podeGerenciarCadastros()) {
+                    <button
+                      type="button"
+                      matRipple
+                      class="btn-action-edit focus-ring"
+                      title="Editar Vínculo"
+                      aria-label="Editar Vínculo"
+                      (click)="iniciarEdicao(oc)"
+                    >
+                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                        <path d="M12 20h9"></path>
+                        <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
+                      </svg>
+                    </button>
+                    @if (oc.status === 'ATIVA' || oc.status === 'ATIVO') {
+                      <button
+                        type="button"
+                        matRipple
+                        class="btn-delete focus-ring"
+                        title="Inativar Vínculo Habitacional"
+                        aria-label="Inativar Vínculo Habitacional"
+                        (click)="abrirInativacao(oc)"
+                      >
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                          <circle cx="12" cy="12" r="10"></circle>
+                          <line x1="15" y1="9" x2="9" y2="15"></line>
+                          <line x1="9" y1="9" x2="15" y2="15"></line>
+                        </svg>
+                      </button>
+                    }
+                  } @else {
+                    <span class="text-xs text-text-subtle">Somente leitura</span>
+                  }
+                </div>
+              </td>
+            </tr>
+          } @empty {
+            <tr>
+              <td colspan="8" class="empty-cell">
+                <div class="empty-content text-center py-8">
+                  <p class="text-sm text-text-muted">Nenhum vínculo habitacional encontrado para os filtros selecionados.</p>
+                  @if (sessionService.podeGerenciarCadastros()) {
+                    <div class="mt-3">
+                      <app-button (click)="mostrarForm.set(true)" variant="primary" size="sm">+ Vincular Primeira Pessoa</app-button>
+                    </div>
+                  }
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+
+    <!-- BARRA DE PAGINAÇÃO PADRONIZADA -->
+    <div class="table-pagination">
+      <div class="pagination-info">
+        <span>
+          Mostrando <strong>{{ indiceInicial() }}–{{ indiceFinal() }}</strong> de <strong>{{ ocupacoesFiltradas().length }}</strong> registros
+        </span>
+        <label class="page-size-control">
+          <span>Itens por página:</span>
+          <select [ngModel]="itensPorPagina()" (ngModelChange)="aoMudarItensPorPagina($event)">
+            <option [ngValue]="5">5</option>
+            <option [ngValue]="10">10</option>
+            <option [ngValue]="20">20</option>
+            <option [ngValue]="50">50</option>
+          </select>
+        </label>
+      </div>
+
+      <div class="pagination-controls">
+        <button
+          type="button"
+          matRipple
+          class="page-btn focus-ring"
+          [disabled]="paginaAtual() === 1"
+          (click)="mudarPagina(paginaAtual() - 1)"
+        >
+          ‹ Anterior
+        </button>
+        @for (p of paginasArray(); track p) {
+          <button
+            type="button"
+            matRipple
+            class="page-btn focus-ring"
+            [class.active]="paginaAtual() === p"
+            (click)="mudarPagina(p)"
+          >
+            {{ p }}
+          </button>
+        }
+        <button
+          type="button"
+          matRipple
+          class="page-btn focus-ring"
+          [disabled]="paginaAtual() === totalPaginas()"
+          (click)="mudarPagina(paginaAtual() + 1)"
+        >
+          Próxima ›
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL DE EDIÇÃO DE VÍNCULO -->
+  @if (ocupacaoEmEdicao(); as ocEdicao) {
+    <div class="modal-backdrop">
+      <div class="modal-card">
+        <div class="modal-header">
+          <div>
+            <h3 class="modal-title">Editar Vínculo Habitacional</h3>
+            <p class="text-xs text-text-muted mt-0.5">
+              {{ getPessoaNome(ocEdicao.pessoa_id) }} • Titular do Vínculo
+            </p>
+          </div>
+          <button type="button" class="modal-close-btn focus-ring" (click)="cancelarEdicao()" aria-label="Fechar modal">✕</button>
+        </div>
+
+        <form (ngSubmit)="salvarEdicao()" class="modal-form">
+          <!-- SELEÇÃO DE UNIDADE HABITACIONAL NA EDIÇÃO -->
+          <div class="field-group">
+            <label class="field-label">Unidade Habitacional <span class="required">*</span></label>
+            <select
+              [ngModel]="editUnidadeId()"
+              (ngModelChange)="aoMudarUnidadeEdicao($event)"
+              name="editUnidadeId"
+              required
+              class="input-control"
+            >
+              <option value="">Selecione a unidade…</option>
+              @for (u of unidades(); track u.id) {
+                <option [value]="u.id">
+                  Unidade {{ u.identificacao || u.number }} ({{ getBlocoNome(u.bloco_id || u.blocoId) }})
+                </option>
+              }
+            </select>
+          </div>
+
+          <div class="field-group">
+            <label class="field-label">Tipo de Vínculo Jurídico <span class="required">*</span></label>
+            <select [(ngModel)]="editTipoVinculo" name="editTipoVinculo" required class="input-control">
+              <option value="PROPRIETARIO">Proprietário</option>
+              <option value="INQUILINO">Inquilino (Locatário)</option>
+              <option value="DEPENDENTE">Dependente</option>
+              <option value="TEMPORARIO">Morador Temporário</option>
+              <option value="HOSPEDE">Hóspede</option>
+            </select>
+          </div>
+
+          <!-- SE FOR DEPENDENTE NA EDIÇÃO, SELEÇÃO DO TITULAR RESPONSÁVEL -->
+          @if (editTipoVinculo === 'DEPENDENTE') {
+            <div class="field-group">
+              <label class="field-label">Responsável Residente na Unidade</label>
+              @if (!editUnidadeId()) {
+                <span class="field-hint text-amber-600">Selecione uma unidade primeiro.</span>
+              } @else if (ocupacoesAtivasUnidadeEdicao().length === 0) {
+                <span class="field-hint text-slate-500">Nenhum titular ativo encontrado na unidade para ser responsável.</span>
+              } @else {
+                <select [(ngModel)]="editResponsavelId" name="editResponsavelId" class="input-control">
+                  <option value="">Selecione o responsável…</option>
+                  @for (oc of ocupacoesAtivasUnidadeEdicao(); track oc.id) {
+                    <option [value]="oc.id">
+                      {{ getPessoaNome(oc.pessoa_id) }} ({{ oc.tipo_vinculo }})
+                    </option>
+                  }
+                </select>
+              }
+            </div>
+          }
+
+          <div class="grid grid-cols-2 gap-3">
+            <div class="field-group">
+              <label class="field-label">Data Início</label>
+              <input type="date" [(ngModel)]="editInicioEm" name="editInicioEm" class="input-control" />
+            </div>
+            <div class="field-group">
+              <label class="field-label">Data Término</label>
+              <input type="date" [(ngModel)]="editFimEm" name="editFimEm" class="input-control" />
+            </div>
+          </div>
+
+          <!-- CAIXAS DE SELEÇÃO VERTICALIZADAS COM ESPAÇAMENTO -->
+          <div class="field-grid-checks">
+            <label class="checkbox-label">
+              <input type="checkbox" [(ngModel)]="editMoraNoLocal" name="editMoraNoLocal" />
+              <span><strong>Mora no local (Posse direta):</strong> o morador reside fisicamente na unidade.</span>
+            </label>
+
+            <label class="checkbox-label">
+              <input type="checkbox" [(ngModel)]="editPrincipal" name="editPrincipal" />
+              <span><strong>Contato Principal da Unidade:</strong> titular de referência para notificações.</span>
+            </label>
+          </div>
+
+          @if (erroEdicao()) {
+            <div class="error-banner">
+              <span>{{ erroEdicao() }}</span>
+            </div>
+          }
+
+          <div class="modal-actions">
+            <app-button type="submit" variant="primary" [disabled]="salvando()">
+              {{ salvando() ? 'Salvando…' : 'Salvar Alterações' }}
+            </app-button>
+            <app-button type="button" variant="outline" (click)="cancelarEdicao()">Cancelar</app-button>
+          </div>
+        </form>
+      </div>
+    </div>
+  }
+
+  <!-- MODAL DE CONFIRMAÇÃO DE INATIVAÇÃO -->
+  @if (ocupacaoEmInativacao(); as ocInativar) {
+    <div class="modal-backdrop">
+      <div class="modal-card">
+        <div class="modal-header">
+          <h3 class="modal-title">Confirmar Inativação de Vínculo</h3>
+          <button type="button" class="modal-close-btn focus-ring" (click)="ocupacaoEmInativacao.set(null)" aria-label="Fechar modal">✕</button>
+        </div>
+
+        <div class="modal-body">
+          <p class="text-sm text-text-secondary leading-relaxed">
+            Deseja realmente inativar o vínculo de <strong>{{ getPessoaNome(ocInativar.pessoa_id) }}</strong> com a <strong>Unidade {{ getUnidadeIdentificacao(ocInativar.unidade_id) }}</strong>?
+          </p>
+
+          <div class="mt-3 p-3 bg-surface-subtle border border-border rounded-md">
+            <label class="checkbox-label">
+              <input type="checkbox" [(ngModel)]="cascadeDependentes" />
+              <span class="text-xs font-semibold text-text">Inativar dependentes associados em cascata</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="modal-actions">
+          <app-button
+            type="button"
+            variant="danger"
+            [disabled]="inativando()"
+            (click)="confirmarInativacao()"
+          >
+            {{ inativando() ? 'Inativando…' : 'Confirmar Inativação' }}
+          </app-button>
+          <app-button type="button" variant="outline" (click)="ocupacaoEmInativacao.set(null)">Cancelar</app-button>
+        </div>
+      </div>
+    </div>
+  }
+</div>
